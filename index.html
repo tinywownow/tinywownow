@@ -393,6 +393,18 @@ p{margin:0}
 .cta-h{letter-spacing:-1px}
 .btn-white{box-shadow:0 10px 24px -10px rgba(0,0,0,.4)}
 @media(max-width:640px){.sec{padding:56px 0}.cta-band{padding:44px 24px}}
+/* MEGA MENUS */
+.tci-pdf{color:var(--red)}.tci-image{color:var(--sage3)}.tci-video{color:var(--purple)}.tci-file{color:var(--blue)}.tci-write{color:var(--amber)}
+.drop-menu{min-width:500px;padding:10px;gap:2px 8px;border-radius:18px;background:var(--surface);top:calc(100% + 8px)}
+.drop-menu::before{content:"";position:absolute;left:0;right:0;top:-12px;height:12px}
+.drop-item{white-space:nowrap;padding:9px 10px;font-size:.9rem;font-weight:500;color:var(--text)}
+.drop-item:hover{background:var(--surface2)}
+.drop-ico{width:34px;height:34px;border-radius:10px}
+.drop-all{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;margin-top:6px;padding:12px 12px 6px;border-top:1px solid var(--bordersoft);font-size:.86rem;font-weight:700;color:var(--sage3);cursor:pointer;transition:color .15s}
+.drop-all:hover{color:var(--red)}
+.nav-links .nav-drop:nth-last-of-type(-n+2) .drop-menu{left:auto;right:0}
+.mob-ic{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tc-ico svg,.cat-ico svg,.drop-ico svg,.sr-ico svg,.tool-hdr-ico svg,.cat-ph-ico svg{display:block}
 /* TOAST */
 #toast{position:fixed;bottom:24px;right:24px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rlg);padding:13px 18px;box-shadow:var(--shadowlg);display:flex;align-items:center;gap:11px;font-size:.9rem;font-weight:500;z-index:9999;transform:translateY(70px);opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);max-width:300px}
 #toast.show{transform:translateY(0);opacity:1}
@@ -616,11 +628,58 @@ function route(){
 }
 window.addEventListener('hashchange',route);
 
+const GL={
+merge:'<path d="M6 3v6c0 3 3 4 6 4s6 1 6 4v4M18 3v6c0 3-3 4-6 4"/>',
+split:'<path d="M12 3v7M12 10l-6 6v5M12 10l6 6v5"/>',
+compress:'<path d="M4 14h6v6M20 10h-6V4M14 10l7-7M3 21l7-7"/>',
+doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+convert:'<path d="M4 8h13l-3-3M20 16H7l3 3"/>',
+image:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 8"/>',
+crop:'<path d="M6 2v14a2 2 0 0 0 2 2h14M2 6h14a2 2 0 0 1 2 2v14"/>',
+rotate:'<path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/>',
+resize:'<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>',
+video:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/>',
+scissors:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/>',
+audio:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+mute:'<path d="M11 5L6 9H2v6h4l5 4zM22 9l-6 6M16 9l6 6"/>',
+bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+unlock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/>',
+pen:'<path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+text:'<path d="M4 7V4h16v3M9 20h6M12 4v16"/>',
+sparkle:'<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/>',
+table:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 4v16"/>',
+slides:'<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8"/>',
+hash:'<path d="M5 9h14M5 15h14M10 4L8 20M16 4l-2 16"/>',
+braces:'<path d="M8 4a2 2 0 0 0-2 2v3a2 2 0 0 1-2 2 2 2 0 0 1 2 2v3a2 2 0 0 0 2 2M16 4a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2 2 2 0 0 0-2 2v3a2 2 0 0 1-2 2"/>',
+code:'<path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 4l-4 16"/>',
+link:'<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+archive:'<rect x="3" y="4" width="18" height="5" rx="1"/><path d="M5 9v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9M10 13h4"/>',
+drop:'<path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/>',
+upscale:'<path d="M3 17l6-6 4 4 8-8M15 7h6v6"/>',
+contrast:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M12 3a9 9 0 0 1 0 18"/>',
+palette:'<circle cx="12" cy="12" r="9"/><circle cx="8" cy="10" r="1"/><circle cx="12" cy="7.5" r="1"/><circle cx="16" cy="10" r="1"/>',
+scan:'<path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3M7 12h10"/>',
+subs:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 12h4M13 12h4M7 15h2M12 15h5"/>',
+film:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/>',
+mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+check:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',
+list:'<path d="M4 6h16M4 12h10M4 18h14"/>',
+bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>',
+casing:'<path d="M3 18L8 6l5 12M5 14h6M15 18l3.5-8 3.5 8M16.5 15.5h4"/>',
+bg:'<rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="3 3"/><circle cx="12" cy="10" r="3"/><path d="M6 19c1-3 3-4 6-4s5 1 6 4"/>'
+};
+const GRULES=[[/unlock/,'unlock'],[/^lock-/,'lock'],[/^merge/,'merge'],[/^split/,'split'],[/^compress-files|extract-zip/,'archive'],[/^compress/,'compress'],[/rotate|flip/,'rotate'],[/^resize/,'resize'],[/^crop/,'crop'],[/^trim/,'scissors'],[/watermark/,'drop'],[/remove-bg/,'bg'],[/upscale/,'upscale'],[/grayscale/,'contrast'],[/photo-filter/,'palette'],[/ocr|image-to-text/,'scan'],[/pdf-to-text|word-counter/,'text'],[/^sign|edit-pdf/,'pen'],[/subtitles/,'subs'],[/gif/,'film'],[/extract-audio|video-to-mp3/,'audio'],[/mute/,'mute'],[/speed/,'bolt'],[/excel|xls|csv/,'table'],[/ppt/,'slides'],[/json/,'braces'],[/xml|base64/,'code'],[/hash/,'hash'],[/url/,'link'],[/email|cover-letter/,'mail'],[/grammar/,'check'],[/summar|paragraph/,'list'],[/title/,'bulb'],[/case-conv/,'casing'],[/ai-essay|content-improver/,'sparkle'],[/ai-blog/,'pen'],[/resume/,'doc'],[/-to-|^convert|paraphraser|reverser/,'convert']];
+const CATGL={pdf:'doc',image:'image',video:'video',file:'archive',write:'pen'};
+function glKey(t){for(const [r,k] of GRULES)if(r.test(t.id))return k;return CATGL[t.c]||'doc'}
+function svgIco(k,s){return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GL[k]}</svg>`}
+function gl(t,s){return svgIco(glKey(t),s||20)}
+function cgl(c,s){return svgIco(CATGL[c.id],s||24)}
 function tcHtml(t,showCat){
   const c=CATS[t.c];
   return`<div class="tc" onclick="nav('tool-${t.id}')">
     ${t.new?'<div class="tc-new">New</div>':''}
-    <div class="tc-ico ${c.ic}">${t.i}</div>
+    <div class="tc-ico ${c.ic}">${gl(t,22)}</div>
     <div class="tc-nm">${t.n}</div>
     <div class="tc-ds">${t.d}</div>
     <div class="tc-ft">${showCat?`<span class="tc-tag">${c.name}</span>`:'<span></span>'}<span class="tc-go">Try Free →</span></div>
@@ -633,14 +692,14 @@ function buildDrops(){
     if(!el)return;
     el.innerHTML=T.filter(t=>t.c===cid).slice(0,10).map(t=>`
       <div class="drop-item" onclick="nav('tool-${t.id}')">
-        <div class="drop-ico ${CATS[cid].ic}">${t.i}</div><span>${t.n}</span>
-      </div>`).join('');
+        <div class="drop-ico ${CATS[cid].ic}">${gl(t,18)}</div><span>${t.n}</span>
+      </div>`).join('')+`<a class="drop-all" onclick="nav('cat-${cid}')"><span>View all ${T.filter(t=>t.c===cid).length} ${CATS[cid].name}</span><span>&rarr;</span></a>`;
   });
   const mob=document.getElementById('mobMenu');
   let h='';
   Object.keys(CATS).forEach(cid=>{
     h+=`<div class="mob-sec">${CATS[cid].name}</div>`;
-    T.filter(t=>t.c===cid).slice(0,6).forEach(t=>{h+=`<div class="mob-link" onclick="nav('tool-${t.id}');toggleMob()">${t.i} ${t.n}</div>`;});
+    T.filter(t=>t.c===cid).slice(0,6).forEach(t=>{h+=`<div class="mob-link" onclick="nav('tool-${t.id}');toggleMob()"><span class="mob-ic ${CATS[cid].ic}">${gl(t,17)}</span>${t.n}</div>`;});
   });
   mob.innerHTML=h;
 }
@@ -653,7 +712,7 @@ window.doNavSearch=function(q){
   const r=T.filter(t=>t.n.toLowerCase().includes(q.toLowerCase())||t.d.toLowerCase().includes(q.toLowerCase())).slice(0,8);
   if(!r.length){d.classList.remove('show');return}
   d.innerHTML=r.map(t=>`<div class="sr-item" onclick="nav('tool-${t.id}');document.getElementById('navSearch').value='';document.getElementById('searchDrop').classList.remove('show')">
-    <div class="sr-ico ${CATS[t.c].ic}">${t.i}</div>
+    <div class="sr-ico ${CATS[t.c].ic}">${gl(t,17)}</div>
     <div><div class="sr-name">${t.n}</div><div class="sr-cat">${CATS[t.c].name}</div></div></div>`).join('');
   d.classList.add('show');
 };
@@ -702,7 +761,7 @@ function renderHome(){
     </div>
     <div class="cats-g">${Object.values(CATS).map(c=>`
       <div class="cat-card ${c.cls}" onclick="nav('cat-${c.id}')">
-        <div class="cat-ico">${c.ico}</div>
+        <div class="cat-ico">${cgl(c,28)}</div>
         <div class="cat-nm">${c.name}</div>
         <div class="cat-cnt">${T.filter(t=>t.c===c.id).length} tools available</div>
         <div class="cat-pills">${T.filter(t=>t.c===c.id).slice(0,3).map(t=>`<span class="cpill">${t.n}</span>`).join('')}</div>
@@ -715,7 +774,7 @@ function renderHome(){
     </div>
     <div class="filters" id="hFilters">
       <button class="fbtn on" onclick="hFilter('all',this)">All Tools</button>
-      ${Object.values(CATS).map(c=>`<button class="fbtn" onclick="hFilter('${c.id}',this)">${c.ico} ${c.name}</button>`).join('')}
+      ${Object.values(CATS).map(c=>`<button class="fbtn" onclick="hFilter('${c.id}',this)">${c.name}</button>`).join('')}
     </div>
     <div class="tools-g" id="hTools">${POP.map(id=>{const t=T.find(x=>x.id===id);return t?tcHtml(t,true):''}).join('')}</div>
   </div></section>
@@ -753,7 +812,7 @@ function renderAll(fc){
   <section class="sec-sm"><div class="wrap">
     <div class="filters" id="allF">
       <button class="fbtn ${!fc?'on':''}" onclick="allFilt(null,this)">All (${T.length})</button>
-      ${Object.values(CATS).map(c=>`<button class="fbtn ${fc===c.id?'on':''}" onclick="allFilt('${c.id}',this)">${c.ico} ${c.name} (${T.filter(t=>t.c===c.id).length})</button>`).join('')}
+      ${Object.values(CATS).map(c=>`<button class="fbtn ${fc===c.id?'on':''}" onclick="allFilt('${c.id}',this)">${c.name} (${T.filter(t=>t.c===c.id).length})</button>`).join('')}
     </div>
     <div class="tools-g" id="allT">${(fc?T.filter(t=>t.c===fc):T).map(t=>tcHtml(t,!fc)).join('')}</div>
   </div></section>`;
@@ -777,7 +836,7 @@ function renderCat(cid){
   <section class="cat-hero"><div class="wrap">
     <div class="breadcrumb"><a onclick="nav('home')">Home</a><span class="bc-sep">/</span><span>${c.name}</span></div>
     <div class="cat-ph">
-      <div class="cat-ph-ico ${c.cls}" style="background:${c.col[1]}">${c.ico}</div>
+      <div class="cat-ph-ico ${c.cls}" style="background:${c.col[1]};color:${c.col[0]}">${cgl(c,34)}</div>
       <div>
         <h1 style="font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:8px">${c.name}</h1>
         <p style="color:var(--text2);font-size:1.05rem;max-width:560px">${c.desc}</p>
@@ -813,7 +872,7 @@ function renderTool(tid){
       <span>${t.n}</span>
     </div>
     <div class="tool-hdr">
-      <div class="tool-hdr-ico ${c.ic}" style="background:${c.col[1]}">${t.i}</div>
+      <div class="tool-hdr-ico ${c.ic}" style="background:${c.col[1]}">${gl(t,30)}</div>
       <div>
         <h1 class="tool-hdr-title">${t.n}</h1>
         <p class="tool-hdr-desc">${t.d}</p>
