@@ -5,73 +5,73 @@
 ## Key facts
 - Price: free, no account needed
 - Privacy: files are processed locally in the browser and are never uploaded to a server
-- Main tool: image compressor for JPG, PNG and WebP at https://tinywownow.vercel.app/
+- Main tool: image compressor for JPG, PNG and WebP at https://www.tinywownow.com/
 - Number of tools: 52
 - Contact: tinywownow@gmail.com
 
 ## PDF Tools
-- [Merge PDF](https://tinywownow.vercel.app/merge-pdf): Combine multiple PDF files into one
-- [Split PDF](https://tinywownow.vercel.app/split-pdf): Split a PDF into separate pages
-- [Compress PDF](https://tinywownow.vercel.app/compress-pdf): Shrink scanned or image-heavy PDFs
-- [PDF to Word](https://tinywownow.vercel.app/pdf-to-word): Extract PDF text into an editable Word file
-- [PDF to JPG](https://tinywownow.vercel.app/pdf-to-jpg): Convert each PDF page to a JPG image
-- [JPG to PDF](https://tinywownow.vercel.app/jpg-to-pdf): Convert JPG images into a PDF file
-- [Word to PDF](https://tinywownow.vercel.app/word-to-pdf): Turn the text of a Word file into a PDF
-- [PDF to PNG](https://tinywownow.vercel.app/pdf-to-png): Convert PDF pages to PNG images
-- [PDF to Excel](https://tinywownow.vercel.app/pdf-to-excel): Pull simple tables from PDF into Excel
-- [Excel to PDF](https://tinywownow.vercel.app/excel-to-pdf): Convert Excel spreadsheets to PDF
-- [Rotate PDF](https://tinywownow.vercel.app/rotate-pdf): Rotate PDF pages to any angle
-- [Watermark PDF](https://tinywownow.vercel.app/watermark-pdf): Add custom watermark text to PDF
-- [PDF to Text](https://tinywownow.vercel.app/pdf-to-text): Extract all text content from PDF
-- [Sign PDF](https://tinywownow.vercel.app/sign-pdf): Draw your signature and place it on a PDF
-- [PDF to PPT](https://tinywownow.vercel.app/pdf-to-ppt): Turn PDF pages into PowerPoint slides
+- [Merge PDF](https://www.tinywownow.com/merge-pdf): Combine multiple PDF files into one
+- [Split PDF](https://www.tinywownow.com/split-pdf): Split a PDF into separate pages
+- [Compress PDF](https://www.tinywownow.com/compress-pdf): Shrink scanned or image-heavy PDFs
+- [PDF to Word](https://www.tinywownow.com/pdf-to-word): Extract PDF text into an editable Word file
+- [PDF to JPG](https://www.tinywownow.com/pdf-to-jpg): Convert each PDF page to a JPG image
+- [JPG to PDF](https://www.tinywownow.com/jpg-to-pdf): Convert JPG images into a PDF file
+- [Word to PDF](https://www.tinywownow.com/word-to-pdf): Turn the text of a Word file into a PDF
+- [PDF to PNG](https://www.tinywownow.com/pdf-to-png): Convert PDF pages to PNG images
+- [PDF to Excel](https://www.tinywownow.com/pdf-to-excel): Pull simple tables from PDF into Excel
+- [Excel to PDF](https://www.tinywownow.com/excel-to-pdf): Convert Excel spreadsheets to PDF
+- [Rotate PDF](https://www.tinywownow.com/rotate-pdf): Rotate PDF pages to any angle
+- [Watermark PDF](https://www.tinywownow.com/watermark-pdf): Add custom watermark text to PDF
+- [PDF to Text](https://www.tinywownow.com/pdf-to-text): Extract all text content from PDF
+- [Sign PDF](https://www.tinywownow.com/sign-pdf): Draw your signature and place it on a PDF
+- [PDF to PPT](https://www.tinywownow.com/pdf-to-ppt): Turn PDF pages into PowerPoint slides
 
 ## Image Tools
-- [Compress Image](https://tinywownow.vercel.app/compress-image): Reduce image file size with quality control
-- [Resize Image](https://tinywownow.vercel.app/resize-image): Resize images to exact pixel dimensions
-- [Convert to JPG](https://tinywownow.vercel.app/convert-to-jpg): Convert any image format to JPG
-- [Convert to PNG](https://tinywownow.vercel.app/convert-to-png): Convert any image format to PNG
-- [Convert to WebP](https://tinywownow.vercel.app/convert-to-webp): Convert images to modern WebP format
-- [Crop Image](https://tinywownow.vercel.app/crop-image): Crop images to any size or aspect ratio
-- [Rotate & Flip](https://tinywownow.vercel.app/rotate-flip-image): Rotate or mirror your images freely
-- [Grayscale](https://tinywownow.vercel.app/grayscale-image): Convert colour images to black and white
-- [Watermark Image](https://tinywownow.vercel.app/watermark-image): Add custom text watermark to images
-- [Upscale Image](https://tinywownow.vercel.app/upscale-image): Enlarge images 2-4x with smart sharpening
-- [Image to Text](https://tinywownow.vercel.app/image-to-text): Extract text from images and screenshots
-- [Photo Filters](https://tinywownow.vercel.app/photo-filters): Apply beautiful filters to your photos
+- [Compress Image](https://www.tinywownow.com/compress-image): Reduce image file size with quality control
+- [Resize Image](https://www.tinywownow.com/resize-image): Resize images to exact pixel dimensions
+- [Convert to JPG](https://www.tinywownow.com/convert-to-jpg): Convert any image format to JPG
+- [Convert to PNG](https://www.tinywownow.com/convert-to-png): Convert any image format to PNG
+- [Convert to WebP](https://www.tinywownow.com/convert-to-webp): Convert images to modern WebP format
+- [Crop Image](https://www.tinywownow.com/crop-image): Crop images to any size or aspect ratio
+- [Rotate & Flip](https://www.tinywownow.com/rotate-flip-image): Rotate or mirror your images freely
+- [Grayscale](https://www.tinywownow.com/grayscale-image): Convert colour images to black and white
+- [Watermark Image](https://www.tinywownow.com/watermark-image): Add custom text watermark to images
+- [Upscale Image](https://www.tinywownow.com/upscale-image): Enlarge images 2-4x with smart sharpening
+- [Image to Text](https://www.tinywownow.com/image-to-text): Extract text from images and screenshots
+- [Photo Filters](https://www.tinywownow.com/photo-filters): Apply beautiful filters to your photos
 
 ## Video Tools
-- [Compress Video](https://tinywownow.vercel.app/compress-video): Reduce video file size for sharing
-- [Trim Video](https://tinywownow.vercel.app/trim-video): Cut and trim videos to any length
-- [Convert Video](https://tinywownow.vercel.app/convert-video): Convert between MP4, WebM, MOV, MKV and AVI
-- [Merge Videos](https://tinywownow.vercel.app/merge-videos): Join multiple video clips into one
-- [Extract Audio](https://tinywownow.vercel.app/extract-audio-from-video): Extract the audio track from any video
-- [Mute Video](https://tinywownow.vercel.app/remove-audio-from-video): Remove all audio from your video
-- [Video to GIF](https://tinywownow.vercel.app/video-to-gif): Convert video clips to animated GIFs
-- [GIF to Video](https://tinywownow.vercel.app/gif-to-video): Convert animated GIF to MP4 video
-- [Rotate Video](https://tinywownow.vercel.app/rotate-video): Rotate video orientation freely
-- [Resize Video](https://tinywownow.vercel.app/resize-video): Change video resolution and dimensions
-- [Video Speed](https://tinywownow.vercel.app/change-video-speed): Speed up or slow down any video clip
-- [Add Subtitles](https://tinywownow.vercel.app/add-subtitles): Add a subtitle track from an SRT or VTT file
-- [Flip Video](https://tinywownow.vercel.app/flip-video): Mirror or flip your video
+- [Compress Video](https://www.tinywownow.com/compress-video): Reduce video file size for sharing
+- [Trim Video](https://www.tinywownow.com/trim-video): Cut and trim videos to any length
+- [Convert Video](https://www.tinywownow.com/convert-video): Convert between MP4, WebM, MOV, MKV and AVI
+- [Merge Videos](https://www.tinywownow.com/merge-videos): Join multiple video clips into one
+- [Extract Audio](https://www.tinywownow.com/extract-audio-from-video): Extract the audio track from any video
+- [Mute Video](https://www.tinywownow.com/remove-audio-from-video): Remove all audio from your video
+- [Video to GIF](https://www.tinywownow.com/video-to-gif): Convert video clips to animated GIFs
+- [GIF to Video](https://www.tinywownow.com/gif-to-video): Convert animated GIF to MP4 video
+- [Rotate Video](https://www.tinywownow.com/rotate-video): Rotate video orientation freely
+- [Resize Video](https://www.tinywownow.com/resize-video): Change video resolution and dimensions
+- [Video Speed](https://www.tinywownow.com/change-video-speed): Speed up or slow down any video clip
+- [Add Subtitles](https://www.tinywownow.com/add-subtitles): Add a subtitle track from an SRT or VTT file
+- [Flip Video](https://www.tinywownow.com/flip-video): Mirror or flip your video
 
 ## File Tools
-- [Compress Files](https://tinywownow.vercel.app/zip-files): Create a ZIP archive from multiple files
-- [Extract ZIP](https://tinywownow.vercel.app/extract-zip): Extract files from ZIP archives
-- [JSON Formatter](https://tinywownow.vercel.app/json-formatter): Format, validate and beautify JSON
-- [CSV to JSON](https://tinywownow.vercel.app/csv-to-json): Convert CSV data to JSON format
-- [Base64 Encoder](https://tinywownow.vercel.app/base64-encoder-decoder): Encode and decode Base64 strings
-- [URL Encoder](https://tinywownow.vercel.app/url-encoder-decoder): Encode and decode URL strings
-- [Hash Generator](https://tinywownow.vercel.app/hash-generator): Generate SHA-256, SHA-1 and SHA-512 hashes
-- [XML Formatter](https://tinywownow.vercel.app/xml-formatter): Format and validate XML documents
-- [XLS Converter](https://tinywownow.vercel.app/xls-converter): Convert Excel files to XLSX, XLS, CSV, ODS or HTML
+- [Compress Files](https://www.tinywownow.com/zip-files): Create a ZIP archive from multiple files
+- [Extract ZIP](https://www.tinywownow.com/extract-zip): Extract files from ZIP archives
+- [JSON Formatter](https://www.tinywownow.com/json-formatter): Format, validate and beautify JSON
+- [CSV to JSON](https://www.tinywownow.com/csv-to-json): Convert CSV data to JSON format
+- [Base64 Encoder](https://www.tinywownow.com/base64-encoder-decoder): Encode and decode Base64 strings
+- [URL Encoder](https://www.tinywownow.com/url-encoder-decoder): Encode and decode URL strings
+- [Hash Generator](https://www.tinywownow.com/hash-generator): Generate SHA-256, SHA-1 and SHA-512 hashes
+- [XML Formatter](https://www.tinywownow.com/xml-formatter): Format and validate XML documents
+- [XLS Converter](https://www.tinywownow.com/xls-converter): Convert Excel files to XLSX, XLS, CSV, ODS or HTML
 
 ## Text Tools
-- [Word Counter](https://tinywownow.vercel.app/word-counter): Count words, characters, sentences and more
-- [Case Converter](https://tinywownow.vercel.app/case-converter): Convert text to any case format instantly
-- [Text Reverser](https://tinywownow.vercel.app/text-reverser): Reverse text, words or lines easily
+- [Word Counter](https://www.tinywownow.com/word-counter): Count words, characters, sentences and more
+- [Case Converter](https://www.tinywownow.com/case-converter): Convert text to any case format instantly
+- [Text Reverser](https://www.tinywownow.com/text-reverser): Reverse text, words or lines easily
 
 ## Optional
-- [About](https://tinywownow.vercel.app/about): who we are and how the tools work
-- [Privacy Policy](https://tinywownow.vercel.app/privacy)
-- [Full tool guide for language models](https://tinywownow.vercel.app/llms-full.txt)
+- [About](https://www.tinywownow.com/about): who we are and how the tools work
+- [Privacy Policy](https://www.tinywownow.com/privacy)
+- [Full tool guide for language models](https://www.tinywownow.com/llms-full.txt)

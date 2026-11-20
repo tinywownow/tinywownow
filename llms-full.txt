@@ -3,7 +3,7 @@
 Last updated: 2026-11-20
 
 ## Merge PDF
-URL: https://tinywownow.vercel.app/merge-pdf
+URL: https://www.tinywownow.com/merge-pdf
 Merge PDF joins two or more PDF files into a single document in the order you choose. It runs in your browser, so nothing is uploaded, and the merged file keeps selectable text and original image quality.
 
 How to use:
@@ -23,7 +23,7 @@ A: No. Pages are copied as they are, so text stays selectable and images keep th
 ---
 
 ## Split PDF
-URL: https://tinywownow.vercel.app/split-pdf
+URL: https://www.tinywownow.com/split-pdf
 Split PDF separates one PDF into individual pages, or extracts the pages you choose (for example 1-3, 5, 8-10) into a new PDF. It works in your browser and nothing is uploaded.
 
 How to use:
@@ -43,7 +43,7 @@ A: No. Remove the password first, then split the file.
 ---
 
 ## Compress PDF
-URL: https://tinywownow.vercel.app/compress-pdf
+URL: https://www.tinywownow.com/compress-pdf
 Compress PDF reduces the file size of scanned or image-heavy PDFs by re-rendering each page as an optimised image. Text in the compressed copy is no longer selectable, so it works best for scans and picture-based documents.
 
 How to use:
@@ -63,7 +63,7 @@ A: No. Pages are saved as images to reduce size, so text can no longer be select
 ---
 
 ## PDF to Word
-URL: https://tinywownow.vercel.app/pdf-to-word
+URL: https://www.tinywownow.com/pdf-to-word
 PDF to Word extracts the text from a PDF and saves it as an editable .docx file. It keeps paragraphs and page breaks, but not the original layout, fonts or images, and it needs a PDF with real text (not a scan).
 
 How to use:
@@ -83,7 +83,7 @@ A: A standard .docx file that opens in Microsoft Word, Google Docs, LibreOffice 
 ---
 
 ## PDF to JPG
-URL: https://tinywownow.vercel.app/pdf-to-jpg
+URL: https://www.tinywownow.com/pdf-to-jpg
 PDF to JPG turns each page of a PDF into a JPG image. You can convert all pages or only chosen ones, pick the quality, and download the images individually or as one ZIP. Everything runs in your browser.
 
 How to use:
@@ -103,7 +103,7 @@ A: One JPG per page. When there are several you can download them all together a
 ---
 
 ## JPG to PDF
-URL: https://tinywownow.vercel.app/jpg-to-pdf
+URL: https://www.tinywownow.com/jpg-to-pdf
 JPG to PDF combines one or more images into a single PDF, one image per page. You can place each image on an A4 page or keep its own size, and reorder the pages before you create the file.
 
 How to use:
@@ -123,7 +123,7 @@ A: JPG images are embedded as they are, so quality is not reduced.
 ---
 
 ## Word to PDF
-URL: https://tinywownow.vercel.app/word-to-pdf
+URL: https://www.tinywownow.com/word-to-pdf
 Word to PDF converts the text of a .docx document into a simple A4 PDF. It does not keep images, tables, fonts or styling, so use it for plain text documents rather than formatted reports.
 
 How to use:
@@ -143,7 +143,7 @@ A: The PDF uses a standard Latin font, so characters outside it (for example Ara
 ---
 
 ## PDF to PNG
-URL: https://tinywownow.vercel.app/pdf-to-png
+URL: https://www.tinywownow.com/pdf-to-png
 PDF to PNG renders each page of a PDF as a lossless PNG image. Choose all pages or a range, set the quality, and download the images one by one or as a ZIP. It runs entirely in your browser.
 
 How to use:
@@ -163,7 +163,7 @@ A: Yes. Enter pages such as 1-3, 5 in the Pages box.
 ---
 
 ## PDF to Excel
-URL: https://tinywownow.vercel.app/pdf-to-excel
+URL: https://www.tinywownow.com/pdf-to-excel
 PDF to Excel reads the text on each PDF page, groups it into rows and columns, and saves it as an .xlsx workbook with one sheet per page. It works best on clean text-based tables, not on scans or complex layouts.
 
 How to use:
@@ -183,7 +183,7 @@ A: Each PDF page becomes its own sheet, named Page 1, Page 2 and so on.
 ---
 
 ## Excel to PDF
-URL: https://tinywownow.vercel.app/excel-to-pdf
+URL: https://www.tinywownow.com/excel-to-pdf
 Excel to PDF draws each sheet of an .xlsx, .xls, .csv or .ods file as a table in a landscape PDF. It does not keep cell formatting or charts, and it supports Latin characters only.
 
 How to use:
@@ -203,7 +203,7 @@ A: Only Latin characters are supported. Other scripts are replaced with a questi
 ---
 
 ## Rotate PDF
-URL: https://tinywownow.vercel.app/rotate-pdf
+URL: https://www.tinywownow.com/rotate-pdf
 Rotate PDF turns every page, or only the pages you choose, by 90 degrees clockwise, 90 degrees counter-clockwise or 180 degrees. The rest of the document is unchanged, and the file is processed in your browser.
 
 How to use:
@@ -223,7 +223,7 @@ A: Yes. Only the page orientation changes; content is not re-rendered.
 ---
 
 ## Watermark PDF
-URL: https://tinywownow.vercel.app/watermark-pdf
+URL: https://www.tinywownow.com/watermark-pdf
 Watermark PDF stamps your own text, such as CONFIDENTIAL or DRAFT, across every page of a PDF. You choose the opacity and whether the text runs diagonally or horizontally. It supports standard Latin characters.
 
 How to use:
@@ -243,7 +243,7 @@ A: Not yet. This tool adds text watermarks only.
 ---
 
 ## PDF to Text
-URL: https://tinywownow.vercel.app/pdf-to-text
+URL: https://www.tinywownow.com/pdf-to-text
 PDF to Text pulls the selectable text out of a PDF, page by page, and gives you a plain .txt file. It works on PDFs that contain real text; scanned PDFs need Image to Text (OCR) instead.
 
 How to use:
@@ -263,7 +263,7 @@ A: Yes. The extracted text appears in a box with a Copy text button.
 ---
 
 ## Sign PDF
-URL: https://tinywownow.vercel.app/sign-pdf
+URL: https://www.tinywownow.com/sign-pdf
 Sign PDF lets you draw your signature and place it on the first, last or every page of a PDF, in the position and size you choose. It adds a visual signature image, not a certificate-based digital signature.
 
 How to use:
@@ -283,7 +283,7 @@ A: You can choose bottom right, bottom left, bottom centre or centre, on the fir
 ---
 
 ## PDF to PPT
-URL: https://tinywownow.vercel.app/pdf-to-ppt
+URL: https://www.tinywownow.com/pdf-to-ppt
 PDF to PPT converts each page of a PDF into a slide in a .pptx file. The slides are page images, so they look exactly like the PDF but the text on them cannot be edited.
 
 How to use:
@@ -303,7 +303,7 @@ A: Yes. Because pages are used as images, scans convert fine.
 ---
 
 ## Compress Image
-URL: https://tinywownow.vercel.app/compress-image
+URL: https://www.tinywownow.com/compress-image
 The image compressor reduces the file size of JPG, PNG and WebP images right in your browser, so your photos are never uploaded. Pick a compression level, add as many images as you like, and download the smaller files.
 
 How to use:
@@ -323,7 +323,7 @@ A: When format and size are unchanged and the new file would be larger, the tool
 ---
 
 ## Resize Image
-URL: https://tinywownow.vercel.app/resize-image
+URL: https://www.tinywownow.com/resize-image
 Resize Image changes the width and height of a picture to the exact pixel size you enter. It runs in your browser, so your image is not uploaded, and you can download the resized file immediately.
 
 How to use:
@@ -343,7 +343,7 @@ A: Usually yes, because fewer pixels means a smaller file. For more control use 
 ---
 
 ## Convert to JPG
-URL: https://tinywownow.vercel.app/convert-to-jpg
+URL: https://www.tinywownow.com/convert-to-jpg
 Convert to JPG changes PNG, WebP, GIF and BMP images into the widely supported JPG format. Transparent areas are filled with white because JPG does not support transparency.
 
 How to use:
@@ -363,7 +363,7 @@ A: Not yet. Convert one image at a time, or use the Image Compressor for batches
 ---
 
 ## Convert to PNG
-URL: https://tinywownow.vercel.app/convert-to-png
+URL: https://www.tinywownow.com/convert-to-png
 Convert to PNG saves JPG, WebP, GIF and BMP images as lossless PNG files. PNG keeps sharp edges and transparency, which makes it suited to graphics, screenshots and logos.
 
 How to use:
@@ -383,7 +383,7 @@ A: Yes, if the source image has it (for example a WebP or GIF).
 ---
 
 ## Convert to WebP
-URL: https://tinywownow.vercel.app/convert-to-webp
+URL: https://www.tinywownow.com/convert-to-webp
 Convert to WebP changes JPG, PNG, GIF and BMP images into WebP, a modern format that is usually smaller than JPG or PNG at similar quality. It is supported by all current browsers.
 
 How to use:
@@ -403,7 +403,7 @@ A: Yes, WebP supports transparency, like PNG.
 ---
 
 ## Crop Image
-URL: https://tinywownow.vercel.app/crop-image
+URL: https://www.tinywownow.com/crop-image
 Crop Image lets you drag a selection box over your picture, choose a free or fixed shape such as 1:1, 4:3 or 16:9, and download the cropped result as PNG, JPG or WebP. It works in your browser.
 
 How to use:
@@ -423,7 +423,7 @@ A: PNG, JPG or WebP.
 ---
 
 ## Rotate & Flip
-URL: https://tinywownow.vercel.app/rotate-flip-image
+URL: https://www.tinywownow.com/rotate-flip-image
 Rotate & Flip turns a picture 90 degrees left or right, 180 degrees, and optionally mirrors it horizontally or vertically. It runs in your browser and saves the result as a JPG.
 
 How to use:
@@ -443,7 +443,7 @@ A: Not yet. You can rotate by 90 degrees left, 90 degrees right or 180 degrees.
 ---
 
 ## Grayscale
-URL: https://tinywownow.vercel.app/grayscale-image
+URL: https://www.tinywownow.com/grayscale-image
 Grayscale converts a colour image to black and white using standard luminance weights. It runs in your browser and saves the result as a JPG.
 
 How to use:
@@ -463,7 +463,7 @@ A: A high-quality JPG.
 ---
 
 ## Watermark Image
-URL: https://tinywownow.vercel.app/watermark-image
+URL: https://www.tinywownow.com/watermark-image
 Watermark Image writes your own text diagonally across a picture with adjustable opacity. It runs in your browser, so your photo is not uploaded, and the result is saved as a JPG.
 
 How to use:
@@ -483,7 +483,7 @@ A: Not yet. This tool adds text watermarks only.
 ---
 
 ## Upscale Image
-URL: https://tinywownow.vercel.app/upscale-image
+URL: https://www.tinywownow.com/upscale-image
 Upscale Image makes a picture 2, 3 or 4 times larger using smooth resampling followed by optional sharpening. It enlarges cleanly but does not invent new detail the way AI upscalers do.
 
 How to use:
@@ -503,7 +503,7 @@ A: PNG keeps every detail but makes big files. JPG and WebP are smaller.
 ---
 
 ## Image to Text
-URL: https://tinywownow.vercel.app/image-to-text
+URL: https://www.tinywownow.com/image-to-text
 Image to Text uses optical character recognition (OCR) to read the text in a photo or screenshot and give it to you as editable text. It runs in your browser, so the picture is not uploaded.
 
 How to use:
@@ -523,7 +523,7 @@ A: Use a sharp, high-resolution picture with dark text on a plain background and
 ---
 
 ## Photo Filters
-URL: https://tinywownow.vercel.app/photo-filters
+URL: https://www.tinywownow.com/photo-filters
 Photo Filters applies a one-click look to your picture, such as Vivid, Warm, Cool, Sepia, Fade or Black and White. It runs in your browser and saves the result as a JPG.
 
 How to use:
@@ -543,7 +543,7 @@ A: Not yet. Each filter has a fixed strength.
 ---
 
 ## Compress Video
-URL: https://tinywownow.vercel.app/compress-video
+URL: https://www.tinywownow.com/compress-video
 Compress Video makes a video file smaller by re-encoding it with H.264 and AAC, with a choice of quality and maximum resolution. It runs on your own device, so the video is never uploaded.
 
 How to use:
@@ -563,7 +563,7 @@ A: If a smaller file cannot be made, the tool returns your original unchanged an
 ---
 
 ## Trim Video
-URL: https://tinywownow.vercel.app/trim-video
+URL: https://www.tinywownow.com/trim-video
 Trim Video cuts a video to the start and end times you set. Fast mode copies the video without re-encoding it, which is quick but cuts at the nearest keyframe. Exact mode re-encodes for frame-accurate cuts.
 
 How to use:
@@ -583,7 +583,7 @@ A: Yes. The clip then runs from your start time to the end of the video.
 ---
 
 ## Convert Video
-URL: https://tinywownow.vercel.app/convert-video
+URL: https://www.tinywownow.com/convert-video
 Convert Video changes a video file into MP4, WebM, MOV, MKV or AVI. The conversion runs in your browser, so the file is not uploaded, and MP4 (H.264 and AAC) works on nearly every device.
 
 How to use:
@@ -603,7 +603,7 @@ A: It runs on your device, so long or high-resolution videos take longer.
 ---
 
 ## Merge Videos
-URL: https://tinywownow.vercel.app/merge-videos
+URL: https://www.tinywownow.com/merge-videos
 Merge Videos joins two or more clips into a single MP4, in the order you choose. Clips are scaled to one output size (720p, 1080p or 480p) so differently sized videos play smoothly together.
 
 How to use:
@@ -623,7 +623,7 @@ A: Not a fixed one, but the total size must stay under about 700 MB.
 ---
 
 ## Extract Audio
-URL: https://tinywownow.vercel.app/extract-audio-from-video
+URL: https://www.tinywownow.com/extract-audio-from-video
 Extract Audio saves the sound of a video as an MP3, M4A (AAC) or WAV file. It runs in your browser, so the video is not uploaded.
 
 How to use:
@@ -643,7 +643,7 @@ A: MP3 is saved at high quality (VBR level 2). Choose WAV for no compression.
 ---
 
 ## Mute Video
-URL: https://tinywownow.vercel.app/remove-audio-from-video
+URL: https://www.tinywownow.com/remove-audio-from-video
 Remove Audio deletes the sound track from a video and keeps the picture exactly as it is. Because the video is copied without re-encoding, it is fast and loses no quality.
 
 How to use:
@@ -663,7 +663,7 @@ A: The tool tells you it already has no audio.
 ---
 
 ## Video to GIF
-URL: https://tinywownow.vercel.app/video-to-gif
+URL: https://www.tinywownow.com/video-to-gif
 Video to GIF converts a clip of up to 20 seconds into an animated GIF. You choose where it starts, how long it is, the frame rate and the width, and a palette is generated for good colours.
 
 How to use:
@@ -683,7 +683,7 @@ A: No.
 ---
 
 ## GIF to Video
-URL: https://tinywownow.vercel.app/gif-to-video
+URL: https://www.tinywownow.com/gif-to-video
 GIF to Video turns an animated GIF into an MP4 video, which is usually much smaller and plays smoothly on phones and websites. The conversion runs in your browser.
 
 How to use:
@@ -703,7 +703,7 @@ A: Slightly. MP4 uses a different colour format, but results look very close.
 ---
 
 ## Rotate Video
-URL: https://tinywownow.vercel.app/rotate-video
+URL: https://www.tinywownow.com/rotate-video
 Rotate Video turns a video 90 degrees clockwise, 90 degrees counter-clockwise or 180 degrees and saves it as a new MP4. It is useful for clips filmed sideways or upside down.
 
 How to use:
@@ -723,7 +723,7 @@ A: Yes, audio is kept.
 ---
 
 ## Resize Video
-URL: https://tinywownow.vercel.app/resize-video
+URL: https://www.tinywownow.com/resize-video
 Resize Video changes the height of a video to 1080p, 720p, 480p, 360p or 240p and adjusts the width automatically to keep the proportions. It saves the result as an MP4.
 
 How to use:
@@ -743,7 +743,7 @@ A: Usually yes, because fewer pixels need to be stored.
 ---
 
 ## Video Speed
-URL: https://tinywownow.vercel.app/change-video-speed
+URL: https://www.tinywownow.com/change-video-speed
 Video Speed makes a video play faster (1.5x, 2x, 3x, 4x) or slower (0.75x, 0.5x), and changes the audio speed to match. It runs in your browser and saves an MP4.
 
 How to use:
@@ -763,7 +763,7 @@ A: Only the picture is processed, and the result has no sound.
 ---
 
 ## Add Subtitles
-URL: https://tinywownow.vercel.app/add-subtitles
+URL: https://www.tinywownow.com/add-subtitles
 Add Subtitles combines a video with an .srt or .vtt subtitle file and saves an MP4 with a selectable subtitle track that viewers can switch on or off. The text is not burned into the picture.
 
 How to use:
@@ -783,7 +783,7 @@ A: MP4 and MOV videos are copied without re-encoding. Other formats are converte
 ---
 
 ## Flip Video
-URL: https://tinywownow.vercel.app/flip-video
+URL: https://www.tinywownow.com/flip-video
 Flip Video mirrors a video left to right, or turns it upside down, and saves the result as an MP4. It runs in your browser, so the video is not uploaded.
 
 How to use:
@@ -803,7 +803,7 @@ A: Yes, at good quality, because every frame must be redrawn.
 ---
 
 ## Compress Files
-URL: https://tinywownow.vercel.app/zip-files
+URL: https://www.tinywownow.com/zip-files
 Compress Files packs any number of files into a single ZIP archive. You can choose normal, maximum or no compression. The ZIP is created in your browser, so your files are not uploaded.
 
 How to use:
@@ -823,7 +823,7 @@ A: Normal suits most files. Maximum makes slightly smaller files but is slower. 
 ---
 
 ## Extract ZIP
-URL: https://tinywownow.vercel.app/extract-zip
+URL: https://www.tinywownow.com/extract-zip
 Extract ZIP opens a ZIP archive in your browser and lists the files inside, so you can download them one by one or all together. Nothing is uploaded.
 
 How to use:
@@ -843,7 +843,7 @@ A: ZIP only. RAR and 7z are not supported.
 ---
 
 ## JSON Formatter
-URL: https://tinywownow.vercel.app/json-formatter
+URL: https://www.tinywownow.com/json-formatter
 JSON Formatter checks that your JSON is valid and rewrites it with clean indentation so it is easy to read. If something is wrong it shows the error message from the parser.
 
 How to use:
@@ -863,7 +863,7 @@ A: With two spaces per level.
 ---
 
 ## CSV to JSON
-URL: https://tinywownow.vercel.app/csv-to-json
+URL: https://www.tinywownow.com/csv-to-json
 CSV to JSON turns pasted CSV data into a JSON array of objects, using the first row as keys. It handles quoted fields and detects commas, semicolons or tabs as separators.
 
 How to use:
@@ -883,7 +883,7 @@ A: No. Every value is output as text.
 ---
 
 ## Base64 Encoder
-URL: https://tinywownow.vercel.app/base64-encoder-decoder
+URL: https://www.tinywownow.com/base64-encoder-decoder
 Base64 Encoder converts text to Base64 and decodes Base64 back to readable text, including characters outside basic English (UTF-8). It runs in your browser.
 
 How to use:
@@ -903,7 +903,7 @@ A: Yes, text is handled as UTF-8.
 ---
 
 ## URL Encoder
-URL: https://tinywownow.vercel.app/url-encoder-decoder
+URL: https://www.tinywownow.com/url-encoder-decoder
 URL Encoder converts text into percent-encoded form that is safe to use in a web address, and decodes it back. For example a space becomes %20 and an ampersand becomes %26.
 
 How to use:
@@ -923,7 +923,7 @@ A: Encode only the parts you add, such as query values. Encoding a full URL also
 ---
 
 ## Hash Generator
-URL: https://tinywownow.vercel.app/hash-generator
+URL: https://www.tinywownow.com/hash-generator
 Hash Generator creates SHA-256, SHA-1 and SHA-512 hashes of any text using your browser's built-in cryptography. Your text is never sent to a server.
 
 How to use:
@@ -943,7 +943,7 @@ A: Not yet. This tool hashes text only.
 ---
 
 ## XML Formatter
-URL: https://tinywownow.vercel.app/xml-formatter
+URL: https://www.tinywownow.com/xml-formatter
 XML Formatter checks that your XML is well formed and rewrites it with indentation so the structure is easy to read. If the XML is invalid it shows an error.
 
 How to use:
@@ -963,7 +963,7 @@ A: Yes, they are preserved.
 ---
 
 ## XLS Converter
-URL: https://tinywownow.vercel.app/xls-converter
+URL: https://www.tinywownow.com/xls-converter
 XLS Converter converts a spreadsheet between Excel (.xlsx, .xls), CSV, OpenDocument (.ods) and HTML table formats. It runs in your browser, so your data stays on your device.
 
 How to use:
@@ -983,7 +983,7 @@ A: No fixed limit, but very large files depend on your device memory.
 ---
 
 ## Word Counter
-URL: https://tinywownow.vercel.app/word-counter
+URL: https://www.tinywownow.com/word-counter
 Word Counter counts the words, characters, sentences and paragraphs in your text as you type, and estimates reading time at 200 words per minute.
 
 How to use:
@@ -1003,7 +1003,7 @@ A: No. It stays in your browser and is not saved or sent anywhere.
 ---
 
 ## Case Converter
-URL: https://tinywownow.vercel.app/case-converter
+URL: https://www.tinywownow.com/case-converter
 Case Converter changes the capitalisation of your text to uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case or kebab-case with one click.
 
 How to use:
@@ -1023,7 +1023,7 @@ A: It capitalises the first letter of every word. It does not skip small words l
 ---
 
 ## Text Reverser
-URL: https://tinywownow.vercel.app/text-reverser
+URL: https://www.tinywownow.com/text-reverser
 Text Reverser flips your text by characters, by words or by lines. Type or paste text and the reversed version appears instantly.
 
 How to use:

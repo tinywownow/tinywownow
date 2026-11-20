@@ -44,4 +44,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://tinywownow.vercel.app/sitemap.xml
+Sitemap: https://www.tinywownow.com/sitemap.xml
