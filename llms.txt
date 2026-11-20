@@ -71,6 +71,9 @@
 - [Case Converter](https://www.tinywownow.com/case-converter): Convert text to any case format instantly
 - [Text Reverser](https://www.tinywownow.com/text-reverser): Reverse text, words or lines easily
 
+## Blog
+- [JPG vs PNG vs WebP: Which Image Format Should You Use?](https://www.tinywownow.com/blog/jpg-vs-png-vs-webp): Use JPG for photos you will email, upload or print, because every app opens it. Use PNG for screenshots, logos and anything with text or a transparent background. Use WebP when you want the smallest file for a website, since all current major browsers support it and it handles both photos and transparency.
+
 ## Optional
 - [About](https://www.tinywownow.com/about): who we are and how the tools work
 - [Privacy Policy](https://www.tinywownow.com/privacy)

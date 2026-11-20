@@ -66,7 +66,7 @@ function footer() {
   return '<footer class="footer"><div class="wrap"><div class="footer-g" style="grid-template-columns:2fr repeat(5,1fr)"><div>' +
     '<div style="display:flex;align-items:center;gap:9px">' + LOGO(32) + '<span class="logo-txt" style="font-size:1rem">TinyWow <em>Now</em></span></div>' +
     '<p class="f-desc">Free online tools for images, PDFs, videos, files and text. They run in your browser, so your files stay private.</p>' +
-    '<div class="flinks"><a class="flink" href="/about">About</a><a class="flink" href="/privacy">Privacy Policy</a><a class="flink" href="/terms">Terms of Use</a><a class="flink" href="/contact">Contact</a></div></div>' + cols + '</div>' +
+    '<div class="flinks"><a class="flink" href="/about">About</a><a class="flink" href="/blog">Blog</a><a class="flink" href="/privacy">Privacy Policy</a><a class="flink" href="/terms">Terms of Use</a><a class="flink" href="/contact">Contact</a></div></div>' + cols + '</div>' +
     '<div class="foot-bot"><span class="foot-copy">&copy; ' + NOW.getUTCFullYear() + ' ' + NAME + ' &middot; Free online tools for everyone</span>' +
     '<div class="foot-badges"><span class="fbadge">Private</span><span class="fbadge">Fast</span><span class="fbadge">Free forever</span></div></div></div></footer>' +
     '<div id="toast" role="status" aria-live="polite"><span id="t-ico">&#9989;</span> <span id="toastMsg">Done!</span></div>';
@@ -213,13 +213,43 @@ Object.keys(C.pages).forEach(k => {
   urls.push({ path: '/' + k, pr: k === 'about' ? '0.5' : '0.3' });
 });
 
+/* blog */
+const POSTS = require('./blog.js').slice().sort((a, b) => b.published.localeCompare(a.published));
+const longDate = d => new Date(d + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const BLOG_AUTHOR = { '@type': 'Organization', '@id': ORG_ID, name: NAME + ' team' };
+(function blog() {
+  if (!POSTS.length) return;
+  const crumbs = [{ name: 'Home', href: '/' }, { name: 'Blog' }];
+  const list = POSTS.map(p => '<a class="post-card" href="/blog/' + p.slug + '"><span class="post-meta">' + longDate(p.published) + ' &middot; ' + p.readMin + ' min read</span><h2>' + esc(p.title) + '</h2><p>' + esc(p.answer) + '</p><span class="tc-go">Read the guide &rarr;</span></a>').join('');
+  const body = '<div class="prose">' + breadcrumb(crumbs) + '<h1>Blog</h1><p>Short, practical guides to working with images, PDFs and video files, from the team behind ' + esc(NAME) + '.</p><div class="post-list">' + list + '</div></div>';
+  const ld = [{ '@context': 'https://schema.org', '@type': 'Blog', name: NAME + ' Blog', url: abs('/blog'), isPartOf: { '@id': SITE + '/#website' }, publisher: { '@id': ORG_ID }, blogPost: POSTS.map(p => ({ '@type': 'BlogPosting', headline: p.title, url: abs('/blog/' + p.slug), datePublished: p.published })) }, crumbLd([{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog' }])];
+  write('blog/index.html', shell({ title: 'Blog: Image, PDF and Video Guides | ' + NAME, desc: 'Practical guides to compressing images, choosing file formats and working with PDFs and video, from ' + NAME + '.', path: '/blog', body, jsonld: ld }));
+  urls.push({ path: '/blog', pr: '0.6', lm: POSTS[0].updated });
+  POSTS.forEach(p => {
+    const pc = [{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog' }, { name: p.title }];
+    const tl = p.tools.map(byId).filter(Boolean);
+    const body = '<article class="prose post">' + breadcrumb(pc) + '<h1>' + esc(p.h1) + '</h1>' +
+      '<p class="post-meta">By ' + esc(NAME) + ' team &middot; Published ' + longDate(p.published) + ' &middot; Updated ' + longDate(p.updated) + ' &middot; ' + p.readMin + ' min read</p>' +
+      '<p class="post-lede">' + esc(p.answer) + '</p>' + p.body +
+      '<h2 id="faq">Frequently asked questions</h2>' + p.faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') +
+      (p.sources && p.sources.length ? '<h2 id="sources">Sources</h2><ul>' + p.sources.map(s => '<li><a href="' + s.u + '" rel="noopener" target="_blank">' + esc(s.n) + '</a></li>').join('') + '</ul>' : '') +
+      '<h2 id="try">Try it free</h2><div class="tools-g" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">' + tl.map(t => toolCard(t, false)).join('') + '</div></article>';
+    const posting = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.title, description: p.meta, url: abs('/blog/' + p.slug), mainEntityOfPage: { '@type': 'WebPage', '@id': abs('/blog/' + p.slug) }, datePublished: p.published, dateModified: p.updated, inLanguage: 'en', author: BLOG_AUTHOR, publisher: { '@id': ORG_ID }, isPartOf: { '@id': SITE + '/#website' } };
+    if (OG) posting.image = OG;
+    const ld = [posting,
+      crumbLd([{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog' }, { name: p.title, href: '/blog/' + p.slug }])];
+    write('blog/' + p.slug + '/index.html', shell({ title: p.title + ' | ' + NAME, desc: p.meta, path: '/blog/' + p.slug, body, jsonld: ld, ogType: 'article' }));
+    urls.push({ path: '/blog/' + p.slug, pr: '0.7', lm: p.updated });
+  });
+})();
+
 /* 404 */
 write('404.html', shell({ title: 'Page not found | ' + NAME, desc: 'This page could not be found. Browse our free online tools instead.', path: '/404', noindex: true,
   body: '<div class="prose" style="text-align:center"><h1>Page not found</h1><p>We could not find that page. Try one of these popular tools instead.</p><div class="tools-g" style="text-align:left;margin-top:24px">' + POPULAR.slice(0, 6).map(t => toolCard(t, true)).join('') + '</div><p style="margin-top:28px"><a class="btn-dl" style="text-decoration:none;display:inline-block" href="/tools">Browse all tools</a></p></div>' }));
 
 /* ---------- sitemap, robots, llms ---------- */
 write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-  urls.map(u => '  <url><loc>' + abs(u.path) + '</loc><lastmod>' + TODAY + '</lastmod><priority>' + u.pr + '</priority></url>').join('\n') + '\n</urlset>\n');
+  urls.map(u => '  <url><loc>' + abs(u.path) + '</loc><lastmod>' + (u.lm || TODAY) + '</lastmod><priority>' + u.pr + '</priority></url>').join('\n') + '\n</urlset>\n');
 
 write('robots.txt', [
   '# ' + NAME + ' - everything public is welcome to be crawled, indexed and cited.',
@@ -234,6 +264,7 @@ write('robots.txt', [
 const catBlocks = D.CATS.map(c => '## ' + c.name + '\n' + toolsOf(c.id).map(t => '- [' + t.n + '](' + abs('/' + t.slug) + '): ' + t.d).join('\n')).join('\n\n');
 write('llms.txt', '# ' + NAME + '\n\n> Free online tools for images, PDFs, videos, files and text. Every tool runs in the visitor\'s web browser, so files are processed on the user\'s own device and are not uploaded. No sign-up, no watermark.\n\n' +
   '## Key facts\n- Price: free, no account needed\n- Privacy: files are processed locally in the browser and are never uploaded to a server\n- Main tool: image compressor for JPG, PNG and WebP at ' + SITE + '/\n- Number of tools: ' + D.TOOLS.length + '\n- Contact: ' + CFG.email + '\n\n' + catBlocks +
+  (POSTS.length ? '\n\n## Blog\n' + POSTS.map(p => '- [' + p.title + '](' + abs('/blog/' + p.slug) + '): ' + p.answer).join('\n') : '') +
   '\n\n## Optional\n- [About](' + abs('/about') + '): who we are and how the tools work\n- [Privacy Policy](' + abs('/privacy') + ')\n- [Full tool guide for language models](' + abs('/llms-full.txt') + ')\n');
 write('llms-full.txt', '# ' + NAME + ' - full tool guide\n\nLast updated: ' + TODAY + '\n\n' + D.TOOLS.map(t => {
   const K = C.tools[t.id];
