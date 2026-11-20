@@ -108,7 +108,7 @@ function breadcrumb(items) {
 }
 const crumbLd = items => ({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: abs(it.href || it.path) })) });
 function faqBlock(heading, faq) {
-  return '<section class="seo-sec"><h2>' + esc(heading) + '</h2>' + faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') + '</section>';
+  return '<section class="seo-sec"><h2>' + esc(heading) + '</h2><div class="faq-grid">' + faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') + '</div></section>';
 }
 const orgLd = { '@context': 'https://schema.org', '@type': 'Organization', '@id': ORG_ID, name: NAME, url: SITE + '/', logo: { '@type': 'ImageObject', url: SITE + '/logo.svg' }, email: CFG.email };
 
@@ -144,7 +144,7 @@ const urls = []; // for sitemap: {path, priority}
     '<section class="sec"><div class="wrap"><div class="sec-row"><div><span class="eyebrow">Categories</span><h2 class="sec-h">' + D.TOOLS.length + ' free tools for everyday files</h2><p class="sec-sub">Pick a category and get it done in seconds.</p></div><a class="fbtn" href="/tools">View all tools &rarr;</a></div>' +
     '<div class="cats-g">' + D.CATS.map(c => '<a class="cat-card ' + c.cls + '" href="/' + c.slug + '"><div class="cat-ico">' + D.cgl(c, 28) + '</div><h3 class="cat-nm">' + c.name + '</h3><div class="cat-cnt">' + toolsOf(c.id).length + ' tools available</div><div class="cat-pills">' + toolsOf(c.id).slice(0, 3).map(t => '<span class="cpill">' + esc(t.n) + '</span>').join('') + '</div></a>').join('') + '</div></div></section>' +
     '<section class="sec" style="padding-top:0"><div class="wrap"><div class="sec-row"><div><span class="eyebrow">Popular</span><h2 class="sec-h">Handy tools to try next</h2><p class="sec-sub">Free to use, with no account needed.</p></div></div><div class="tools-g">' + POPULAR.map(t => toolCard(t, true)).join('') + '</div></div></section>' +
-    '<section class="sec" style="padding-top:0"><div class="wrap" style="max-width:860px"><div class="seo-sec" style="margin-top:0"><h2 class="sec-h">Image Compressor: frequently asked questions</h2>' + H.faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') + '</div></div></section>' +
+    '<section class="sec" style="padding-top:0"><div class="wrap"><div class="seo-sec" style="margin-top:0"><h2 class="sec-h">Image Compressor: frequently asked questions</h2><div class="faq-grid">' + H.faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') + '</div></div></div></section>' +
     '<section class="sec-sm"><div class="wrap"><div class="cta-band"><h2 class="cta-h">Start using free tools today</h2><p class="cta-s">No registration, no watermarks, no limits. Your files never leave your device.</p><div class="cta-btns"><a class="btn-white" href="/tools">Browse all ' + D.TOOLS.length + ' tools</a><a class="btn-out-w" href="/pdf-tools">Start with PDF tools</a></div></div></div></section>';
   const ld = [orgLd,
     { '@context': 'https://schema.org', '@type': 'WebSite', '@id': SITE + '/#website', url: SITE + '/', name: NAME, inLanguage: 'en', publisher: { '@id': ORG_ID } },
@@ -182,7 +182,7 @@ D.CATS.forEach(c => {
     '<h1 style="font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:8px">' + esc(K.h1) + '</h1><p style="color:var(--text2);font-size:1.05rem;max-width:680px">' + esc(K.answer) + '</p>' +
     '<div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem"><span style="color:var(--text2)">' + list.length + ' tools available</span><span style="color:var(--sage2)">&#10003; 100% free</span><span style="color:var(--sage2)">&#10003; No sign-up</span></div></div></div></div></section>' +
     '<section class="sec-sm"><div class="wrap"><div class="tools-g">' + list.map(t => toolCard(t, false)).join('') + '</div></div></section>' +
-    '<section class="sec-sm" style="padding-top:0"><div class="wrap" style="max-width:860px">' + faqBlock(c.name + ': frequently asked questions', K.faq) + '</div></section>';
+    '<section class="sec-sm" style="padding-top:0"><div class="wrap">' + faqBlock(c.name + ': frequently asked questions', K.faq) + '</div></section>';
   const ld = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: K.h1, url: abs('/' + c.slug), description: K.meta, isPartOf: { '@id': SITE + '/#website' }, dateModified: TODAY, mainEntity: { '@type': 'ItemList', itemListElement: list.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.n, url: abs('/' + t.slug) })) } },
     crumbLd([{ name: 'Home', href: '/' }, { name: c.name, href: '/' + c.slug }])];
   write(c.slug + '/index.html', shell({ title: K.title + ' | ' + NAME, desc: K.meta, path: '/' + c.slug, body, jsonld: ld }));
@@ -206,7 +206,10 @@ D.CATS.forEach(c => {
 Object.keys(C.pages).forEach(k => {
   const P = C.pages[k], crumbs = [{ name: 'Home', href: '/' }, { name: P.h1.replace('Contact us', 'Contact') }];
   const html = P.body.replace(/\{date\}/g, TODAY_LONG).replace(/\{email\}/g, CFG.email);
-  const body = '<div class="prose">' + breadcrumb(crumbs) + '<h1>' + esc(P.h1) + '</h1>' + html + '</div>';
+  const links = [['about', 'About'], ['privacy', 'Privacy Policy'], ['terms', 'Terms of Use'], ['contact', 'Contact'], ['blog', 'Blog']].map(l => '<li><a href="/' + l[0] + '"' + (l[0] === k ? ' aria-current="page" class="on"' : '') + '>' + l[1] + '</a></li>').join('');
+  const aside = '<aside class="post-aside" aria-label="More about ' + esc(NAME) + '"><div class="aside-box"><div class="aside-t">' + esc(NAME) + '</div><ul>' + links + '</ul></div>' +
+    '<a class="aside-cta" href="/tools"><b>Browse all ' + D.TOOLS.length + ' tools</b><span>Free, private, runs in your browser</span><em>Open the tools &rarr;</em></a></aside>';
+  const body = '<div class="wrap blog-wrap"><div class="post-layout"><div class="prose post">' + breadcrumb(crumbs) + '<h1>' + esc(P.h1) + '</h1>' + html + '</div>' + aside + '</div></div>';
   const type = { about: 'AboutPage', contact: 'ContactPage' }[k] || 'WebPage';
   const ld = [{ '@context': 'https://schema.org', '@type': type, name: P.title, url: abs('/' + k), description: P.meta, isPartOf: { '@id': SITE + '/#website' }, dateModified: TODAY }, crumbLd([{ name: 'Home', href: '/' }, { name: crumbs[1].name, href: '/' + k }])];
   write(k + '/index.html', shell({ title: P.title + ' | ' + NAME, desc: P.meta, path: '/' + k, body, jsonld: k === 'about' ? ld.concat([orgLd]) : ld }));
@@ -249,7 +252,7 @@ const BLOG_AUTHOR = { '@type': 'Organization', '@id': ORG_ID, name: NAME + ' tea
 
 /* 404 */
 write('404.html', shell({ title: 'Page not found | ' + NAME, desc: 'This page could not be found. Browse our free online tools instead.', path: '/404', noindex: true,
-  body: '<div class="prose" style="text-align:center"><h1>Page not found</h1><p>We could not find that page. Try one of these popular tools instead.</p><div class="tools-g" style="text-align:left;margin-top:24px">' + POPULAR.slice(0, 6).map(t => toolCard(t, true)).join('') + '</div><p style="margin-top:28px"><a class="btn-dl" style="text-decoration:none;display:inline-block" href="/tools">Browse all tools</a></p></div>' }));
+  body: '<div class="wrap prose blog-index" style="text-align:center"><h1>Page not found</h1><p>We could not find that page. Try one of these popular tools instead.</p><div class="tools-g" style="text-align:left;margin-top:24px">' + POPULAR.slice(0, 6).map(t => toolCard(t, true)).join('') + '</div><p style="margin-top:28px"><a class="btn-dl" style="text-decoration:none;display:inline-block" href="/tools">Browse all tools</a></p></div>' }));
 
 /* ---------- sitemap, robots, llms ---------- */
 write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
