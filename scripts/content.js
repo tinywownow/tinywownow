@@ -485,7 +485,7 @@ const pages = {
   }
 };
 
-const TIPS = require('./tips.js');
+const TIPS = Object.assign({}, require('./tips.js'), require('./tips2.js'));
 Object.keys(TIPS).forEach(id => { if (!tools[id]) throw new Error('tips for unknown tool ' + id); tools[id].tips = TIPS[id]; });
 
 module.exports = { tools, cats, home, pages, PRIVACY_Q };
