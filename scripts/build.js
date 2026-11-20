@@ -110,6 +110,8 @@ const crumbLd = items => ({ '@context': 'https://schema.org', '@type': 'Breadcru
 function faqBlock(heading, faq) {
   return '<section class="seo-sec"><h2>' + esc(heading) + '</h2><div class="faq-grid">' + faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') + '</div></section>';
 }
+/* FAQPage markup mirrors the visible Q&A on the page exactly */
+const faqLd = faq => ({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq.map(q => ({ '@type': 'Question', name: q[0], acceptedAnswer: { '@type': 'Answer', text: q[1] } })) });
 const orgLd = { '@context': 'https://schema.org', '@type': 'Organization', '@id': ORG_ID, name: NAME, url: SITE + '/', logo: { '@type': 'ImageObject', url: SITE + '/logo.svg' }, email: CFG.email };
 
 const written = [];
@@ -148,7 +150,7 @@ const urls = []; // for sitemap: {path, priority}
     '<section class="sec-sm"><div class="wrap"><div class="cta-band"><h2 class="cta-h">Start using free tools today</h2><p class="cta-s">No registration, no watermarks, no limits. Your files never leave your device.</p><div class="cta-btns"><a class="btn-white" href="/tools">Browse all ' + D.TOOLS.length + ' tools</a><a class="btn-out-w" href="/pdf-tools">Start with PDF tools</a></div></div></div></section>';
   const ld = [orgLd,
     { '@context': 'https://schema.org', '@type': 'WebSite', '@id': SITE + '/#website', url: SITE + '/', name: NAME, inLanguage: 'en', publisher: { '@id': ORG_ID } },
-    { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Image Compressor', url: SITE + '/', description: C.tools['compress-image'].answer, applicationCategory: 'MultimediaApplication', operatingSystem: 'Any (web browser)', browserRequirements: 'Requires JavaScript', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, dateModified: TODAY, publisher: { '@id': ORG_ID } }];
+    { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Image Compressor', url: SITE + '/', description: C.tools['compress-image'].answer, applicationCategory: 'MultimediaApplication', operatingSystem: 'Any (web browser)', browserRequirements: 'Requires JavaScript', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, dateModified: TODAY, publisher: { '@id': ORG_ID } }, faqLd(H.faq)];
   write('index.html', shell({ title: H.title + ' | ' + NAME, desc: H.meta, path: '/', body, jsonld: ld }));
   urls.push({ path: '/', pr: '1.0' });
 })();
@@ -169,7 +171,7 @@ D.TOOLS.forEach(t => {
     '<section class="seo-sec"><h2>' + esc(t.n) + ' at a glance</h2><ul class="fact-list"><li><b>Input</b>' + esc(K.io[0]) + '</li><li><b>Output</b>' + esc(K.io[1]) + '</li><li><b>Price</b>Free, no sign-up, no watermark</li><li><b>Privacy</b>Runs in your browser; files are not uploaded</li><li><b>Last updated</b>' + TODAY_LONG + '</li></ul></section>' +
     '<section class="seo-sec"><h2>Related ' + esc(c.short.toLowerCase()) + ' tools</h2><div class="tools-g" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">' + related.map(r => toolCard(r, false)).join('') + '</div></section></div>';
   const ld = [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: t.n, url: abs('/' + t.slug), description: K.answer, applicationCategory: (t.c === 'image' || t.c === 'video') ? 'MultimediaApplication' : 'UtilitiesApplication', operatingSystem: 'Any (web browser)', browserRequirements: 'Requires JavaScript', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, dateModified: TODAY, inLanguage: 'en', publisher: { '@id': ORG_ID } },
-    crumbLd(crumbs.map(x => ({ name: x.name, href: x.href || '/' + t.slug })))];
+    crumbLd(crumbs.map(x => ({ name: x.name, href: x.href || '/' + t.slug }))), faqLd(faq)];
   write(t.slug + '/index.html', shell({ title: K.title + ' | ' + NAME, desc: K.meta, path: '/' + t.slug, body, jsonld: ld, bodyAttrs: 'data-tool="' + t.id + '" data-name="' + esc(t.n) + '"', needsTools: !IN_APP.has(t.id) }));
   urls.push({ path: '/' + t.slug, pr: t.id === 'compress-image' ? '0.9' : '0.8' });
 });
@@ -184,7 +186,7 @@ D.CATS.forEach(c => {
     '<section class="sec-sm"><div class="wrap"><div class="tools-g">' + list.map(t => toolCard(t, false)).join('') + '</div></div></section>' +
     '<section class="sec-sm" style="padding-top:0"><div class="wrap">' + faqBlock(c.name + ': frequently asked questions', K.faq) + '</div></section>';
   const ld = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: K.h1, url: abs('/' + c.slug), description: K.meta, isPartOf: { '@id': SITE + '/#website' }, dateModified: TODAY, mainEntity: { '@type': 'ItemList', itemListElement: list.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.n, url: abs('/' + t.slug) })) } },
-    crumbLd([{ name: 'Home', href: '/' }, { name: c.name, href: '/' + c.slug }])];
+    crumbLd([{ name: 'Home', href: '/' }, { name: c.name, href: '/' + c.slug }]), faqLd(K.faq)];
   write(c.slug + '/index.html', shell({ title: K.title + ' | ' + NAME, desc: K.meta, path: '/' + c.slug, body, jsonld: ld }));
   urls.push({ path: '/' + c.slug, pr: '0.9' });
 });
@@ -244,7 +246,7 @@ const BLOG_AUTHOR = { '@type': 'Organization', '@id': ORG_ID, name: NAME + ' tea
     const posting = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.title, description: p.meta, url: abs('/blog/' + p.slug), mainEntityOfPage: { '@type': 'WebPage', '@id': abs('/blog/' + p.slug) }, datePublished: p.published, dateModified: p.updated, inLanguage: 'en', author: BLOG_AUTHOR, publisher: { '@id': ORG_ID }, isPartOf: { '@id': SITE + '/#website' } };
     if (OG) posting.image = OG;
     const ld = [posting,
-      crumbLd([{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog' }, { name: p.title, href: '/blog/' + p.slug }])];
+      crumbLd([{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog' }, { name: p.title, href: '/blog/' + p.slug }]), faqLd(p.faq)];
     write('blog/' + p.slug + '/index.html', shell({ title: (p.seoTitle || p.title) + ' | ' + NAME, desc: p.meta, path: '/blog/' + p.slug, body, jsonld: ld, ogType: 'article' }));
     urls.push({ path: '/blog/' + p.slug, pr: '0.7', lm: p.updated });
   });
