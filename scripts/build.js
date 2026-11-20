@@ -89,7 +89,7 @@ function shell(o) {
   return '<!DOCTYPE html>\n<html lang="en" data-theme="light">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n' +
     '<title>' + esc(title) + '</title>\n<meta name="description" content="' + esc(o.desc) + '">\n<link rel="canonical" href="' + canonical + '">\n' +
     '<meta name="robots" content="' + (o.noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1') + '">\n<meta name="theme-color" content="#7a9165">\n' +
-    '<link rel="icon" type="image/svg+xml" href="/logo.svg">\n' + og + '\n' + HEAD_SCRIPT + '\n' +
+    '<link rel="icon" href="/favicon.ico" sizes="48x48">\n<link rel="icon" type="image/svg+xml" href="/logo.svg" sizes="any">\n<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n' + og + '\n' + HEAD_SCRIPT + '\n' +
     '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
     '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap">\n' +
     '<link rel="stylesheet" href="/styles.css?v=' + V.css + '">\n' + ld + '\n</head>\n<body' + (o.bodyAttrs ? ' ' + o.bodyAttrs : '') + '>\n<a class="skip" href="#main">Skip to content</a>\n' +
@@ -198,7 +198,7 @@ D.CATS.forEach(c => {
     '<section class="sec-sm"><div class="wrap"><div class="filters" id="allF"><button class="fbtn on" data-cat="all">All (' + D.TOOLS.length + ')</button>' + D.CATS.map(c => '<button class="fbtn" data-cat="' + c.id + '">' + c.name + ' (' + toolsOf(c.id).length + ')</button>').join('') + '</div>' +
     '<div class="tools-g" id="allT">' + D.TOOLS.map(t => toolCard(t, true)).join('') + '</div><p id="allNone" style="display:none;text-align:center;padding:48px;color:var(--text3)">No tools found.</p></div></section>';
   const ld = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'All free online tools', url: abs('/tools'), isPartOf: { '@id': SITE + '/#website' }, dateModified: TODAY, mainEntity: { '@type': 'ItemList', itemListElement: D.TOOLS.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.n, url: abs('/' + t.slug) })) } }, crumbLd([{ name: 'Home', href: '/' }, { name: 'All tools', href: '/tools' }])];
-  write('tools/index.html', shell({ title: 'All Free Online Tools: Image, PDF, Video, File, Text | ' + NAME, desc: 'Browse all ' + D.TOOLS.length + ' free tools: image compressor, PDF merge and split, video compress and trim, ZIP, JSON and text tools. Private and no sign-up.', path: '/tools', body, jsonld: ld }));
+  write('tools/index.html', shell({ title: 'All ' + D.TOOLS.length + ' Free Online Tools: PDF, Image, Video | ' + NAME, desc: 'Browse all ' + D.TOOLS.length + ' free tools: image compressor, PDF merge and split, video compress and trim, ZIP, JSON and text tools. Private and no sign-up.', path: '/tools', body, jsonld: ld }));
   urls.push({ path: '/tools', pr: '0.9' });
 })();
 
@@ -245,7 +245,7 @@ const BLOG_AUTHOR = { '@type': 'Organization', '@id': ORG_ID, name: NAME + ' tea
     if (OG) posting.image = OG;
     const ld = [posting,
       crumbLd([{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog' }, { name: p.title, href: '/blog/' + p.slug }])];
-    write('blog/' + p.slug + '/index.html', shell({ title: p.title + ' | ' + NAME, desc: p.meta, path: '/blog/' + p.slug, body, jsonld: ld, ogType: 'article' }));
+    write('blog/' + p.slug + '/index.html', shell({ title: (p.seoTitle || p.title) + ' | ' + NAME, desc: p.meta, path: '/blog/' + p.slug, body, jsonld: ld, ogType: 'article' }));
     urls.push({ path: '/blog/' + p.slug, pr: '0.7', lm: p.updated });
   });
 })();

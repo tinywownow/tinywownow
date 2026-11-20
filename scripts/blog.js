@@ -6,6 +6,7 @@ module.exports = [
   {
     slug: 'compress-image-to-100kb',
     title: 'How to Compress an Image to 100 KB, 50 KB or 20 KB',
+    seoTitle: 'Compress Image to 100 KB, 50 KB or 20 KB',
     h1: 'How to compress an image to 100 KB, 50 KB or 20 KB',
     meta: 'Crop, shrink the pixel width, then lower JPG quality. A step-by-step way to get a photo under 100 KB, 50 KB or 20 KB for a form upload, free and private.',
     published: '2026-11-21',

@@ -409,7 +409,7 @@ const cats = {
 };
 
 const home = {
-  title: 'Image Compressor, Free Online Image, PDF and Video Tools',
+  title: 'Free Image Compressor and Online File Tools',
   meta: 'Compress images online in your browser with no upload. Plus 50+ free PDF, video, file and text tools. No sign-up, no watermark, private by design.',
   faq: [
     ['What is TinyWow Now?', 'TinyWow Now is a free website with image, PDF, video, file and text tools. Every tool runs in your browser, so your files are processed on your own device and are not uploaded.'],
