@@ -520,3 +520,9 @@ a.aside-cta em{font-style:normal;font-weight:700;margin-top:6px}
 .hx-more:hover{text-decoration:underline}
 @media(max-width:560px){.tip-list{grid-template-columns:1fr}}
 .tip-list{grid-template-columns:repeat(2,1fr)}@media(max-width:700px){.tip-list{grid-template-columns:1fr}}
+/* hero link sits below the floating chip, not beside it */
+.hx-more{position:absolute;left:0;right:0;top:calc(100% + 40px);margin:0}
+@media(max-width:640px){.hx-more{position:static;margin-top:16px}}
+@media(min-width:641px){.hx{padding-bottom:104px}}
+/* header: switch to the menu button before the links and search run out of room */
+@media(max-width:960px){.nav-links,.nav-sw{display:none}.nav-toggle{display:flex;align-items:center}}
