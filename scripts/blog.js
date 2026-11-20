@@ -1,56 +1,67 @@
 /* Blog posts. Add a new object to this array, run `node scripts/build.js`, commit and push.
    body is trusted HTML written by us. faq and sources are plain text (escaped by the build).
-   tools = tool ids shown as "Try it" cards under the post. */
+   tools = tool ids shown as "Try it" cards under the post. Section headings need an id (used for the contents list). */
 'use strict';
 module.exports = [
   {
-    slug: 'jpg-vs-png-vs-webp',
-    title: 'JPG vs PNG vs WebP: Which Image Format Should You Use?',
-    h1: 'JPG vs PNG vs WebP: which image format should you use?',
-    meta: 'Use JPG for photos, PNG for screenshots and transparency, and WebP for the smallest files on the web. See when each format wins, with a quick table and free converters.',
+    slug: 'compress-image-to-100kb',
+    title: 'How to Compress an Image to 100 KB, 50 KB or 20 KB',
+    h1: 'How to compress an image to 100 KB, 50 KB or 20 KB',
+    meta: 'Crop, shrink the pixel width, then lower JPG quality. A step-by-step way to get a photo under 100 KB, 50 KB or 20 KB for a form upload, free and private.',
     published: '2026-11-21',
     updated: '2026-11-21',
-    readMin: 5,
-    answer: 'Use JPG for photos you will email, upload or print, because every app opens it. Use PNG for screenshots, logos and anything with text or a transparent background. Use WebP when you want the smallest file for a website, since all current major browsers support it and it handles both photos and transparency.',
+    readMin: 6,
+    answer: 'To get a photo under 100 KB, crop it, reduce its width to about 1,000 to 1,200 pixels, then save it as a JPG at roughly 70 to 80 percent quality. Cutting pixels does most of the work; lowering quality alone rarely shrinks a phone photo that far without visible damage. The Compress Image tool on TinyWow Now does both steps in one place, in your browser, so the photo is not uploaded.',
     body:
-      '<h2 id="at-a-glance">JPG, PNG and WebP at a glance</h2>' +
-      '<div class="tbl-wrap"><table><thead><tr><th>Format</th><th>Best for</th><th>Compression</th><th>Transparency</th><th>Main drawback</th></tr></thead><tbody>' +
-      '<tr><td><b>JPG</b></td><td>Photos</td><td>Lossy</td><td>No</td><td>Blurry edges around text and sharp lines; quality drops each time you re-save it</td></tr>' +
-      '<tr><td><b>PNG</b></td><td>Screenshots, logos, text, graphics</td><td>Lossless</td><td>Yes</td><td>Big files for photos</td></tr>' +
-      '<tr><td><b>WebP</b></td><td>Almost anything on the web</td><td>Lossy or lossless</td><td>Yes</td><td>Some older apps, email clients and print tools cannot open it</td></tr>' +
-      '</tbody></table></div>' +
-      '<h2 id="jpg">JPG: the safe choice for photos</h2>' +
-      '<p>JPG throws away detail your eye is unlikely to notice, which is why a photo can shrink a lot with little visible change. It works everywhere: phones, email, social apps, printers and old software. The trade-offs are that it cannot be transparent, and it smears fine lines and text, so a screenshot saved as JPG often looks fuzzy. Every re-save also loses a little more quality, so keep your original and export a JPG copy.</p>' +
-      '<h2 id="png">PNG: sharp and lossless, but heavy for photos</h2>' +
-      '<p>PNG keeps every pixel exactly as it was, so text, icons and interface screenshots stay crisp, and it supports transparent backgrounds. That is also why a photo saved as PNG can be several times larger than the same photo as JPG. Because PNG is lossless, a quality slider does nothing for it. To make a PNG smaller you resize it, or switch to WebP or JPG.</p>' +
-      '<h2 id="webp">WebP: the smallest option for the web</h2>' +
-      '<p>WebP can work in lossy mode like JPG or lossless mode like PNG, and it supports transparency. Google, which created the format, reports that lossy WebP files are 25 to 34 percent smaller than comparable JPEGs, and lossless WebP files are about 26 percent smaller than PNGs (see sources below). That makes it a good default for website images, where smaller files load faster. The catch is compatibility outside browsers: some older editors, email clients, document tools and print services still do not accept it. When in doubt, send JPG.</p>' +
-      '<h2 id="choose">Which one should you pick?</h2>' +
-      '<ul>' +
-      '<li><b>Photo on your website or blog:</b> WebP, or JPG if you want maximum compatibility.</li>' +
-      '<li><b>Photo to email, WhatsApp, a job portal or a printer:</b> JPG. It is accepted almost everywhere.</li>' +
-      '<li><b>Screenshot or anything with small text:</b> PNG, so the text stays sharp.</li>' +
-      '<li><b>Logo or icon with a transparent background:</b> PNG, or WebP if your site supports it.</li>' +
-      '<li><b>An image you may edit again:</b> keep the original or a PNG, and export a smaller copy to share.</li>' +
-      '</ul>' +
-      '<h2 id="how-to">How to shrink or convert an image with TinyWow Now</h2>' +
-      '<p>All of these run in your browser, so your images are not uploaded.</p>' +
+      '<h2 id="why">Why the quality slider alone is not enough</h2>' +
+      '<p>A JPG stores colour information for the pixels in the picture, so the more pixels it has, the bigger the file. A typical phone photo is 4000 by 3000 pixels, which is 12,000,000 pixels, and files like that are commonly several megabytes. A version 1200 pixels wide (1200 by 900) has about 1,080,000 pixels, roughly eleven times fewer. At 800 by 600 it has 480,000, twenty-five times fewer.</p>' +
+      '<p>That is why the reliable order is: <b>crop, then shrink the pixel size, then lower the quality</b>. If you only drag the quality down, you end up with a full-size picture that is full of blocky artefacts and still too heavy.</p>' +
+      '<h2 id="steps">Step by step: get an image under your size limit</h2>' +
       '<ol>' +
-      '<li><b>Make a photo smaller:</b> open <a href="/compress-image">Compress Image</a>, drop your files, and set the quality (the slider starts at 75%). Under Output format choose <em>WebP (smallest)</em> or <em>JPG</em>, then download each file or all of them.</li>' +
-      '<li><b>Switch format only:</b> use <a href="/convert-to-webp">Convert to WebP</a>, <a href="/convert-to-jpg">Convert to JPG</a> or <a href="/convert-to-png">Convert to PNG</a>. When you convert a transparent image to JPG, the transparent area is filled with white, because JPG has no transparency.</li>' +
-      '<li><b>Still too big?</b> Lower the pixel size with <a href="/resize-image">Resize Image</a> first. A photo wider than the screen it will be shown on wastes bytes.</li>' +
-      '</ol>',
+      '<li><b>Read the rules on the form.</b> Note the maximum file size, the pixel size if one is given, the accepted formats (usually JPG), and whether there is a minimum size too.</li>' +
+      '<li><b>Crop first.</b> Open <a href="/crop-image">Crop Image</a> and remove everything that is not needed: for a passport-style photo keep the head and shoulders, for a signature crop tightly around the ink. Less area means fewer pixels to store.</li>' +
+      '<li><b>Shrink and compress.</b> Open <a href="/compress-image">Compress Image</a>, drop your file and open <em>Advanced options</em>. Set <em>Max width</em> from the table below, choose <em>JPG</em> as the output format and start the quality at 80%.</li>' +
+      '<li><b>Check the result.</b> Under <em>Compressed</em> you can see the new size next to the original. If it is still over the limit, lower the quality by 5 at a time. If you need to go below about 65%, reduce the max width instead, because quality that low shows artefacts around edges and text.</li>' +
+      '<li><b>Leave a little room.</b> Aim for 5 to 10 percent under the limit. Some forms count a kilobyte as 1,000 bytes and others as 1,024, so a file that is exactly at the limit can still be rejected.</li>' +
+      '</ol>' +
+      '<h2 id="targets">Starting points for 200 KB, 100 KB, 50 KB and 20 KB</h2>' +
+      '<div class="tbl-wrap"><table><thead><tr><th>Target size</th><th>Max width to try</th><th>Starting quality</th><th>Tip</th></tr></thead><tbody>' +
+      '<tr><td><b>200 KB</b></td><td>1600 px</td><td>80%</td><td>Fine for most photo uploads</td></tr>' +
+      '<tr><td><b>100 KB</b></td><td>1200 px</td><td>75 to 80%</td><td>Crop first if the subject is small in the frame</td></tr>' +
+      '<tr><td><b>50 KB</b></td><td>800 px</td><td>70%</td><td>A plain background compresses much better than a busy one</td></tr>' +
+      '<tr><td><b>20 KB</b></td><td>The size the form asks for</td><td>65 to 70%</td><td>Passport-style photos and signatures are usually small to begin with</td></tr>' +
+      '</tbody></table></div>' +
+      '<p>These are starting points to try, not guarantees. The final size depends on the picture: a photo with a plain wall behind the subject compresses far more than a crowded street scene. Always read the size shown after compression before you upload.</p>' +
+      '<h2 id="signatures">Signatures and photos with text</h2>' +
+      '<p>Lossy JPG compression struggles with sharp edges and text, because it smears them. web.dev warns that high-contrast text and line art are prone to artefacts. For a signature, crop tightly, keep the pixel size the form asks for, and avoid very low quality. Signature fields are often stricter than photo fields, so check whether yours says 10 KB or 20 KB. If the form accepts PNG, a clean scan on a plain white background can sometimes come out smaller as a PNG than as a JPG, so it is worth comparing both.</p>' +
+      '<h2 id="mistakes">Common mistakes that make the file bigger or worse</h2>' +
+      '<ul>' +
+      '<li><b>Compressing the same file again and again.</b> Each lossy pass discards more detail. Go back to your original and make one careful pass.</li>' +
+      '<li><b>Using PNG for a photo.</b> PNG is lossless, so the quality slider has no effect on it and photos stay large. Switch the output to JPG or WebP.</li>' +
+      '<li><b>Enlarging a small image.</b> Making it bigger adds pixels but no detail, and the file grows.</li>' +
+      '<li><b>Going under the minimum.</b> Some forms reject images that are too small in pixels or too light in size. Check both limits.</li>' +
+      '</ul>' +
+      '<h2 id="privacy">Is it safe to compress a passport photo online?</h2>' +
+      '<p>It depends on the tool. Many online compressors upload your file to a server, which matters for ID photos and signatures. A browser-based tool processes the file on your own device instead. TinyWow Now works this way, and you can check it yourself instead of taking our word for it:</p>' +
+      '<ol>' +
+      '<li>Open the Compress Image page and press <b>F12</b> to open your browser\'s developer tools.</li>' +
+      '<li>Go to the <b>Network</b> tab and clear it.</li>' +
+      '<li>Compress a photo. You should see no request that carries your image to another server.</li>' +
+      '</ol>' +
+      '<p>We ran this check ourselves on 21 November 2026: compressing a test image (261 KB down to 137 KB) made no network requests.</p>',
     faq: [
-      ['Is WebP better than JPG?', 'For file size, usually yes: Google reports lossy WebP files are 25 to 34 percent smaller than comparable JPEGs. For compatibility, JPG still wins, because every app and device opens it. Choose WebP for websites and JPG for sharing.'],
-      ['Does converting a JPG to PNG improve the quality?', 'No. The detail lost when the JPG was saved cannot be recovered. A PNG made from a JPG looks the same and is usually much larger.'],
-      ['Why did my transparent PNG get a white background as a JPG?', 'JPG cannot store transparency. Converters fill the see-through area with a solid colour, and our converter uses white. Keep the PNG or use WebP if you need transparency.'],
-      ['Which format is best for an email or a form upload?', 'JPG for photos and PNG for screenshots. Some email clients and upload forms reject WebP, so avoid it when you are not sure what the receiving side supports.'],
-      ['Does re-saving a JPG lower its quality each time?', 'Yes. JPG is lossy, so each save discards a little more detail. Edit from your original file and export a JPG only once at the end.']
+      ['How do I compress an image to 100 KB without losing quality?', 'Strictly speaking, JPG compression always discards some data, so nothing at that size is truly lossless. You can avoid visible loss by cropping, reducing the width to what the form needs and keeping the quality around 75 to 80 percent. At normal viewing size most photos look the same as the original.'],
+      ['Why is my image still over the limit after compressing?', 'Usually because the pixel size is still too large. Reduce the Max width first, then fine-tune the quality. Also check that the output format is JPG, since PNG does not shrink with the quality slider.'],
+      ['Can I choose an exact target size like 100 KB?', 'Not yet. Compress Image shows the original and compressed size, and you adjust the max width and quality until the result is under your limit. Most photos take two or three tries.'],
+      ['Will a 50 KB image look blurry?', 'On screen at normal size, a photo of about 800 pixels wide at 70 percent quality usually looks fine. Fine text, thin lines and large print sizes are where the loss shows.'],
+      ['What is the difference between KB and MB?', 'A megabyte is about 1,000 kilobytes, or 1,024 in some systems. A 2 MB photo is therefore roughly 2,000 KB, and it has to lose about 95 percent of its size to fit under 100 KB.'],
+      ['Does the image get uploaded when I compress it here?', 'No. The compression runs in your browser, and you can confirm that in the Network tab of your developer tools, as described above.']
     ],
     sources: [
-      { n: 'Google for Developers: An image format for the Web (WebP)', u: 'https://developers.google.com/speed/webp' },
-      { n: 'MDN Web Docs: Image file type and format guide', u: 'https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types' }
+      { n: 'web.dev: Image performance (Learn Performance)', u: 'https://web.dev/learn/performance/image-performance' },
+      { n: 'web.dev: Image formats, JPEG (Learn Images)', u: 'https://web.dev/learn/images/jpeg/' },
+      { n: 'web.dev: Use srcset to automatically choose the right image', u: 'https://web.dev/articles/use-srcset-to-automatically-choose-the-right-image' }
     ],
-    tools: ['compress-image', 'image-to-webp', 'image-to-jpg', 'resize-image']
+    tools: ['compress-image', 'crop-image', 'resize-image', 'image-to-jpg']
   }
 ];

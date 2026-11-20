@@ -221,19 +221,23 @@ const BLOG_AUTHOR = { '@type': 'Organization', '@id': ORG_ID, name: NAME + ' tea
   if (!POSTS.length) return;
   const crumbs = [{ name: 'Home', href: '/' }, { name: 'Blog' }];
   const list = POSTS.map(p => '<a class="post-card" href="/blog/' + p.slug + '"><span class="post-meta">' + longDate(p.published) + ' &middot; ' + p.readMin + ' min read</span><h2>' + esc(p.title) + '</h2><p>' + esc(p.answer) + '</p><span class="tc-go">Read the guide &rarr;</span></a>').join('');
-  const body = '<div class="prose">' + breadcrumb(crumbs) + '<h1>Blog</h1><p>Short, practical guides to working with images, PDFs and video files, from the team behind ' + esc(NAME) + '.</p><div class="post-list">' + list + '</div></div>';
+  const body = '<div class="wrap prose blog-index">' + breadcrumb(crumbs) + '<h1>Blog</h1><p>Short, practical guides to working with images, PDFs and video files, from the team behind ' + esc(NAME) + '.</p><div class="post-list">' + list + '</div></div>';
   const ld = [{ '@context': 'https://schema.org', '@type': 'Blog', name: NAME + ' Blog', url: abs('/blog'), isPartOf: { '@id': SITE + '/#website' }, publisher: { '@id': ORG_ID }, blogPost: POSTS.map(p => ({ '@type': 'BlogPosting', headline: p.title, url: abs('/blog/' + p.slug), datePublished: p.published })) }, crumbLd([{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog' }])];
   write('blog/index.html', shell({ title: 'Blog: Image, PDF and Video Guides | ' + NAME, desc: 'Practical guides to compressing images, choosing file formats and working with PDFs and video, from ' + NAME + '.', path: '/blog', body, jsonld: ld }));
   urls.push({ path: '/blog', pr: '0.6', lm: POSTS[0].updated });
   POSTS.forEach(p => {
     const pc = [{ name: 'Home', href: '/' }, { name: 'Blog', href: '/blog' }, { name: p.title }];
     const tl = p.tools.map(byId).filter(Boolean);
-    const body = '<article class="prose post">' + breadcrumb(pc) + '<h1>' + esc(p.h1) + '</h1>' +
+    const toc = (p.body.match(/<h2 id="[^"]+">.*?<\/h2>/g) || []).map(h => { const m = h.match(/<h2 id="([^"]+)">(.*?)<\/h2>/); return '<li><a href="#' + m[1] + '">' + m[2].replace(/<[^>]+>/g, '') + '</a></li>'; })
+      .concat(['<li><a href="#faq">Frequently asked questions</a></li>', (p.sources && p.sources.length) ? '<li><a href="#sources">Sources</a></li>' : '']).join('');
+    const aside = '<aside class="post-aside" aria-label="On this page"><div class="aside-box"><div class="aside-t">On this page</div><ul>' + toc + '</ul></div>' +
+      (tl[0] ? '<a class="aside-cta" href="/' + tl[0].slug + '"><b>' + esc(tl[0].n) + '</b><span>Free, private, runs in your browser</span><em>Open the tool &rarr;</em></a>' : '') + '</aside>';
+    const body = '<div class="wrap blog-wrap"><div class="post-layout"><article class="prose post">' + breadcrumb(pc) + '<h1>' + esc(p.h1) + '</h1>' +
       '<p class="post-meta">By ' + esc(NAME) + ' team &middot; Published ' + longDate(p.published) + ' &middot; Updated ' + longDate(p.updated) + ' &middot; ' + p.readMin + ' min read</p>' +
       '<p class="post-lede">' + esc(p.answer) + '</p>' + p.body +
       '<h2 id="faq">Frequently asked questions</h2>' + p.faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') +
       (p.sources && p.sources.length ? '<h2 id="sources">Sources</h2><ul>' + p.sources.map(s => '<li><a href="' + s.u + '" rel="noopener" target="_blank">' + esc(s.n) + '</a></li>').join('') + '</ul>' : '') +
-      '<h2 id="try">Try it free</h2><div class="tools-g" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">' + tl.map(t => toolCard(t, false)).join('') + '</div></article>';
+      '<h2 id="try">Try it free</h2><div class="tools-g" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">' + tl.map(t => toolCard(t, false)).join('') + '</div></article>' + aside + '</div></div>';
     const posting = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.title, description: p.meta, url: abs('/blog/' + p.slug), mainEntityOfPage: { '@type': 'WebPage', '@id': abs('/blog/' + p.slug) }, datePublished: p.published, dateModified: p.updated, inLanguage: 'en', author: BLOG_AUTHOR, publisher: { '@id': ORG_ID }, isPartOf: { '@id': SITE + '/#website' } };
     if (OG) posting.image = OG;
     const ld = [posting,

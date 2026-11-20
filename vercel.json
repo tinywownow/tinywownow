@@ -2,7 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/image-compressor", "destination": "/compress-image", "permanent": true }
+    { "source": "/image-compressor", "destination": "/compress-image", "permanent": true },
+    { "source": "/blog/jpg-vs-png-vs-webp", "destination": "/blog/compress-image-to-100kb", "permanent": true }
   ],
   "headers": [
     {
