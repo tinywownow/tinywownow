@@ -38,8 +38,8 @@ Add it to `TOOLS` in `site-data.js`, add its copy to `scripts/content.js`, imple
 ## Deploy
 Connected to Vercel through GitHub: every push to `main` deploys automatically (`vercel.json` enables clean URLs).
 
-## Working tools (52)
-- **PDF (15):** merge, split, rotate, watermark, sign, compress, JPG to PDF, PDF to JPG/PNG/text/Word/Excel/PowerPoint, Word to PDF, Excel to PDF
+## Working tools (53)
+- **PDF (16):** merge, split, rotate, watermark, sign, compress, OCR (searchable PDF), JPG to PDF, PDF to JPG/PNG/text/Word/Excel/PowerPoint, Word to PDF, Excel to PDF
 - **Image (12):** compress, resize, convert (JPG/PNG/WebP), crop, rotate/flip, grayscale, watermark, filters, upscale, image to text (OCR)
 - **Video (13):** compress, trim, convert, merge, extract audio, mute, video to GIF, GIF to video, rotate, flip, resize, speed, add subtitles
 - **File (9):** ZIP create/extract, XLS converter, JSON/XML formatters, CSV to JSON, Base64, URL encode, hash generator
@@ -49,4 +49,4 @@ Connected to Vercel through GitHub: every push to `main` deploys automatically (
 - PDF compress rasterises pages (text is no longer selectable); best for scans.
 - PDF to Word/Excel are text-based approximations; Word/Excel to PDF are text/table only.
 - Video runs in the browser: files over ~700 MB are refused. Subtitles are added as a soft track, not burned in.
-- Not built (and not listed): lock/unlock/edit PDF, OCR PDF, PPT to PDF, AI writing tools.
+- Not built (and not listed): lock/unlock/edit PDF, PPT to PDF, AI writing tools.

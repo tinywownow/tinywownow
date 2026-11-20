@@ -695,6 +695,69 @@ TOOLS['upscale-image'] = Object.assign({}, IMG, {
   }
 });
 
+/* OCR PDF: keep the original pages exactly as they are and add an invisible text layer on top,
+   so a scanned PDF becomes searchable and its text can be selected and copied. */
+const OCR_LATIN = ['eng', 'spa', 'fra', 'deu'];
+TOOLS['ocr-pdf'] = Object.assign({}, PDF, {
+  title: 'Drop a scanned PDF here', label: 'Make PDF searchable',
+  opts: sel('o_lang', 'Language of the text', [['eng', 'English'], ['spa', 'Spanish'], ['fra', 'French'], ['deu', 'German'], ['urd', 'Urdu (text file only)'], ['hin', 'Hindi (text file only)'], ['ara', 'Arabic (text file only)']]) +
+    txt('o_pg', 'Pages (optional)', 'All pages, or e.g. 1-3, 5') +
+    '<p class="up-sub">Runs in your browser, so the PDF is not uploaded. The first run downloads the language data, and each scanned page takes a few seconds. English, Spanish, French and German give a searchable PDF plus a text file. Urdu, Hindi and Arabic give a text file only.</p>',
+  async run(files, o) {
+    const f = files[0], lang = o.v('o_lang'), latinLang = OCR_LATIN.includes(lang);
+    const pdf = await openPdfJs(f), n = pdf.numPages;
+    const idx = o.v('o_pg').trim() ? parseRanges(o.v('o_pg'), n) : Array.from({ length: n }, (_, i) => i);
+    if (idx.length > 100) throw new Error('This PDF has ' + idx.length + ' pages to read. Please choose up to 100 pages at a time in the Pages box.');
+    await need('tess');
+    let doc = null, font = null;
+    if (latinLang) { doc = await loadPdfLib(f); font = await doc.embedFont(PDFLib.StandardFonts.Helvetica); }
+    let k = 0;
+    const worker = await Tesseract.createWorker(lang, 1, { logger: m => { if (m.status === 'recognizing text' && m.progress !== undefined) o.prog((k + m.progress) / idx.length, 'Reading page ' + (k + 1) + ' of ' + idx.length + '…'); else if (m.status && k === 0) o.prog(0.02, m.status.charAt(0).toUpperCase() + m.status.slice(1) + '…'); } });
+    let words = 0, skipped = 0;
+    const texts = [];
+    try {
+      for (k = 0; k < idx.length; k++) {
+        const pn = idx[k] + 1;
+        o.prog(k / idx.length, 'Page ' + (k + 1) + ' of ' + idx.length);
+        const page = await pdf.getPage(pn);
+        const existing = (await page.getTextContent()).items.map(i => i.str).join(' ').replace(/\s+/g, ' ').trim();
+        if (existing.length > 20) { skipped++; texts.push('--- Page ' + pn + ' ---\n' + existing); continue; }
+        const v1 = page.getViewport({ scale: 1 });
+        const scale = Math.min(3, Math.max(1.5, 2000 / Math.max(v1.width, v1.height)));
+        const vp = page.getViewport({ scale });
+        const c = await renderPdfPage(page, scale);
+        const { data } = await worker.recognize(c);
+        texts.push('--- Page ' + pn + ' ---\n' + (data.text || '').trim());
+        if (!doc) { words += (data.words || []).length; continue; }
+        const pg = doc.getPage(idx[k]);
+        for (const w of data.words || []) {
+          const t = latin(w.text || '').trim();
+          if (!t || w.confidence < 25 || !w.bbox) continue;
+          const b = w.bbox, hpx = b.y1 - b.y0, base = b.y1 - hpx * 0.2;
+          const p0 = vp.convertToPdfPoint(b.x0, base), p1 = vp.convertToPdfPoint(b.x1, base);
+          const dx = p1[0] - p0[0], dy = p1[1] - p0[1], len = Math.hypot(dx, dy);
+          if (len < 1) continue;
+          const hPdf = hpx / scale, nat = font.widthOfTextAtSize(t, 1);
+          if (!nat) continue;
+          const size = Math.max(1, Math.min(len / nat, hPdf * 1.6));
+          pg.drawText(t, { x: p0[0], y: p0[1], size, font, opacity: 0, rotate: PDFLib.degrees(Math.atan2(dy, dx) * 180 / Math.PI) });
+          words++;
+        }
+      }
+    } finally { try { await worker.terminate(); } catch (e) { /* ignore */ } }
+    if (!words && skipped === idx.length) throw new Error('The selected pages already contain selectable text, so there is nothing to recognise. Use PDF to Text to extract it.');
+    if (!words) throw new Error('No text could be found. Try a sharper scan, or check that you chose the right language.');
+    const text = texts.join('\n\n').trim();
+    const res = [];
+    const notes = [];
+    if (skipped) notes.push(skipped + ' page' + (skipped === 1 ? '' : 's') + ' already had selectable text and ' + (skipped === 1 ? 'was' : 'were') + ' left as ' + (skipped === 1 ? 'it was' : 'they were') + '.');
+    if (doc) res.push({ name: baseName(f.name) + '-searchable.pdf', blob: blobOf(await doc.save(), 'application/pdf'), info: words + ' words recognised', note: notes.join(' ') || undefined });
+    else notes.push('A searchable PDF needs a Latin-script language, so for ' + o.root.querySelector('#o_lang').selectedOptions[0].text.replace(' (text file only)', '') + ' you get the recognised text as a .txt file.');
+    res.push({ name: baseName(f.name) + '-text.txt', blob: blobOf(text, 'text/plain;charset=utf-8'), text, info: doc ? undefined : words + ' words recognised', note: doc ? undefined : notes.join(' ') });
+    return res;
+  }
+});
+
 TOOLS['image-to-text'] = Object.assign({}, IMG, {
   title: 'Drop an image here', label: 'Extract text',
   opts: sel('o_lang', 'Language', [['eng', 'English'], ['urd', 'Urdu'], ['hin', 'Hindi'], ['ara', 'Arabic'], ['spa', 'Spanish'], ['fra', 'French'], ['deu', 'German']]) +

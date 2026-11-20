@@ -41,7 +41,7 @@ module.exports = {
   'pdf-to-word': [
     'Quick test: try to select a word in your PDF viewer. If you cannot, the PDF is a scan and this tool will not find text in it.',
     'Plan to reformat. You get the words, paragraphs and page breaks, but not the columns, tables, fonts or pictures.',
-    'For a scanned PDF, export its pages with <a href="/pdf-to-jpg">PDF to JPG</a> and read them with <a href="/image-to-text">Image to Text</a>.',
+    'For a scanned PDF, run it through <a href="/ocr-pdf">OCR PDF</a> first to add a text layer, then convert the searchable PDF.',
     'The .docx opens in Word, Google Docs, LibreOffice and Pages, so you can fix the layout in whichever you prefer.'
   ],
   'resize-image': [

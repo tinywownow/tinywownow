@@ -19,6 +19,7 @@ const TOOLS = [
   { id: 'merge-pdf', c: 'pdf', n: 'Merge PDF', d: 'Combine multiple PDF files into one' },
   { id: 'split-pdf', c: 'pdf', n: 'Split PDF', d: 'Split a PDF into separate pages' },
   { id: 'compress-pdf', c: 'pdf', n: 'Compress PDF', d: 'Shrink scanned or image-heavy PDFs' },
+  { id: 'ocr-pdf', c: 'pdf', n: 'OCR PDF', d: 'Make scanned PDFs searchable and copyable' },
   { id: 'pdf-to-word', c: 'pdf', n: 'PDF to Word', d: 'Extract PDF text into an editable Word file' },
   { id: 'pdf-to-jpg', c: 'pdf', n: 'PDF to JPG', d: 'Convert each PDF page to a JPG image' },
   { id: 'jpg-to-pdf', c: 'pdf', n: 'JPG to PDF', d: 'Convert JPG images into a PDF file' },

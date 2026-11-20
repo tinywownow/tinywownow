@@ -27,11 +27,18 @@ const tools = {
     faq: [['How much smaller will my PDF get?', 'It depends on the content. Scans and photo-heavy PDFs often shrink a lot (a test PDF full of photos dropped by about 79%), while simple text PDFs may not shrink at all.'], ['What if my PDF is already small?', 'If a smaller file cannot be made, the tool returns your original file unchanged and tells you so, so you never get a bigger result.'], ['Is text still selectable after compression?', 'No. Pages are saved as images to reduce size, so text can no longer be selected or searched. Keep the original if you need that.']],
     io: ['PDF', 'PDF']
   },
+  'ocr-pdf': {
+    title: 'OCR PDF Online, Make Scanned PDF Searchable', meta: 'Turn a scanned PDF into a searchable, copyable PDF with OCR in your browser. Free and private, no upload. Urdu, Hindi and Arabic give a text file.',
+    answer: 'OCR PDF reads the text in a scanned PDF and adds it as an invisible layer on top of your original pages, so the PDF becomes searchable and its text can be selected and copied. It runs in your browser, so the file is not uploaded, and you also get the text as a .txt file.',
+    steps: ['Add a scanned PDF.', 'Choose the language of the text and, if you like, the pages to read, such as 1-3, 5.', 'Click Make PDF searchable, then download the searchable PDF and the text file.'],
+    faq: [['What is the difference between OCR PDF and Image to Text?', 'Image to Text reads one picture and gives you plain text. OCR PDF works on a whole PDF, keeps your original pages exactly as they look, and adds the text underneath so the PDF itself becomes searchable.'], ['Does it change how my PDF looks?', 'No. The original pages are kept as they are, and the recognised text is added as an invisible layer. The pages look the same, but you can now search and copy text.'], ['Which languages work?', 'English, Spanish, French and German give a searchable PDF and a text file. Urdu, Hindi and Arabic give the text file only, because the searchable layer needs a Latin-script font.'], ['What if some pages already have text?', 'Those pages are detected and left as they are, so nothing is read twice.'], ['How accurate is it?', 'It depends on the scan. Sharp, straight, high-contrast pages read well. Skewed, faint or handwritten pages read poorly, so check names and numbers by eye.']],
+    io: ['PDF (scanned)', 'PDF and TXT']
+  },
   'pdf-to-word': {
     title: 'PDF to Word Converter, Free Online', meta: 'Extract the text from a PDF into an editable Word (.docx) file. Runs in your browser, free, no sign-up. Layout and images are not preserved.',
     answer: 'PDF to Word extracts the text from a PDF and saves it as an editable .docx file. It keeps paragraphs and page breaks, but not the original layout, fonts or images, and it needs a PDF with real text (not a scan).',
     steps: ['Add a PDF that contains selectable text.', 'Click Convert to Word.', 'Download the .docx file and open it in Word, Google Docs or LibreOffice.'],
-    faq: [['Will the layout and images be kept?', 'No. This tool extracts text only. Tables, images, columns and fonts are not reproduced, so expect to reformat the document.'], ['Why do I get a "no selectable text" message?', 'The PDF is probably a scan, which contains pictures of text instead of text. Export its pages as images and run Image to Text instead.'], ['Which file format does it create?', 'A standard .docx file that opens in Microsoft Word, Google Docs, LibreOffice and Pages.']],
+    faq: [['Will the layout and images be kept?', 'No. This tool extracts text only. Tables, images, columns and fonts are not reproduced, so expect to reformat the document.'], ['Why do I get a "no selectable text" message?', 'The PDF is probably a scan, which contains pictures of text instead of text. Run it through OCR PDF first to add a text layer, then convert the searchable PDF.'], ['Which file format does it create?', 'A standard .docx file that opens in Microsoft Word, Google Docs, LibreOffice and Pages.']],
     io: ['PDF', 'DOCX']
   },
   'pdf-to-jpg': {
@@ -66,7 +73,7 @@ const tools = {
     title: 'PDF to Excel Converter, Simple Tables', meta: 'Pull simple text tables from a PDF into an Excel (.xlsx) file in your browser. Free and private. Best for clean, text-based tables.',
     answer: 'PDF to Excel reads the text on each PDF page, groups it into rows and columns, and saves it as an .xlsx workbook with one sheet per page. It works best on clean text-based tables, not on scans or complex layouts.',
     steps: ['Add a PDF that contains selectable text.', 'Click Convert to Excel.', 'Download the .xlsx file and check the columns.'],
-    faq: [['How accurate is the table detection?', 'It is a best-effort approach based on text positions. Clean tables convert well; merged cells, scans and multi-column layouts usually need manual tidying.'], ['Does it work on scanned PDFs?', 'No. Scanned PDFs have no selectable text. Use Image to Text on page images instead.'], ['How are pages arranged in the workbook?', 'Each PDF page becomes its own sheet, named Page 1, Page 2 and so on.']],
+    faq: [['How accurate is the table detection?', 'It is a best-effort approach based on text positions. Clean tables convert well; merged cells, scans and multi-column layouts usually need manual tidying.'], ['Does it work on scanned PDFs?', 'Not directly. Scanned PDFs have no selectable text. Run the scan through OCR PDF first, then convert the searchable PDF.'], ['How are pages arranged in the workbook?', 'Each PDF page becomes its own sheet, named Page 1, Page 2 and so on.']],
     io: ['PDF', 'XLSX']
   },
   'excel-to-pdf': {
@@ -92,9 +99,9 @@ const tools = {
   },
   'pdf-to-text': {
     title: 'PDF to Text Converter, Free Online', meta: 'Extract all selectable text from a PDF into a .txt file you can copy or download. Free, private, in your browser. Scans need OCR instead.',
-    answer: 'PDF to Text pulls the selectable text out of a PDF, page by page, and gives you a plain .txt file. It works on PDFs that contain real text; scanned PDFs need Image to Text (OCR) instead.',
+    answer: 'PDF to Text pulls the selectable text out of a PDF, page by page, and gives you a plain .txt file. It works on PDFs that contain real text; scanned PDFs need OCR PDF first.',
     steps: ['Add the PDF.', 'Click Extract text.', 'Copy the text from the box, or download the .txt file.'],
-    faq: [['Why is the result empty?', 'The PDF is probably a scan made of images. Export the pages as images and use the Image to Text tool.'], ['Is the original line order kept?', 'Text is read top to bottom and left to right on each page, with a blank line between pages. Columns and tables may need tidying.'], ['Can I copy the text without downloading?', 'Yes. The extracted text appears in a box with a Copy text button.']],
+    faq: [['Why is the result empty?', 'The PDF is probably a scan made of images. Run it through OCR PDF to add a text layer, then extract the text from the searchable PDF.'], ['Is the original line order kept?', 'Text is read top to bottom and left to right on each page, with a blank line between pages. Columns and tables may need tidying.'], ['Can I copy the text without downloading?', 'Yes. The extracted text appears in a box with a Copy text button.']],
     io: ['PDF', 'TXT']
   },
   'sign-pdf': {
@@ -382,9 +389,9 @@ const tools = {
 
 const cats = {
   pdf: {
-    title: 'Free PDF Tools Online', meta: 'Merge, split, compress, rotate, sign and convert PDFs in your browser. 15 free PDF tools with no sign-up, no watermark and no upload.',
+    title: 'Free PDF Tools Online', meta: 'Merge, split, compress, rotate, sign, OCR and convert PDFs in your browser. 16 free PDF tools with no sign-up, no watermark and no upload.',
     h1: 'Free PDF tools', answer: 'These PDF tools run in your browser, so your documents are never uploaded. Merge, split, rotate, compress, watermark and sign PDFs, or convert them to and from JPG, PNG, Word, Excel and PowerPoint.',
-    faq: [['Are these PDF tools really free?', 'Yes. There is no account, no watermark and no usage limit.'], ['Are my PDFs uploaded?', 'No. They are processed on your device in your browser.'], ['Can I convert a scanned PDF to Word?', 'Not directly. Scans contain pictures of text, so use PDF to JPG and then Image to Text (OCR) to get the text.']]
+    faq: [['Are these PDF tools really free?', 'Yes. There is no account, no watermark and no usage limit.'], ['Are my PDFs uploaded?', 'No. They are processed on your device in your browser.'], ['Can I convert a scanned PDF to Word?', 'Not directly. Scans contain pictures of text, so run OCR PDF first to make the PDF searchable, then convert it to Word.']]
   },
   image: {
     title: 'Free Image Tools Online', meta: 'Compress, resize, crop, convert, rotate and upscale images in your browser. 12 free image tools with no upload and no sign-up.',

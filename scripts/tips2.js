@@ -19,7 +19,7 @@ module.exports = {
     'For a short extract, use the Copy text button. For a long document, download the .txt file instead.',
     'A blank line separates each page in the result, which makes it easy to find where a page begins.',
     'Columns and tables are read line by line, so paste the result into a text editor and tidy the line breaks if the order looks odd.',
-    'If you get nothing back, the PDF is probably a scan. Export its pages with <a href="/pdf-to-jpg">PDF to JPG</a>, then use <a href="/image-to-text">Image to Text</a>.'
+    'If you get nothing back, the PDF is probably a scan. Run it through <a href="/ocr-pdf">OCR PDF</a> to add a text layer, then extract the text from the searchable PDF.'
   ],
   'sign-pdf': [
     'Draw slowly and use a larger signature box. A finger or stylus on a phone gives a smoother line than a trackpad.',
@@ -49,13 +49,20 @@ module.exports = {
     'It works best when the text lines up in clean rows and columns. Check the first sheet before you rely on the whole file.',
     'Every PDF page becomes its own sheet, so a table that runs over several pages needs to be joined by hand.',
     'If columns split in odd places, the PDF probably uses spacing rather than a real table. Widen the columns in Excel and tidy the cells.',
-    'For a scan, there is no text to read. Use <a href="/image-to-text">Image to Text</a> on the page images instead.'
+    'For a scan, there is no text to read yet. Run it through <a href="/ocr-pdf">OCR PDF</a> first, then convert the searchable PDF.'
   ],
   'excel-to-pdf': [
     'The PDF shows cell values, so a formula appears as its calculated result.',
     'Very wide sheets are scaled to the page and long cell text is shortened. For a wide report, exporting from Excel itself gives a better layout.',
     'CSV and ODS files work as well as .xlsx and .xls, so you can print a CSV export without opening Excel.',
     'Only Latin characters are supported, so sheets in other scripts will show question marks.'
+  ],
+
+  'ocr-pdf': [
+    'Use the clearest scan you have. Sharp, straight, high-contrast pages read best, and a photo taken at an angle reads worse than a flat scan.',
+    'On a long document, type the pages you need in the Pages box. Pages that already contain text are left as they are.',
+    'Your pages are not re-compressed. The original images stay exactly as they are and the text is added underneath, so the file only grows a little.',
+    'Once the PDF is searchable, use it with <a href="/pdf-to-text">PDF to Text</a>, <a href="/pdf-to-word">PDF to Word</a> or <a href="/pdf-to-excel">PDF to Excel</a>, and check names and numbers by eye.'
   ],
 
   /* ---------------- IMAGE ---------------- */

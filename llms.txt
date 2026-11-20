@@ -6,13 +6,14 @@
 - Price: free, no account needed
 - Privacy: files are processed locally in the browser and are never uploaded to a server
 - Popular tool: image compressor for JPG, PNG and WebP at https://www.tinywownow.com/compress-image
-- Number of tools: 52
+- Number of tools: 53
 - Contact: tinywownow@gmail.com
 
 ## PDF Tools
 - [Merge PDF](https://www.tinywownow.com/merge-pdf): Combine multiple PDF files into one
 - [Split PDF](https://www.tinywownow.com/split-pdf): Split a PDF into separate pages
 - [Compress PDF](https://www.tinywownow.com/compress-pdf): Shrink scanned or image-heavy PDFs
+- [OCR PDF](https://www.tinywownow.com/ocr-pdf): Make scanned PDFs searchable and copyable
 - [PDF to Word](https://www.tinywownow.com/pdf-to-word): Extract PDF text into an editable Word file
 - [PDF to JPG](https://www.tinywownow.com/pdf-to-jpg): Convert each PDF page to a JPG image
 - [JPG to PDF](https://www.tinywownow.com/jpg-to-pdf): Convert JPG images into a PDF file

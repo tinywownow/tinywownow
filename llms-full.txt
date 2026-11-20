@@ -62,6 +62,32 @@ A: No. Pages are saved as images to reduce size, so text can no longer be select
 
 ---
 
+## OCR PDF
+URL: https://www.tinywownow.com/ocr-pdf
+OCR PDF reads the text in a scanned PDF and adds it as an invisible layer on top of your original pages, so the PDF becomes searchable and its text can be selected and copied. It runs in your browser, so the file is not uploaded, and you also get the text as a .txt file.
+
+How to use:
+1. Add a scanned PDF.
+2. Choose the language of the text and, if you like, the pages to read, such as 1-3, 5.
+3. Click Make PDF searchable, then download the searchable PDF and the text file.
+
+Q: What is the difference between OCR PDF and Image to Text?
+A: Image to Text reads one picture and gives you plain text. OCR PDF works on a whole PDF, keeps your original pages exactly as they look, and adds the text underneath so the PDF itself becomes searchable.
+
+Q: Does it change how my PDF looks?
+A: No. The original pages are kept as they are, and the recognised text is added as an invisible layer. The pages look the same, but you can now search and copy text.
+
+Q: Which languages work?
+A: English, Spanish, French and German give a searchable PDF and a text file. Urdu, Hindi and Arabic give the text file only, because the searchable layer needs a Latin-script font.
+
+Q: What if some pages already have text?
+A: Those pages are detected and left as they are, so nothing is read twice.
+
+Q: How accurate is it?
+A: It depends on the scan. Sharp, straight, high-contrast pages read well. Skewed, faint or handwritten pages read poorly, so check names and numbers by eye.
+
+---
+
 ## PDF to Word
 URL: https://www.tinywownow.com/pdf-to-word
 PDF to Word extracts the text from a PDF and saves it as an editable .docx file. It keeps paragraphs and page breaks, but not the original layout, fonts or images, and it needs a PDF with real text (not a scan).
@@ -75,7 +101,7 @@ Q: Will the layout and images be kept?
 A: No. This tool extracts text only. Tables, images, columns and fonts are not reproduced, so expect to reformat the document.
 
 Q: Why do I get a "no selectable text" message?
-A: The PDF is probably a scan, which contains pictures of text instead of text. Export its pages as images and run Image to Text instead.
+A: The PDF is probably a scan, which contains pictures of text instead of text. Run it through OCR PDF first to add a text layer, then convert the searchable PDF.
 
 Q: Which file format does it create?
 A: A standard .docx file that opens in Microsoft Word, Google Docs, LibreOffice and Pages.
@@ -175,7 +201,7 @@ Q: How accurate is the table detection?
 A: It is a best-effort approach based on text positions. Clean tables convert well; merged cells, scans and multi-column layouts usually need manual tidying.
 
 Q: Does it work on scanned PDFs?
-A: No. Scanned PDFs have no selectable text. Use Image to Text on page images instead.
+A: Not directly. Scanned PDFs have no selectable text. Run the scan through OCR PDF first, then convert the searchable PDF.
 
 Q: How are pages arranged in the workbook?
 A: Each PDF page becomes its own sheet, named Page 1, Page 2 and so on.
@@ -244,7 +270,7 @@ A: Not yet. This tool adds text watermarks only.
 
 ## PDF to Text
 URL: https://www.tinywownow.com/pdf-to-text
-PDF to Text pulls the selectable text out of a PDF, page by page, and gives you a plain .txt file. It works on PDFs that contain real text; scanned PDFs need Image to Text (OCR) instead.
+PDF to Text pulls the selectable text out of a PDF, page by page, and gives you a plain .txt file. It works on PDFs that contain real text; scanned PDFs need OCR PDF first.
 
 How to use:
 1. Add the PDF.
@@ -252,7 +278,7 @@ How to use:
 3. Copy the text from the box, or download the .txt file.
 
 Q: Why is the result empty?
-A: The PDF is probably a scan made of images. Export the pages as images and use the Image to Text tool.
+A: The PDF is probably a scan made of images. Run it through OCR PDF to add a text layer, then extract the text from the searchable PDF.
 
 Q: Is the original line order kept?
 A: Text is read top to bottom and left to right on each page, with a blank line between pages. Columns and tables may need tidying.
