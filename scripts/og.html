@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&display=swap">
+<style>
+*{box-sizing:border-box;margin:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{font-family:'DM Sans',system-ui,sans-serif;color:#1a1a1a;background:#f7f5ef;position:relative}
+.glow{position:absolute;inset:0;background:radial-gradient(55% 70% at 88% 12%,rgba(156,175,136,.55),transparent 70%),radial-gradient(40% 50% at 0% 100%,rgba(232,65,44,.12),transparent 70%)}
+.wrap{position:relative;padding:64px 72px;height:100%;display:flex;flex-direction:column;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:16px;font-weight:800;font-size:40px;letter-spacing:-1px}
+.brand em{font-style:normal;color:#E8412C}
+h1{font-size:92px;line-height:1;letter-spacing:-4px;font-weight:800;max-width:760px}
+h1 span{background:linear-gradient(transparent 62%,rgba(156,175,136,.75) 62%)}
+p{font-size:32px;color:#68635a;margin-top:22px;max-width:780px;line-height:1.35}
+.pills{display:flex;gap:14px}
+.pills i{font-style:normal;font-weight:700;font-size:24px;padding:10px 22px;border-radius:40px;background:#fff;border:2px solid #c5d4bb;color:#5a7047}
+.card{position:absolute;right:72px;top:196px;width:330px;background:#fff;border-radius:34px;padding:26px;box-shadow:0 40px 80px -28px rgba(90,112,71,.5),0 12px 32px rgba(0,0,0,.08);border:2px solid #ddd9cf}
+.dz{border:3px dashed #c5d4bb;border-radius:24px;background:linear-gradient(#eef3eb,#fff);padding:34px 16px;text-align:center}
+.dz b{display:block;font-size:26px;margin-bottom:14px}
+.dz span{display:inline-block;background:#E8412C;color:#fff;font-weight:700;font-size:22px;padding:12px 28px;border-radius:40px}
+.chip{position:absolute;right:60px;top:116px;z-index:2;background:#fff;border:2px solid #ddd9cf;border-radius:20px;padding:12px 20px;font-weight:700;font-size:24px;box-shadow:0 14px 30px rgba(0,0,0,.12);transform:rotate(3deg)}
+.chip s{color:#9a9288;font-weight:500}.chip em{font-style:normal;color:#E8412C}
+</style></head><body>
+<div class="glow"></div>
+<div class="wrap">
+  <div class="brand"><svg width="64" height="64" viewBox="0 0 40 40" fill="none"><path d="M10.5 4H23.5L33 13.5V32.5A3.5 3.5 0 0 1 29.5 36H10.5A3.5 3.5 0 0 1 7 32.5V7.5A3.5 3.5 0 0 1 10.5 4Z" fill="#7a9165"/><path d="M23.5 4V13.5H33Z" fill="#5a7047"/><path d="M20 17.5l2.1 5.4 5.4 2.1-5.4 2.1L20 32.5l-2.1-5.4-5.4-2.1 5.4-2.1z" fill="#fff"/></svg><span>TinyWow <em>Now</em></span></div>
+  <div><h1>Compress <span>images</span> online, free</h1><p>Plus PDF, video, file and text tools. Private, in your browser.</p></div>
+  <div class="pills"><i>No upload</i><i>No sign-up</i><i>No watermark</i></div>
+</div>
+<div class="chip"><s>2.4 MB</s> &rarr; <em>380 KB</em></div>
+<div class="card"><div class="dz"><b>Drop images here</b><span>Choose images</span></div></div>
+</body></html>

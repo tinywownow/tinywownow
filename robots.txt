@@ -1,0 +1,47 @@
+# TinyWow Now - everything public is welcome to be crawled, indexed and cited.
+User-agent: *
+Allow: /
+Disallow: /vendor/
+
+# Search and AI-answer crawlers: allowed so the site can appear and be cited in search and AI answers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Model-training crawlers are also allowed. To opt out, change Allow to Disallow for these.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://tinywownow.vercel.app/sitemap.xml

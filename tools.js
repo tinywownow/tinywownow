@@ -787,10 +787,10 @@ TOOLS['crop-image'] = {
 
 /* ---------- video tools (ffmpeg.wasm, runs locally) ---------- */
 const FF_FILES = {
-  lib: ['vendor/ffmpeg/ffmpeg.js', 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js', 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js'],
-  worker: ['vendor/ffmpeg/814.ffmpeg.js', 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/814.ffmpeg.js', 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/814.ffmpeg.js'],
-  core: ['vendor/ffmpeg/ffmpeg-core.js', 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js', 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js'],
-  wasm: ['vendor/ffmpeg/ffmpeg-core.wasm', 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm', 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm']
+  lib: ['/vendor/ffmpeg/ffmpeg.js', 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js', 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js'],
+  worker: ['/vendor/ffmpeg/814.ffmpeg.js', 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/814.ffmpeg.js', 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/814.ffmpeg.js'],
+  core: ['/vendor/ffmpeg/ffmpeg-core.js', 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js', 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js'],
+  wasm: ['/vendor/ffmpeg/ffmpeg-core.wasm', 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm', 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm']
 };
 let ffInst = null;
 /* Downloads a file with progress and a stall timeout, returning a blob: URL. */
