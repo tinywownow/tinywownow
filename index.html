@@ -448,7 +448,7 @@ input[type=range]{width:100%;accent-color:var(--sage)}
     <div class="nav-drop"><button class="nav-btn" onclick="nav('cat-image')">Image <span class="chev">▾</span></button><div class="drop-menu" id="drop-image"></div></div>
     <div class="nav-drop"><button class="nav-btn" onclick="nav('cat-video')">Video <span class="chev">▾</span></button><div class="drop-menu" id="drop-video"></div></div>
     <div class="nav-drop"><button class="nav-btn" onclick="nav('cat-file')">File <span class="chev">▾</span></button><div class="drop-menu" id="drop-file"></div></div>
-    <div class="nav-drop"><button class="nav-btn" onclick="nav('cat-write')">AI Write <span class="chev">▾</span></button><div class="drop-menu" id="drop-write"></div></div>
+    <div class="nav-drop"><button class="nav-btn" onclick="nav('cat-write')">Text <span class="chev">▾</span></button><div class="drop-menu" id="drop-write"></div></div>
     <button class="nav-btn" onclick="nav('all-tools')">All Tools</button>
   </div>
   <div class="nav-actions">
@@ -491,7 +491,7 @@ input[type=range]{width:100%;accent-color:var(--sage)}
     <div>
       <div class="fcol-t">Image Tools</div>
       <div class="flinks">
-        <span class="flink" onclick="nav('tool-remove-bg')">Remove Background</span>
+        <span class="flink" onclick="nav('tool-crop-image')">Crop Image</span>
         <span class="flink" onclick="nav('tool-resize-image')">Resize Image</span>
         <span class="flink" onclick="nav('tool-compress-image')">Compress Image</span>
         <span class="flink" onclick="nav('tool-image-to-jpg')">Convert to JPG</span>
@@ -499,23 +499,20 @@ input[type=range]{width:100%;accent-color:var(--sage)}
       </div>
     </div>
     <div>
-      <div class="fcol-t">Video & File</div>
+      <div class="fcol-t">File Tools</div>
       <div class="flinks">
-        <span class="flink" onclick="nav('tool-compress-video')">Compress Video</span>
-        <span class="flink" onclick="nav('tool-trim-video')">Trim Video</span>
+        <span class="flink" onclick="nav('tool-compress-files')">Compress Files</span>
+        <span class="flink" onclick="nav('tool-extract-zip')">Extract ZIP</span>
         <span class="flink" onclick="nav('tool-json-formatter')">JSON Formatter</span>
         <span class="flink" onclick="nav('tool-base64-encode')">Base64 Encoder</span>
         <span class="flink" onclick="nav('tool-url-encode')">URL Encoder</span>
       </div>
     </div>
     <div>
-      <div class="fcol-t">AI Write</div>
+      <div class="fcol-t">Text Tools</div>
       <div class="flinks">
-        <span class="flink" onclick="nav('tool-ai-essay')">Essay Writer</span>
         <span class="flink" onclick="nav('tool-word-counter')">Word Counter</span>
         <span class="flink" onclick="nav('tool-case-converter')">Case Converter</span>
-        <span class="flink" onclick="nav('tool-paraphraser')">Paraphraser</span>
-        <span class="flink" onclick="nav('tool-grammar-check')">Grammar Check</span>
       </div>
     </div>
   </div>
@@ -527,6 +524,7 @@ input[type=range]{width:100%;accent-color:var(--sage)}
 </footer>
 <div id="toast"><span id="t-ico">✅</span> <span id="toastMsg">Done!</span></div>
 
+<script src="tools.js"></script>
 <script>
 (function(){
 'use strict';
@@ -535,28 +533,28 @@ const CATS={
   image:{id:'image',name:'Image Tools',ico:'🖼️',cls:'cc-image',ic:'tci-image',col:['#7a9165','#eef3eb'],desc:'Resize, compress, convert and edit images in seconds'},
   video:{id:'video',name:'Video Tools',ico:'🎬',cls:'cc-video',ic:'tci-video',col:['#7c5cbf','#f0ecf9'],desc:'Compress, trim, convert and edit video files easily'},
   file:{id:'file',name:'File Tools',ico:'📁',cls:'cc-file',ic:'tci-file',col:['#2a7abf','#e8f1fb'],desc:'Format, convert and manage files of all types'},
-  write:{id:'write',name:'AI Write',ico:'✍️',cls:'cc-write',ic:'tci-write',col:['#c97a0a','#fef4e0'],desc:'AI-powered writing, editing and text transformation'}
+  write:{id:'write',name:'Text Tools',ico:'✍️',cls:'cc-write',ic:'tci-write',col:['#c97a0a','#fef4e0'],desc:'Count, convert and transform text instantly'}
 };
-const T=[
+const ALL_T=[
   {id:'merge-pdf',c:'pdf',n:'Merge PDF',d:'Combine multiple PDF files into one',i:'📄'},
   {id:'split-pdf',c:'pdf',n:'Split PDF',d:'Split a PDF into separate pages',i:'✂️'},
-  {id:'compress-pdf',c:'pdf',n:'Compress PDF',d:'Reduce PDF file size without quality loss',i:'🗜️'},
-  {id:'pdf-to-word',c:'pdf',n:'PDF to Word',d:'Convert PDF to editable Word document',i:'📝'},
+  {id:'compress-pdf',c:'pdf',n:'Compress PDF',d:'Shrink scanned or image-heavy PDFs',i:'🗜️'},
+  {id:'pdf-to-word',c:'pdf',n:'PDF to Word',d:'Extract PDF text into an editable Word file',i:'📝'},
   {id:'pdf-to-jpg',c:'pdf',n:'PDF to JPG',d:'Convert each PDF page to JPG image',i:'🖼️'},
   {id:'jpg-to-pdf',c:'pdf',n:'JPG to PDF',d:'Convert JPG images into a PDF file',i:'📄',new:1},
-  {id:'word-to-pdf',c:'pdf',n:'Word to PDF',d:'Convert Word documents to PDF format',i:'📄'},
+  {id:'word-to-pdf',c:'pdf',n:'Word to PDF',d:'Turn the text of a Word file into a PDF',i:'📄'},
   {id:'pdf-to-png',c:'pdf',n:'PDF to PNG',d:'Convert PDF pages to PNG images',i:'🖼️'},
-  {id:'pdf-to-excel',c:'pdf',n:'PDF to Excel',d:'Extract tables from PDF to Excel',i:'📊'},
+  {id:'pdf-to-excel',c:'pdf',n:'PDF to Excel',d:'Pull simple tables from PDF into Excel',i:'📊'},
   {id:'excel-to-pdf',c:'pdf',n:'Excel to PDF',d:'Convert Excel spreadsheets to PDF',i:'📄'},
   {id:'rotate-pdf',c:'pdf',n:'Rotate PDF',d:'Rotate PDF pages to any angle',i:'🔄'},
   {id:'unlock-pdf',c:'pdf',n:'Unlock PDF',d:'Remove password protection from PDF',i:'🔓'},
   {id:'lock-pdf',c:'pdf',n:'Lock PDF',d:'Add password protection to your PDF',i:'🔒'},
   {id:'watermark-pdf',c:'pdf',n:'Watermark PDF',d:'Add custom watermark text to PDF',i:'💧'},
   {id:'pdf-to-text',c:'pdf',n:'PDF to Text',d:'Extract all text content from PDF',i:'📝'},
-  {id:'sign-pdf',c:'pdf',n:'Sign PDF',d:'Add your digital signature to any PDF',i:'✍️'},
+  {id:'sign-pdf',c:'pdf',n:'Sign PDF',d:'Draw your signature and place it on a PDF',i:'✍️'},
   {id:'ocr-pdf',c:'pdf',n:'OCR PDF',d:'Make scanned PDFs searchable with OCR',i:'🔍'},
   {id:'ppt-to-pdf',c:'pdf',n:'PPT to PDF',d:'Convert PowerPoint presentations to PDF',i:'📊'},
-  {id:'pdf-to-ppt',c:'pdf',n:'PDF to PPT',d:'Convert PDF files back to PowerPoint',i:'📊'},
+  {id:'pdf-to-ppt',c:'pdf',n:'PDF to PPT',d:'Turn PDF pages into PowerPoint slides',i:'📊'},
   {id:'edit-pdf',c:'pdf',n:'Edit PDF',d:'Edit text and images directly in PDF',i:'✏️',new:1},
   {id:'remove-bg',c:'image',n:'Remove Background',d:'Remove image background instantly with AI',i:'🖼️',new:1},
   {id:'resize-image',c:'image',n:'Resize Image',d:'Resize images to exact pixel dimensions',i:'↔️',fn:1},
@@ -568,7 +566,7 @@ const T=[
   {id:'rotate-image',c:'image',n:'Rotate & Flip',d:'Rotate or mirror your images freely',i:'🔄',fn:1},
   {id:'grayscale-image',c:'image',n:'Grayscale',d:'Convert colour images to black and white',i:'⬜',fn:1},
   {id:'watermark-image',c:'image',n:'Watermark Image',d:'Add custom text watermark to images',i:'💧',fn:1},
-  {id:'upscale-image',c:'image',n:'Upscale Image',d:'Enhance image resolution using AI',i:'📈',new:1},
+  {id:'upscale-image',c:'image',n:'Upscale Image',d:'Enlarge images 2-4x with smart sharpening',i:'📈',new:1},
   {id:'image-to-text',c:'image',n:'Image to Text',d:'Extract text from images and screenshots',i:'📝'},
   {id:'photo-filter',c:'image',n:'Photo Filters',d:'Apply beautiful filters to your photos',i:'🎨',fn:1},
   {id:'compress-video',c:'video',n:'Compress Video',d:'Reduce video file size for sharing',i:'🗜️'},
@@ -593,7 +591,7 @@ const T=[
   {id:'url-encode',c:'file',n:'URL Encoder',d:'Encode and decode URL strings',i:'🔗',fn:1},
   {id:'hash-gen',c:'file',n:'Hash Generator',d:'Generate SHA-256 and other hashes',i:'#️⃣',fn:1},
   {id:'xml-formatter',c:'file',n:'XML Formatter',d:'Format and validate XML documents',i:'📋',fn:1},
-  {id:'doc-to-pdf',c:'file',n:'DOC to PDF',d:'Convert Word documents to PDF format',i:'📄'},
+  {id:'doc-to-pdf',c:'file',n:'DOC to PDF',d:'Turn the text of a Word file into a PDF',i:'📄'},
   {id:'xls-converter',c:'file',n:'XLS Converter',d:'Convert Excel files to various formats',i:'📊'},
   {id:'ai-essay',c:'write',n:'AI Essay Writer',d:'Generate full essays on any topic with AI',i:'📝',new:1},
   {id:'ai-paragraph',c:'write',n:'Paragraph Writer',d:'Write compelling paragraphs instantly',i:'📝'},
@@ -611,7 +609,10 @@ const T=[
   {id:'case-converter',c:'write',n:'Case Converter',d:'Convert text to any case format instantly',i:'Aa',fn:1},
   {id:'text-reverser',c:'write',n:'Text Reverser',d:'Reverse text, words or lines easily',i:'↩️',fn:1}
 ];
-const POP=['merge-pdf','compress-image','word-counter','remove-bg','compress-pdf','resize-image','json-formatter','pdf-to-word','case-converter','compress-video','base64-encode','image-to-jpg','text-reverser','jpg-to-pdf','trim-video','rotate-image'];
+ALL_T.forEach(t=>{if(window.TWN&&TWN.has(t.id))t.fn=1});
+const T=ALL_T.filter(t=>t.fn);
+Object.keys(CATS).forEach(c=>{if(!T.some(t=>t.c===c))delete CATS[c]});
+const POP=['compress-image','merge-pdf','jpg-to-pdf','word-counter','resize-image','json-formatter','compress-pdf','pdf-to-jpg','case-converter','image-to-text','split-pdf','base64-encode','crop-image','extract-zip','image-to-jpg','sign-pdf'];
 const ROT=['PDFs','Images','Videos','Files','Writing','Everything'];
 let rotIdx=0,rotTimer=null;
 
@@ -687,6 +688,7 @@ function tcHtml(t,showCat){
 }
 
 function buildDrops(){
+  ['pdf','image','video','file','write'].forEach(c=>{if(!CATS[c]){const e=document.getElementById('drop-'+c);if(e&&e.closest('.nav-drop'))e.closest('.nav-drop').style.display='none'}});
   Object.keys(CATS).forEach(cid=>{
     const el=document.getElementById('drop-'+cid);
     if(!el)return;
@@ -905,7 +907,8 @@ function renderTool(tid){
   </div>`;
 
   const ui=document.getElementById('toolUI');
-  if(t.fn){
+  if(window.TWN&&TWN.has(t.id))TWN.render(ui,t);
+  else if(t.fn){
     if(t.id==='word-counter')rWC(ui);
     else if(t.id==='case-converter')rCC(ui);
     else if(t.id==='text-reverser')rTR(ui);
@@ -1093,7 +1096,7 @@ function rImgTool(ui,t){
     let w=curImg.width,h=curImg.height;
     if(t.id==='resize-image'){w=parseInt(document.getElementById('rw').value)||w;h=parseInt(document.getElementById('rh').value)||h}
     else if(t.id==='rotate-image'){const a=parseInt(document.getElementById('rotA').value);if(Math.abs(a)===90)[w,h]=[h,w]}
-    canvas.width=w;canvas.height=h;ctx.clearRect(0,0,w,h);
+    canvas.width=w;canvas.height=h;ctx.clearRect(0,0,w,h);if(fmt==='jpeg'){ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h)}
     if(t.id==='grayscale-image'){ctx.drawImage(curImg,0,0,w,h);const d=ctx.getImageData(0,0,w,h);for(let i=0;i<d.data.length;i+=4){const g=d.data[i]*.299+d.data[i+1]*.587+d.data[i+2]*.114;d.data[i]=d.data[i+1]=d.data[i+2]=g}ctx.putImageData(d,0,0)}
     else if(t.id==='rotate-image'){const a=parseInt(document.getElementById('rotA').value)*Math.PI/180,fl=document.getElementById('flipD').value;ctx.save();ctx.translate(w/2,h/2);ctx.rotate(a);if(fl==='h')ctx.scale(-1,1);if(fl==='v')ctx.scale(1,-1);ctx.drawImage(curImg,-curImg.width/2,-curImg.height/2);ctx.restore()}
     else if(t.id==='watermark-image'){ctx.drawImage(curImg,0,0,w,h);ctx.save();ctx.font=`bold ${Math.max(20,w/15)}px sans-serif`;ctx.fillStyle='rgba(255,255,255,.45)';ctx.textAlign='center';ctx.translate(w/2,h/2);ctx.rotate(-Math.PI/6);ctx.fillText('TinyWow Now',0,0);ctx.restore()}
@@ -1164,7 +1167,19 @@ function rXML(ui){
 function rCSV(ui){
   ui.innerHTML=`<div class="txt-tool"><div><label class="ta-lbl">CSV Input</label><textarea class="ta" id="cI" placeholder="name,age,city&#10;Alice,30,NYC" oninput="csvGo()"></textarea></div><div><label class="ta-lbl">JSON Output</label><div class="code-out" id="cO">Output here…</div></div></div>
   <button class="act-btn" style="max-width:280px" onclick="navigator.clipboard.writeText(document.getElementById('cO').textContent).then(()=>showToast('Copied!','success'))">Copy JSON</button>`;
-  window.csvGo=function(){const v=document.getElementById('cI').value.trim();if(!v){document.getElementById('cO').textContent='';return}const lines=v.split('\n'),headers=lines[0].split(',').map(h=>h.trim()),data=lines.slice(1).map(l=>{const vals=l.split(','),o={};headers.forEach((h,i)=>o[h]=vals[i]?.trim()||'');return o});document.getElementById('cO').textContent=JSON.stringify(data,null,2)};
+  window.csvGo=function(){const v=document.getElementById('cI').value.replace(/^\uFEFF/,'').trim();if(!v){document.getElementById('cO').textContent='';return}
+const first=v.split('\n')[0],cnt=c=>(first.match(new RegExp(c==='\t'?'\t':'\\'+c,'g'))||[]).length;
+const d=cnt('\t')>cnt(',')?'\t':cnt(';')>cnt(',')?';':',';
+const rows=[];let row=[],cur='',q=false;
+for(let i=0;i<v.length;i++){const ch=v[i];
+if(q){if(ch==='"'){if(v[i+1]==='"'){cur+='"';i++}else q=false}else cur+=ch}
+else if(ch==='"')q=true;
+else if(ch===d){row.push(cur);cur=''}
+else if(ch==='\n'||ch==='\r'){if(ch==='\r'&&v[i+1]==='\n')i++;row.push(cur);rows.push(row);row=[];cur=''}
+else cur+=ch}
+row.push(cur);rows.push(row);
+const headers=rows[0].map(h=>h.trim()),data=rows.slice(1).filter(r=>r.some(c=>c.trim()!=='')).map(r=>{const o={};headers.forEach((h,i)=>o[h]=(r[i]||'').trim());return o});
+document.getElementById('cO').textContent=JSON.stringify(data,null,2)};
 }
 
 window.showToast=function(msg,type='success'){
