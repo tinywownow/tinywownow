@@ -5,7 +5,7 @@
 ## Key facts
 - Price: free, no account needed
 - Privacy: files are processed locally in the browser and are never uploaded to a server
-- Main tool: image compressor for JPG, PNG and WebP at https://www.tinywownow.com/
+- Popular tool: image compressor for JPG, PNG and WebP at https://www.tinywownow.com/compress-image
 - Number of tools: 52
 - Contact: tinywownow@gmail.com
 
@@ -33,8 +33,8 @@
 - [Convert to PNG](https://www.tinywownow.com/convert-to-png): Convert any image format to PNG
 - [Convert to WebP](https://www.tinywownow.com/convert-to-webp): Convert images to modern WebP format
 - [Crop Image](https://www.tinywownow.com/crop-image): Crop images to any size or aspect ratio
-- [Rotate & Flip](https://www.tinywownow.com/rotate-flip-image): Rotate or mirror your images freely
-- [Grayscale](https://www.tinywownow.com/grayscale-image): Convert colour images to black and white
+- [Rotate and Flip Image](https://www.tinywownow.com/rotate-flip-image): Rotate or mirror your images freely
+- [Grayscale Image](https://www.tinywownow.com/grayscale-image): Convert colour images to black and white
 - [Watermark Image](https://www.tinywownow.com/watermark-image): Add custom text watermark to images
 - [Upscale Image](https://www.tinywownow.com/upscale-image): Enlarge images 2-4x with smart sharpening
 - [Image to Text](https://www.tinywownow.com/image-to-text): Extract text from images and screenshots
@@ -45,23 +45,23 @@
 - [Trim Video](https://www.tinywownow.com/trim-video): Cut and trim videos to any length
 - [Convert Video](https://www.tinywownow.com/convert-video): Convert between MP4, WebM, MOV, MKV and AVI
 - [Merge Videos](https://www.tinywownow.com/merge-videos): Join multiple video clips into one
-- [Extract Audio](https://www.tinywownow.com/extract-audio-from-video): Extract the audio track from any video
-- [Mute Video](https://www.tinywownow.com/remove-audio-from-video): Remove all audio from your video
+- [Extract Audio from Video](https://www.tinywownow.com/extract-audio-from-video): Extract the audio track from any video
+- [Remove Audio from Video](https://www.tinywownow.com/remove-audio-from-video): Remove all audio from your video
 - [Video to GIF](https://www.tinywownow.com/video-to-gif): Convert video clips to animated GIFs
 - [GIF to Video](https://www.tinywownow.com/gif-to-video): Convert animated GIF to MP4 video
 - [Rotate Video](https://www.tinywownow.com/rotate-video): Rotate video orientation freely
 - [Resize Video](https://www.tinywownow.com/resize-video): Change video resolution and dimensions
-- [Video Speed](https://www.tinywownow.com/change-video-speed): Speed up or slow down any video clip
+- [Change Video Speed](https://www.tinywownow.com/change-video-speed): Speed up or slow down any video clip
 - [Add Subtitles](https://www.tinywownow.com/add-subtitles): Add a subtitle track from an SRT or VTT file
 - [Flip Video](https://www.tinywownow.com/flip-video): Mirror or flip your video
 
 ## File Tools
-- [Compress Files](https://www.tinywownow.com/zip-files): Create a ZIP archive from multiple files
+- [Zip Files](https://www.tinywownow.com/zip-files): Create a ZIP archive from multiple files
 - [Extract ZIP](https://www.tinywownow.com/extract-zip): Extract files from ZIP archives
 - [JSON Formatter](https://www.tinywownow.com/json-formatter): Format, validate and beautify JSON
 - [CSV to JSON](https://www.tinywownow.com/csv-to-json): Convert CSV data to JSON format
-- [Base64 Encoder](https://www.tinywownow.com/base64-encoder-decoder): Encode and decode Base64 strings
-- [URL Encoder](https://www.tinywownow.com/url-encoder-decoder): Encode and decode URL strings
+- [Base64 Encoder and Decoder](https://www.tinywownow.com/base64-encoder-decoder): Encode and decode Base64 strings
+- [URL Encoder and Decoder](https://www.tinywownow.com/url-encoder-decoder): Encode and decode URL strings
 - [Hash Generator](https://www.tinywownow.com/hash-generator): Generate SHA-256, SHA-1 and SHA-512 hashes
 - [XML Formatter](https://www.tinywownow.com/xml-formatter): Format and validate XML documents
 - [XLS Converter](https://www.tinywownow.com/xls-converter): Convert Excel files to XLSX, XLS, CSV, ODS or HTML

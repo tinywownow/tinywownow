@@ -157,15 +157,15 @@ const tools = {
   },
   'rotate-image': {
     title: 'Rotate and Flip Image Online, Free', meta: 'Rotate images by 90 or 180 degrees and flip them horizontally or vertically in your browser. Free, private, no sign-up.',
-    answer: 'Rotate & Flip turns a picture 90 degrees left or right, 180 degrees, and optionally mirrors it horizontally or vertically. It runs in your browser and saves the result as a JPG.',
-    steps: ['Add an image.', 'Choose the rotation and, if needed, a flip direction.', 'Click Rotate & Flip and download the result.'],
+    answer: 'Rotate and Flip Image turns a picture 90 degrees left or right, 180 degrees, and optionally mirrors it horizontally or vertically. It runs in your browser and saves the result as a JPG.',
+    steps: ['Add an image.', 'Choose the rotation and, if needed, a flip direction.', 'Click Rotate and Flip Image and download the result.'],
     faq: [['Can I flip without rotating?', 'Choose a flip direction and rotate by 180 or 90 degrees as needed; combining them covers every orientation.'], ['Is quality lost?', 'The file is re-saved as a high-quality JPG, so there is a very small loss.'], ['Can I rotate by any angle?', 'Not yet. You can rotate by 90 degrees left, 90 degrees right or 180 degrees.']],
     io: ['JPG, PNG, WebP, GIF, BMP', 'JPG']
   },
   'grayscale-image': {
     title: 'Convert Image to Grayscale Online', meta: 'Turn colour photos into black and white in your browser. Free, private, no sign-up, no watermark.',
-    answer: 'Grayscale converts a colour image to black and white using standard luminance weights. It runs in your browser and saves the result as a JPG.',
-    steps: ['Add a colour image.', 'Click Grayscale.', 'Download the black and white image.'],
+    answer: 'Grayscale Image converts a colour image to black and white using standard luminance weights. It runs in your browser and saves the result as a JPG.',
+    steps: ['Add a colour image.', 'Click Grayscale Image.', 'Download the black and white image.'],
     faq: [['How is the grey level calculated?', 'Each pixel uses the common luminance formula (29.9 percent red, 58.7 percent green and 11.4 percent blue), which matches how the eye sees brightness.'], ['Can I get the colours back?', 'No. Keep your original image if you may need the colour version.'], ['What format is the result?', 'A high-quality JPG.']],
     io: ['JPG, PNG, WebP, GIF, BMP', 'JPG']
   },
@@ -229,7 +229,7 @@ const tools = {
   },
   'extract-audio': {
     title: 'Extract Audio from Video, MP3 M4A WAV', meta: 'Pull the audio track out of any video as MP3, M4A or WAV in your browser. Free, private, no upload, no sign-up.',
-    answer: 'Extract Audio saves the sound of a video as an MP3, M4A (AAC) or WAV file. It runs in your browser, so the video is not uploaded.',
+    answer: 'Extract Audio from Video saves the sound of a video as an MP3, M4A (AAC) or WAV file. It runs in your browser, so the video is not uploaded.',
     steps: ['Add a video that has sound.', 'Choose MP3, M4A or WAV.', 'Click Extract audio and download the file.'],
     faq: [['Which audio format should I choose?', 'MP3 is the most compatible. M4A gives good quality in smaller files. WAV is uncompressed and large.'], ['What if the video has no audio?', 'The tool tells you that the video has no audio track.'], ['Is the audio quality reduced?', 'MP3 is saved at high quality (VBR level 2). Choose WAV for no compression.']],
     io: ['MP4, MOV, MKV, WebM, AVI', 'MP3, M4A, WAV']
@@ -271,7 +271,7 @@ const tools = {
   },
   'video-speed': {
     title: 'Change Video Speed Online, Free', meta: 'Speed up or slow down a video from 0.5x to 4x with audio kept in sync, in your browser. Free, private, no upload.',
-    answer: 'Video Speed makes a video play faster (1.5x, 2x, 3x, 4x) or slower (0.75x, 0.5x), and changes the audio speed to match. It runs in your browser and saves an MP4.',
+    answer: 'Change Video Speed makes a video play faster (1.5x, 2x, 3x, 4x) or slower (0.75x, 0.5x), and changes the audio speed to match. It runs in your browser and saves an MP4.',
     steps: ['Add a video.', 'Choose a speed.', 'Click Change speed and download the MP4.'],
     faq: [['Does the audio pitch change?', 'No. The audio speed is adjusted without changing its pitch.'], ['What are the speed options?', '0.5x, 0.75x, 1.5x, 2x, 3x and 4x.'], ['What if my video has no audio?', 'Only the picture is processed, and the result has no sound.']],
     io: ['MP4, MOV, MKV, WebM, AVI', 'MP4']
@@ -294,7 +294,7 @@ const tools = {
   /* ---------------- FILE ---------------- */
   'compress-files': {
     title: 'Create ZIP File Online, Free', meta: 'Put several files into one ZIP archive in your browser. Choose compression level. Free, private, no upload, no sign-up.',
-    answer: 'Compress Files packs any number of files into a single ZIP archive. You can choose normal, maximum or no compression. The ZIP is created in your browser, so your files are not uploaded.',
+    answer: 'Zip Files packs any number of files into a single ZIP archive. You can choose normal, maximum or no compression. The ZIP is created in your browser, so your files are not uploaded.',
     steps: ['Add the files you want to include.', 'Choose a compression level.', 'Click Create ZIP and download archive.zip.'],
     faq: [['Can I zip any kind of file?', 'Yes, any file type. Folders are not supported; add the files directly.'], ['Can I add a password?', 'No. This tool does not encrypt ZIP files.'], ['Which compression level should I use?', 'Normal suits most files. Maximum makes slightly smaller files but is slower. None only bundles the files.']],
     io: ['Any files', 'ZIP']
@@ -322,14 +322,14 @@ const tools = {
   },
   'base64-encode': {
     title: 'Base64 Encode and Decode Online', meta: 'Encode text to Base64 or decode Base64 back to text, with UTF-8 support. Free, private, instant, in your browser.',
-    answer: 'Base64 Encoder converts text to Base64 and decodes Base64 back to readable text, including characters outside basic English (UTF-8). It runs in your browser.',
+    answer: 'The Base64 Encoder and Decoder converts text to Base64 and decodes Base64 back to readable text, including characters outside basic English (UTF-8). It runs in your browser.',
     steps: ['Choose Encode or Decode.', 'Type or paste your text.', 'Click Copy Result.'],
     faq: [['What is Base64?', 'Base64 is a way to represent data using only letters, digits, plus and slash, so it can travel safely through systems that handle only text.'], ['Is Base64 encryption?', 'No. Anyone can decode it, so never use it to protect secrets.'], ['Does it support emoji and other languages?', 'Yes, text is handled as UTF-8.']],
     io: ['Text', 'Base64']
   },
   'url-encode': {
     title: 'URL Encode and Decode Online, Free', meta: 'Percent-encode text for URLs or decode it back, instantly in your browser. Free, private, no sign-up.',
-    answer: 'URL Encoder converts text into percent-encoded form that is safe to use in a web address, and decodes it back. For example a space becomes %20 and an ampersand becomes %26.',
+    answer: 'The URL Encoder and Decoder converts text into percent-encoded form that is safe to use in a web address, and decodes it back. For example a space becomes %20 and an ampersand becomes %26.',
     steps: ['Choose Encode or Decode.', 'Type or paste your text.', 'Click Copy Result.'],
     faq: [['Which characters are encoded?', 'Everything except letters, digits and - _ . ! ~ * \' ( ), using the standard encodeURIComponent rules.'], ['What does decode do with invalid input?', 'It shows "Invalid input" instead of guessing.'], ['Should I encode a whole URL?', 'Encode only the parts you add, such as query values. Encoding a full URL also encodes its slashes and colons.']],
     io: ['Text', 'Encoded text']
@@ -409,11 +409,11 @@ const cats = {
 };
 
 const home = {
-  title: 'Free Image Compressor and Online File Tools',
-  meta: 'Compress images online in your browser with no upload. Plus 50+ free PDF, video, file and text tools. No sign-up, no watermark, private by design.',
+  title: 'Free Online PDF, Image and Video Tools',
+  meta: 'Free online tools for PDF, image, video, file and text jobs: merge, split, compress, convert and more. They run in your browser, so files stay private. No sign-up.',
   faq: [
     ['What is TinyWow Now?', 'TinyWow Now is a free website with image, PDF, video, file and text tools. Every tool runs in your browser, so your files are processed on your own device and are not uploaded.'],
-    ['How do I compress an image online?', 'Drop your JPG, PNG or WebP images into the compressor at the top of the page, choose Light, Balanced, Strong or Maximum compression (or type a target size such as 100 KB), and download the smaller files. You can add many images at once.'],
+    ['How do I use a tool?', 'Open the tool you need, add your file by dragging it in or clicking Choose files, set any options, and download the result. There is nothing to install and no account to create. The image compressor on this page is one of the tools; the full version has more options.'],
     ['Are my files uploaded to a server?', 'No. The tools run in your browser. Some tools download a helper library the first time you use them, but your files are never sent to us or anyone else.'],
     ['Is TinyWow Now really free?', 'Yes. There is no sign-up, no watermark and no usage limit.'],
     ['Which tools are available?', 'Over 50 tools: an image compressor, resizer and converter; PDF merge, split, compress, sign and convert tools; video compress, trim, convert and merge tools; ZIP, spreadsheet and JSON tools; and text utilities.'],
@@ -484,5 +484,8 @@ const pages = {
 <p>Tell us what you are trying to do and which file types are involved. Tools that can run safely in the browser are the easiest to add.</p>`
   }
 };
+
+const TIPS = require('./tips.js');
+Object.keys(TIPS).forEach(id => { if (!tools[id]) throw new Error('tips for unknown tool ' + id); tools[id].tips = TIPS[id]; });
 
 module.exports = { tools, cats, home, pages, PRIVACY_Q };

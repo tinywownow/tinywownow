@@ -425,14 +425,14 @@ A: PNG, JPG or WebP.
 
 ---
 
-## Rotate & Flip
+## Rotate and Flip Image
 URL: https://www.tinywownow.com/rotate-flip-image
-Rotate & Flip turns a picture 90 degrees left or right, 180 degrees, and optionally mirrors it horizontally or vertically. It runs in your browser and saves the result as a JPG.
+Rotate and Flip Image turns a picture 90 degrees left or right, 180 degrees, and optionally mirrors it horizontally or vertically. It runs in your browser and saves the result as a JPG.
 
 How to use:
 1. Add an image.
 2. Choose the rotation and, if needed, a flip direction.
-3. Click Rotate & Flip and download the result.
+3. Click Rotate and Flip Image and download the result.
 
 Q: Can I flip without rotating?
 A: Choose a flip direction and rotate by 180 or 90 degrees as needed; combining them covers every orientation.
@@ -445,13 +445,13 @@ A: Not yet. You can rotate by 90 degrees left, 90 degrees right or 180 degrees.
 
 ---
 
-## Grayscale
+## Grayscale Image
 URL: https://www.tinywownow.com/grayscale-image
-Grayscale converts a colour image to black and white using standard luminance weights. It runs in your browser and saves the result as a JPG.
+Grayscale Image converts a colour image to black and white using standard luminance weights. It runs in your browser and saves the result as a JPG.
 
 How to use:
 1. Add a colour image.
-2. Click Grayscale.
+2. Click Grayscale Image.
 3. Download the black and white image.
 
 Q: How is the grey level calculated?
@@ -625,9 +625,9 @@ A: Not a fixed one, but the total size must stay under about 700 MB.
 
 ---
 
-## Extract Audio
+## Extract Audio from Video
 URL: https://www.tinywownow.com/extract-audio-from-video
-Extract Audio saves the sound of a video as an MP3, M4A (AAC) or WAV file. It runs in your browser, so the video is not uploaded.
+Extract Audio from Video saves the sound of a video as an MP3, M4A (AAC) or WAV file. It runs in your browser, so the video is not uploaded.
 
 How to use:
 1. Add a video that has sound.
@@ -645,7 +645,7 @@ A: MP3 is saved at high quality (VBR level 2). Choose WAV for no compression.
 
 ---
 
-## Mute Video
+## Remove Audio from Video
 URL: https://www.tinywownow.com/remove-audio-from-video
 Remove Audio deletes the sound track from a video and keeps the picture exactly as it is. Because the video is copied without re-encoding, it is fast and loses no quality.
 
@@ -745,9 +745,9 @@ A: Usually yes, because fewer pixels need to be stored.
 
 ---
 
-## Video Speed
+## Change Video Speed
 URL: https://www.tinywownow.com/change-video-speed
-Video Speed makes a video play faster (1.5x, 2x, 3x, 4x) or slower (0.75x, 0.5x), and changes the audio speed to match. It runs in your browser and saves an MP4.
+Change Video Speed makes a video play faster (1.5x, 2x, 3x, 4x) or slower (0.75x, 0.5x), and changes the audio speed to match. It runs in your browser and saves an MP4.
 
 How to use:
 1. Add a video.
@@ -805,9 +805,9 @@ A: Yes, at good quality, because every frame must be redrawn.
 
 ---
 
-## Compress Files
+## Zip Files
 URL: https://www.tinywownow.com/zip-files
-Compress Files packs any number of files into a single ZIP archive. You can choose normal, maximum or no compression. The ZIP is created in your browser, so your files are not uploaded.
+Zip Files packs any number of files into a single ZIP archive. You can choose normal, maximum or no compression. The ZIP is created in your browser, so your files are not uploaded.
 
 How to use:
 1. Add the files you want to include.
@@ -885,9 +885,9 @@ A: No. Every value is output as text.
 
 ---
 
-## Base64 Encoder
+## Base64 Encoder and Decoder
 URL: https://www.tinywownow.com/base64-encoder-decoder
-Base64 Encoder converts text to Base64 and decodes Base64 back to readable text, including characters outside basic English (UTF-8). It runs in your browser.
+The Base64 Encoder and Decoder converts text to Base64 and decodes Base64 back to readable text, including characters outside basic English (UTF-8). It runs in your browser.
 
 How to use:
 1. Choose Encode or Decode.
@@ -905,9 +905,9 @@ A: Yes, text is handled as UTF-8.
 
 ---
 
-## URL Encoder
+## URL Encoder and Decoder
 URL: https://www.tinywownow.com/url-encoder-decoder
-URL Encoder converts text into percent-encoded form that is safe to use in a web address, and decodes it back. For example a space becomes %20 and an ampersand becomes %26.
+The URL Encoder and Decoder converts text into percent-encoded form that is safe to use in a web address, and decodes it back. For example a space becomes %20 and an ampersand becomes %26.
 
 How to use:
 1. Choose Encode or Decode.

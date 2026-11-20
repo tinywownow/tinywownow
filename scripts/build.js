@@ -131,26 +131,26 @@ const urls = []; // for sitemap: {path, priority}
   const body =
     '<section class="hx"><div class="hx-bg"></div><div class="wrap hx-grid"><div class="hx-copy">' +
     '<div class="hx-eye"><span class="hx-dot"></span>Private &middot; runs in your browser</div>' +
-    '<h1 class="hx-h1">Compress <span class="hx-hl">images</span> online, free</h1>' +
-    '<p class="hx-sub">Make your JPG, PNG and WebP images smaller in seconds, still sharp and ready to share. No sign-up, no watermark, and nothing is uploaded.</p>' +
+    '<h1 class="hx-h1">Free online tools for <span class="hx-hl">PDF, images</span> and video</h1>' +
+    '<p class="hx-sub">Compress, convert, merge and edit your files in seconds. Every tool runs in your browser, so nothing is uploaded, and there is no sign-up and no watermark.</p>' +
     '<ul class="hx-trust">' +
-    '<li><span class="hx-ck">' + CHECK + '</span><span><b>Files stay on your device.</b> Compression happens right in your browser.</span></li>' +
-    '<li><span class="hx-ck">' + CHECK + '</span><span><b>Batch compress.</b> Drop as many images as you like at once.</span></li>' +
+    '<li><span class="hx-ck">' + CHECK + '</span><span><b>Files stay on your device.</b> Every tool runs right in your browser.</span></li>' +
+    '<li><span class="hx-ck">' + CHECK + '</span><span><b>' + D.TOOLS.length + ' tools in one place.</b> PDF, image, video, file and text.</span></li>' +
     '<li><span class="hx-ck">' + CHECK + '</span><span><b>Free, no limits.</b> No account and no watermark.</span></li></ul></div>' +
     '<div class="hx-stage"><div class="hx-float hx-f1"><span class="hx-fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span><span><s>2.4 MB</s> &rarr; <em>380 KB</em></span></div>' +
     '<div class="hx-float hx-f2"><span class="hx-fi"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><span>100% private</span></div>' +
-    '<div class="hx-card" id="heroTool"><noscript><p class="noscript-msg">The image compressor needs JavaScript. Please turn it on in your browser.</p></noscript></div></div></div></section>' +
+    '<div class="hx-card" id="heroTool"><noscript><p class="noscript-msg">The image compressor needs JavaScript. Please turn it on in your browser.</p></noscript></div><a class="hx-more" href="/compress-image">Open the full Image Compressor &rarr;</a></div></div></section>' +
     '<section class="feats"><div class="wrap"><div class="feats-g">' +
     [['Private by design', 'Your images never leave your device.', '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>'], ['Instant results', 'No uploading and no waiting in a queue.', '<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'], ['Batch compress', 'Drop many images and save them all.', '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>'], ['Free, no sign-up', 'No watermark and no limits.', '<rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2 0-4-1-4-3s3-2 4 3c1-5 4-5 4-3s-2 3-4 3z"/>']]
       .map(f => '<div class="feat"><span class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + f[2] + '</svg></span><div><b>' + f[0] + '</b><span>' + f[1] + '</span></div></div>').join('') + '</div></div></section>' +
     '<section class="sec"><div class="wrap"><div class="sec-row"><div><span class="eyebrow">Categories</span><h2 class="sec-h">' + D.TOOLS.length + ' free tools for everyday files</h2><p class="sec-sub">Pick a category and get it done in seconds.</p></div><a class="fbtn" href="/tools">View all tools &rarr;</a></div>' +
     '<div class="cats-g">' + D.CATS.map(c => '<a class="cat-card ' + c.cls + '" href="/' + c.slug + '"><div class="cat-ico">' + D.cgl(c, 28) + '</div><h3 class="cat-nm">' + c.name + '</h3><div class="cat-cnt">' + toolsOf(c.id).length + ' tools available</div><div class="cat-pills">' + toolsOf(c.id).slice(0, 3).map(t => '<span class="cpill">' + esc(t.n) + '</span>').join('') + '</div></a>').join('') + '</div></div></section>' +
     '<section class="sec" style="padding-top:0"><div class="wrap"><div class="sec-row"><div><span class="eyebrow">Popular</span><h2 class="sec-h">Handy tools to try next</h2><p class="sec-sub">Free to use, with no account needed.</p></div></div><div class="tools-g">' + POPULAR.map(t => toolCard(t, true)).join('') + '</div></div></section>' +
-    '<section class="sec" style="padding-top:0"><div class="wrap"><div class="seo-sec" style="margin-top:0"><h2 class="sec-h">Image Compressor: frequently asked questions</h2><div class="faq-grid">' + H.faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') + '</div></div></div></section>' +
+    '<section class="sec" style="padding-top:0"><div class="wrap"><div class="seo-sec" style="margin-top:0"><h2 class="sec-h">Frequently asked questions</h2><div class="faq-grid">' + H.faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') + '</div></div></div></section>' +
     '<section class="sec-sm"><div class="wrap"><div class="cta-band"><h2 class="cta-h">Start using free tools today</h2><p class="cta-s">No registration, no watermarks, no limits. Your files never leave your device.</p><div class="cta-btns"><a class="btn-white" href="/tools">Browse all ' + D.TOOLS.length + ' tools</a><a class="btn-out-w" href="/pdf-tools">Start with PDF tools</a></div></div></div></section>';
   const ld = [orgLd,
     { '@context': 'https://schema.org', '@type': 'WebSite', '@id': SITE + '/#website', url: SITE + '/', name: NAME, inLanguage: 'en', publisher: { '@id': ORG_ID } },
-    { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Image Compressor', url: SITE + '/', description: C.tools['compress-image'].answer, applicationCategory: 'MultimediaApplication', operatingSystem: 'Any (web browser)', browserRequirements: 'Requires JavaScript', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, dateModified: TODAY, publisher: { '@id': ORG_ID } }, faqLd(H.faq)];
+    faqLd(H.faq)];
   write('index.html', shell({ title: H.title + ' | ' + NAME, desc: H.meta, path: '/', body, jsonld: ld }));
   urls.push({ path: '/', pr: '1.0' });
 })();
@@ -167,6 +167,7 @@ D.TOOLS.forEach(t => {
     '<p class="tool-hdr-desc">' + esc(K.answer) + '</p><div class="feat-pills"><div class="fpill"><span>&#10003;</span> Free forever</div><div class="fpill"><span>&#10003;</span> No sign-up</div><div class="fpill"><span>&#10003;</span> Files stay on your device</div></div></div></div>' +
     '<div id="toolUI"><noscript><p class="noscript-msg">This tool needs JavaScript. Please turn it on in your browser.</p></noscript></div>' +
     '<section class="seo-sec"><h2>How to use ' + esc(t.n) + '</h2><ol class="seo-steps">' + K.steps.map(s => '<li><span>' + esc(s) + '</span></li>').join('') + '</ol></section>' +
+    (K.tips && K.tips.length ? '<section class="seo-sec"><h2>Tips for ' + esc(t.n) + '</h2><ul class="tip-list">' + K.tips.map(s => '<li>' + s + '</li>').join('') + '</ul></section>' : '') +
     faqBlock(t.n + ': frequently asked questions', faq) +
     '<section class="seo-sec"><h2>' + esc(t.n) + ' at a glance</h2><ul class="fact-list"><li><b>Input</b>' + esc(K.io[0]) + '</li><li><b>Output</b>' + esc(K.io[1]) + '</li><li><b>Price</b>Free, no sign-up, no watermark</li><li><b>Privacy</b>Runs in your browser; files are not uploaded</li><li><b>Last updated</b>' + TODAY_LONG + '</li></ul></section>' +
     '<section class="seo-sec"><h2>Related ' + esc(c.short.toLowerCase()) + ' tools</h2><div class="tools-g" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">' + related.map(r => toolCard(r, false)).join('') + '</div></section></div>';
@@ -272,7 +273,7 @@ write('robots.txt', [
 
 const catBlocks = D.CATS.map(c => '## ' + c.name + '\n' + toolsOf(c.id).map(t => '- [' + t.n + '](' + abs('/' + t.slug) + '): ' + t.d).join('\n')).join('\n\n');
 write('llms.txt', '# ' + NAME + '\n\n> Free online tools for images, PDFs, videos, files and text. Every tool runs in the visitor\'s web browser, so files are processed on the user\'s own device and are not uploaded. No sign-up, no watermark.\n\n' +
-  '## Key facts\n- Price: free, no account needed\n- Privacy: files are processed locally in the browser and are never uploaded to a server\n- Main tool: image compressor for JPG, PNG and WebP at ' + SITE + '/\n- Number of tools: ' + D.TOOLS.length + '\n- Contact: ' + CFG.email + '\n\n' + catBlocks +
+  '## Key facts\n- Price: free, no account needed\n- Privacy: files are processed locally in the browser and are never uploaded to a server\n- Popular tool: image compressor for JPG, PNG and WebP at ' + abs('/compress-image') + '\n- Number of tools: ' + D.TOOLS.length + '\n- Contact: ' + CFG.email + '\n\n' + catBlocks +
   (POSTS.length ? '\n\n## Blog\n' + POSTS.map(p => '- [' + p.title + '](' + abs('/blog/' + p.slug) + '): ' + p.answer).join('\n') : '') +
   '\n\n## Optional\n- [About](' + abs('/about') + '): who we are and how the tools work\n- [Privacy Policy](' + abs('/privacy') + ')\n- [Full tool guide for language models](' + abs('/llms-full.txt') + ')\n');
 write('llms-full.txt', '# ' + NAME + ' - full tool guide\n\nLast updated: ' + TODAY + '\n\n' + D.TOOLS.map(t => {

@@ -511,3 +511,12 @@ a.aside-cta em{font-style:normal;font-weight:700;margin-top:6px}
 .cz-tg-on #czQ,.cz-tg-on #czPre{opacity:.4;pointer-events:none}
 .cz-tg .cz-lbl{justify-content:flex-start;gap:6px}
 .cz-tg-row .opt-inp{flex:0 0 110px;width:110px}
+/* TIPS + HOME LINK */
+.tip-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:12px}
+.tip-list li{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px 14px 44px;color:var(--text2);line-height:1.6;position:relative}
+.tip-list li::before{content:"";position:absolute;left:16px;top:19px;width:14px;height:8px;border-left:3px solid var(--sage);border-bottom:3px solid var(--sage);transform:rotate(-45deg)}
+.tip-list a{color:var(--sage3);text-decoration:underline}
+.hx-more{display:block;text-align:center;margin-top:14px;font-weight:700;font-size:.92rem;color:var(--sage3);text-decoration:none}
+.hx-more:hover{text-decoration:underline}
+@media(max-width:560px){.tip-list{grid-template-columns:1fr}}
+.tip-list{grid-template-columns:repeat(2,1fr)}@media(max-width:700px){.tip-list{grid-template-columns:1fr}}
