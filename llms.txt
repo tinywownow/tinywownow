@@ -72,7 +72,7 @@
 - [Text Reverser](https://www.tinywownow.com/text-reverser): Reverse text, words or lines easily
 
 ## Blog
-- [How to Compress an Image to 100 KB, 50 KB or 20 KB](https://www.tinywownow.com/blog/compress-image-to-100kb): To get a photo under 100 KB, crop it, reduce its width to about 1,000 to 1,200 pixels, then save it as a JPG at roughly 70 to 80 percent quality. Cutting pixels does most of the work; lowering quality alone rarely shrinks a phone photo that far without visible damage. The Compress Image tool on TinyWow Now does both steps in one place, in your browser, so the photo is not uploaded.
+- [How to Compress an Image to 100 KB, 50 KB or 20 KB](https://www.tinywownow.com/blog/compress-image-to-100kb): To get a photo under 100 KB, crop it, reduce its width to about 1,000 to 1,200 pixels, then save it as a JPG at roughly 70 to 80 percent quality. Cutting pixels does most of the work; lowering quality alone rarely shrinks a phone photo that far without visible damage. The Compress Image tool on TinyWow Now can do this for you: type a target size such as 100 KB and it finds the best quality that fits, in your browser, so the photo is not uploaded.
 
 ## Optional
 - [About](https://www.tinywownow.com/about): who we are and how the tools work

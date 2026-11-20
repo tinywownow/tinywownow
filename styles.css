@@ -499,3 +499,15 @@ a.aside-cta em{font-style:normal;font-weight:700;margin-top:6px}
 .blog-index .tools-g{margin-bottom:8px}
 @media(max-width:900px){.faq-grid{grid-template-columns:1fr}.faq-grid .faq-i:nth-child(2){border-top:1px solid var(--bordersoft)}}
 .fact-list{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+/* TARGET SIZE */
+.cz-tg{margin-top:14px}
+.cz-hint{font-weight:500;color:var(--text3)}
+.cz-tg-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px}
+.cz-tg-row .opt-inp{width:110px}
+.cz-unit{font-weight:700;color:var(--text2)}
+.cz-chips{display:flex;gap:6px;flex-wrap:wrap}
+.cz-chips .fbtn{padding:6px 12px;font-size:.82rem}
+.cz-tg-note{margin-top:8px}
+.cz-tg-on #czQ,.cz-tg-on #czPre{opacity:.4;pointer-events:none}
+.cz-tg .cz-lbl{justify-content:flex-start;gap:6px}
+.cz-tg-row .opt-inp{flex:0 0 110px;width:110px}

@@ -304,12 +304,15 @@ A: Yes. Because pages are used as images, scans convert fine.
 
 ## Compress Image
 URL: https://www.tinywownow.com/compress-image
-The image compressor reduces the file size of JPG, PNG and WebP images right in your browser, so your photos are never uploaded. Pick a compression level, add as many images as you like, and download the smaller files.
+The image compressor reduces the file size of JPG, PNG and WebP images right in your browser, so your photos are never uploaded. Pick a compression level, or type a target size such as 100 KB, add as many images as you like, and download the smaller files.
 
 How to use:
 1. Drop your images in, or click Choose images. You can add many at once.
-2. Pick Light, Balanced, Strong or Maximum compression. Results update instantly.
+2. Pick Light, Balanced, Strong or Maximum compression, or type a target size in KB (or tap 20, 50, 100 or 200). Results update instantly.
 3. Download each image, or use Download all.
+
+Q: How do I compress an image to 100 KB, 50 KB or 20 KB?
+A: Type the size in the Target size box, or tap the 20, 50, 100 or 200 KB button. The tool finds the highest quality that fits under that size and reduces the pixel size only if it has to. When a target is set, PNG images are saved as JPG, because PNG cannot be shrunk with a quality setting.
 
 Q: How much smaller will my images be?
 A: Typical photos shrink by 40 to 80 percent at Balanced quality with little visible change. Images that are already well compressed may shrink less.

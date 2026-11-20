@@ -20,6 +20,12 @@ function rCompress(ui,cfg){
       <div class="cz-presets cz-seg" id="czPre">
         <button class="fbtn" data-q="90">Light</button><button class="fbtn on" data-q="75">Balanced</button><button class="fbtn" data-q="50">Strong</button><button class="fbtn" data-q="30">Maximum</button>
       </div>
+      <div class="cz-tg">
+        <label class="cz-lbl" for="czTg">Target size <span class="cz-hint">(optional)</span></label>
+        <div class="cz-tg-row"><input class="opt-inp" id="czTg" type="number" min="5" step="1" inputmode="numeric" placeholder="e.g. 100"><span class="cz-unit">KB</span>
+          <div class="cz-chips" id="czChips"><button class="fbtn" data-kb="20">20</button><button class="fbtn" data-kb="50">50</button><button class="fbtn" data-kb="100">100</button><button class="fbtn" data-kb="200">200</button></div></div>
+        <p class="up-sub cz-tg-note" id="czTgNote">Finds the highest quality that fits. If needed, it also reduces the pixel size. PNG files are saved as JPG.</p>
+      </div>
       <details class="cz-adv" ${cfg.hero?'':'open'}><summary>Advanced options</summary>
       <div class="cz-grid">
         <div class="cz-opt"><label class="cz-lbl" for="czQ">Quality <b id="czQv">75%</b></label><input type="range" id="czQ" min="10" max="100" value="75"></div>
@@ -50,24 +56,45 @@ function rCompress(ui,cfg){
     if(bad)showToast(bad+' file(s) skipped — only JPG, PNG, WebP','error');
     render();all();
   }
-  function opts(){return{q:parseInt($('czQ').value)/100,fmt:$('czFmt').value,mw:parseInt($('czMw').value)||0,mh:parseInt($('czMh').value)||0}}
+  function opts(){const kb=parseFloat($('czTg').value);return{q:parseInt($('czQ').value)/100,fmt:$('czFmt').value,mw:parseInt($('czMw').value)||0,mh:parseInt($('czMh').value)||0,tg:kb>0?Math.round(kb*1000):0}}
   function load(it){return it.img?Promise.resolve(it.img):new Promise((ok,no)=>{const i=new Image();i.onload=()=>{it.img=i;it.w=i.naturalWidth;it.h=i.naturalHeight;ok(i)};i.onerror=no;i.src=it.url})}
   async function one(it,s,my){
     it.status='work';upd(it);
     try{
       const img=await load(it);let w=it.w,h=it.h,sc=1;
       if(s.mw&&w>s.mw)sc=Math.min(sc,s.mw/w);if(s.mh&&h>s.mh)sc=Math.min(sc,s.mh/h);
-      w=Math.max(1,Math.round(w*sc));h=Math.max(1,Math.round(h*sc));
-      const mime=s.fmt==='auto'?it.file.type:s.fmt,c=document.createElement('canvas');c.width=w;c.height=h;
-      const x=c.getContext('2d');if(mime==='image/jpeg'){x.fillStyle='#fff';x.fillRect(0,0,w,h)}
-      x.imageSmoothingQuality='high';x.drawImage(img,0,0,w,h);
-      let b=await new Promise(r=>c.toBlob(r,mime,s.q));
+      let mime=s.fmt==='auto'?it.file.type:s.fmt;
+      if(s.tg&&mime==='image/png'&&s.fmt==='auto')mime='image/jpeg';
+      const draw=f=>{const cw=Math.max(1,Math.round(it.w*f)),ch=Math.max(1,Math.round(it.h*f)),c=document.createElement('canvas');c.width=cw;c.height=ch;
+        const x=c.getContext('2d');if(mime==='image/jpeg'){x.fillStyle='#fff';x.fillRect(0,0,cw,ch)}
+        x.imageSmoothingQuality='high';x.drawImage(img,0,0,cw,ch);return c};
+      const enc=(c,q)=>new Promise(r=>c.toBlob(r,mime,q));
+      let b,miss=false;it.kept=false;
+      if(!s.tg){const c=draw(sc);w=c.width;h=c.height;b=await enc(c,s.q)}
+      else if(it.file.size<=s.tg&&mime===it.file.type&&sc===1){b=it.file;w=it.w;h=it.h;it.kept=true}
+      else{
+        /* target size: highest quality that fits; shrink the pixels only if quality 50% is still too big */
+        let cur=sc,best=null;
+        for(let a=0;a<10&&!b;a++){
+          const c=draw(cur);w=c.width;h=c.height;
+          let sm=await enc(c,mime==='image/png'?undefined:.5);
+          if(my!==run)return;
+          if(!sm||sm.type!==mime)throw 0;
+          if(sm.size>s.tg){best=sm;if(w<=16||h<=16)break;cur*=Math.max(.5,Math.min(.95,Math.sqrt(s.tg/sm.size)*.97));continue}
+          b=sm;
+          if(mime!=='image/png'){
+            const top=await enc(c,.92);if(my!==run)return;
+            if(top&&top.size<=s.tg)b=top;
+            else{let lo=.5,hi=.92;for(let i=0;i<6;i++){const m=(lo+hi)/2,bm=await enc(c,m);if(my!==run)return;if(bm&&bm.size<=s.tg){b=bm;lo=m}else hi=m}}
+          }
+        }
+        if(!b){b=best;miss=true}
+      }
       if(my!==run)return;
       if(!b||b.type!==mime)throw 0;
-      it.kept=false;
-      if(b.size>=it.file.size&&mime===it.file.type&&sc===1){b=it.file;it.kept=true}
+      if(!s.tg&&b.size>=it.file.size&&mime===it.file.type&&sc===1){b=it.file;it.kept=true}
       if(it.outUrl)URL.revokeObjectURL(it.outUrl);
-      it.blob=b;it.outUrl=URL.createObjectURL(b);it.outMime=mime;it.ow=w;it.oh=h;it.status='done';
+      it.blob=b;it.outUrl=URL.createObjectURL(b);it.outMime=mime;it.ow=w;it.oh=h;it.miss=miss;it.status='done';
     }catch(e){it.status='err'}
     upd(it);sum();
   }
@@ -76,7 +103,7 @@ function rCompress(ui,cfg){
     const ok=it.status==='done',p=ok?Math.round((1-it.blob.size/it.file.size)*100):0;
     let meta=fs(it.file.size)+(it.w?` · ${it.w}×${it.h}`:''),badge='';
     if(ok){meta=`${fs(it.file.size)}<span class="ar">→</span><b>${fs(it.blob.size)}</b> · ${it.ow}×${it.oh}`;
-      badge=it.kept?'<span class="cz-badge warn">Already optimal</span>':p>0?`<span class="cz-badge">−${p}%</span>`:`<span class="cz-badge warn">+${Math.abs(p)}%</span>`}
+      badge=it.miss?'<span class="cz-badge warn">Over target</span>':it.kept?'<span class="cz-badge warn">Already optimal</span>':p>0?`<span class="cz-badge">−${p}%</span>`:`<span class="cz-badge warn">+${Math.abs(p)}%</span>`}
     else badge=it.status==='err'?'<span class="cz-badge warn">Failed</span>':'<span class="cz-badge warn">Working…</span>';
     return `<div class="cz-item" data-id="${it.id}"><div class="cz-thumb"><img src="${it.url}" alt=""></div>
       <div><div class="cz-name">${esc(outName(it))}${badge}</div><div class="cz-meta">${meta}</div><div class="cz-bar"><i style="width:${ok?100:it.status==='work'?60:10}%"></i></div></div>
@@ -109,6 +136,11 @@ function rCompress(ui,cfg){
   q.oninput=()=>{$('czQv').textContent=q.value+'%';ui.querySelectorAll('#czPre .fbtn').forEach(b=>b.classList.toggle('on',b.dataset.q===q.value));later()};
   $('czPre').onclick=e=>{const b=e.target.closest('.fbtn');if(!b)return;q.value=b.dataset.q;q.oninput()};
   ['czFmt','czMw','czMh'].forEach(id=>$(id).oninput=later);
+  const tg=$('czTg');
+  function tgState(){const on=opts().tg>0;q.disabled=on;ui.querySelectorAll('#czPre .fbtn').forEach(b=>b.disabled=on);ui.classList.toggle('cz-tg-on',on);
+    ui.querySelectorAll('#czChips .fbtn').forEach(b=>b.classList.toggle('on',on&&parseFloat(tg.value)===parseFloat(b.dataset.kb)))}
+  tg.oninput=()=>{tgState();later()};
+  $('czChips').onclick=e=>{const b=e.target.closest('.fbtn');if(!b)return;tg.value=parseFloat(tg.value)===parseFloat(b.dataset.kb)?'':b.dataset.kb;tg.oninput()};
 }
 
 // ===== IMAGE TOOL =====

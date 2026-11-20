@@ -114,10 +114,10 @@ const tools = {
 
   /* ---------------- IMAGE ---------------- */
   'compress-image': {
-    title: 'Image Compressor, Compress JPG PNG WebP', meta: 'Compress images online without uploading them. Shrink JPG, PNG and WebP files with quality control, batch processing, no sign-up, no watermark.',
-    answer: 'The image compressor reduces the file size of JPG, PNG and WebP images right in your browser, so your photos are never uploaded. Pick a compression level, add as many images as you like, and download the smaller files.',
-    steps: ['Drop your images in, or click Choose images. You can add many at once.', 'Pick Light, Balanced, Strong or Maximum compression. Results update instantly.', 'Download each image, or use Download all.'],
-    faq: [['How much smaller will my images be?', 'Typical photos shrink by 40 to 80 percent at Balanced quality with little visible change. Images that are already well compressed may shrink less.'], ['Is PNG compression lossless?', 'Yes. PNG is a lossless format, so the quality slider does not change it. To shrink a PNG, resize it, or convert it to WebP or JPG.'], ['What if the result is bigger than the original?', 'When format and size are unchanged and the new file would be larger, the tool keeps your original and marks it "Already optimal".']],
+    title: 'Image Compressor, Compress JPG PNG WebP', meta: 'Compress images online without uploading them. Set a target size like 100 KB or pick a quality level. JPG, PNG, WebP, no sign-up, no watermark.',
+    answer: 'The image compressor reduces the file size of JPG, PNG and WebP images right in your browser, so your photos are never uploaded. Pick a compression level, or type a target size such as 100 KB, add as many images as you like, and download the smaller files.',
+    steps: ['Drop your images in, or click Choose images. You can add many at once.', 'Pick Light, Balanced, Strong or Maximum compression, or type a target size in KB (or tap 20, 50, 100 or 200). Results update instantly.', 'Download each image, or use Download all.'],
+    faq: [['How do I compress an image to 100 KB, 50 KB or 20 KB?', 'Type the size in the Target size box, or tap the 20, 50, 100 or 200 KB button. The tool finds the highest quality that fits under that size and reduces the pixel size only if it has to. When a target is set, PNG images are saved as JPG, because PNG cannot be shrunk with a quality setting.'], ['How much smaller will my images be?', 'Typical photos shrink by 40 to 80 percent at Balanced quality with little visible change. Images that are already well compressed may shrink less.'], ['Is PNG compression lossless?', 'Yes. PNG is a lossless format, so the quality slider does not change it. To shrink a PNG, resize it, or convert it to WebP or JPG.'], ['What if the result is bigger than the original?', 'When format and size are unchanged and the new file would be larger, the tool keeps your original and marks it "Already optimal".']],
     io: ['JPG, PNG, WebP', 'JPG, PNG, WebP']
   },
   'resize-image': {
@@ -413,7 +413,7 @@ const home = {
   meta: 'Compress images online in your browser with no upload. Plus 50+ free PDF, video, file and text tools. No sign-up, no watermark, private by design.',
   faq: [
     ['What is TinyWow Now?', 'TinyWow Now is a free website with image, PDF, video, file and text tools. Every tool runs in your browser, so your files are processed on your own device and are not uploaded.'],
-    ['How do I compress an image online?', 'Drop your JPG, PNG or WebP images into the compressor at the top of the page, choose Light, Balanced, Strong or Maximum compression, and download the smaller files. You can add many images at once.'],
+    ['How do I compress an image online?', 'Drop your JPG, PNG or WebP images into the compressor at the top of the page, choose Light, Balanced, Strong or Maximum compression (or type a target size such as 100 KB), and download the smaller files. You can add many images at once.'],
     ['Are my files uploaded to a server?', 'No. The tools run in your browser. Some tools download a helper library the first time you use them, but your files are never sent to us or anyone else.'],
     ['Is TinyWow Now really free?', 'Yes. There is no sign-up, no watermark and no usage limit.'],
     ['Which tools are available?', 'Over 50 tools: an image compressor, resizer and converter; PDF merge, split, compress, sign and convert tools; video compress, trim, convert and merge tools; ZIP, spreadsheet and JSON tools; and text utilities.'],
