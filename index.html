@@ -475,7 +475,7 @@ input[type=range]{width:100%;accent-color:var(--sage)}
         <svg class="logo-mark" width="32" height="32" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path class="lg-file" d="M10.5 4H23.5L33 13.5V32.5A3.5 3.5 0 0 1 29.5 36H10.5A3.5 3.5 0 0 1 7 32.5V7.5A3.5 3.5 0 0 1 10.5 4Z" fill="#7a9165"/><path class="lg-fold" d="M23.5 4V13.5H33Z" fill="#5a7047"/><path class="lg-spark" d="M20 17.5l2.1 5.4 5.4 2.1-5.4 2.1L20 32.5l-2.1-5.4-5.4-2.1 5.4-2.1z" fill="#fff"/></svg>
         <span class="logo-txt" style="font-size:1rem">TinyWow <em>Now</em></span>
       </div>
-      <p class="f-desc">Free online tools for PDFs, images, videos, files and AI writing. No sign-up needed.</p>
+      <p class="f-desc">Free online tools for PDFs, images, videos and files. No sign-up needed.</p>
       <div class="f-soc"><a class="fsoc">𝕏</a><a class="fsoc">📷</a><a class="fsoc">in</a></div>
     </div>
     <div>
@@ -524,7 +524,7 @@ input[type=range]{width:100%;accent-color:var(--sage)}
 </footer>
 <div id="toast"><span id="t-ico">✅</span> <span id="toastMsg">Done!</span></div>
 
-<script src="tools.js"></script>
+<script src="tools.js" charset="utf-8"></script>
 <script>
 (function(){
 'use strict';
@@ -556,7 +556,6 @@ const ALL_T=[
   {id:'ppt-to-pdf',c:'pdf',n:'PPT to PDF',d:'Convert PowerPoint presentations to PDF',i:'📊'},
   {id:'pdf-to-ppt',c:'pdf',n:'PDF to PPT',d:'Turn PDF pages into PowerPoint slides',i:'📊'},
   {id:'edit-pdf',c:'pdf',n:'Edit PDF',d:'Edit text and images directly in PDF',i:'✏️',new:1},
-  {id:'remove-bg',c:'image',n:'Remove Background',d:'Remove image background instantly with AI',i:'🖼️',new:1},
   {id:'resize-image',c:'image',n:'Resize Image',d:'Resize images to exact pixel dimensions',i:'↔️',fn:1},
   {id:'compress-image',c:'image',n:'Compress Image',d:'Reduce image file size with quality control',i:'🗜️',fn:1},
   {id:'image-to-jpg',c:'image',n:'Convert to JPG',d:'Convert any image format to JPG',i:'🖼️',fn:1},
@@ -579,8 +578,7 @@ const ALL_T=[
   {id:'gif-to-video',c:'video',n:'GIF to Video',d:'Convert animated GIF to MP4 video',i:'🎥'},
   {id:'rotate-video',c:'video',n:'Rotate Video',d:'Rotate video orientation freely',i:'🔄'},
   {id:'resize-video',c:'video',n:'Resize Video',d:'Change video resolution and dimensions',i:'↔️'},
-  {id:'add-subtitles',c:'video',n:'Add Subtitles',d:'Add captions and subtitles to your video',i:'📝',new:1},
-  {id:'video-to-mp3',c:'video',n:'Video to MP3',d:'Extract MP3 audio from any video file',i:'🎵'},
+  {id:'add-subtitles',c:'video',n:'Add Subtitles',d:'Add a subtitle track from an SRT or VTT file',i:'📝',new:1},
   {id:'video-speed',c:'video',n:'Video Speed',d:'Speed up or slow down any video clip',i:'⏩'},
   {id:'flip-video',c:'video',n:'Flip Video',d:'Mirror or flip your video horizontally',i:'🔄'},
   {id:'compress-files',c:'file',n:'Compress Files',d:'Create ZIP archive from multiple files',i:'🗜️'},
@@ -593,18 +591,6 @@ const ALL_T=[
   {id:'xml-formatter',c:'file',n:'XML Formatter',d:'Format and validate XML documents',i:'📋',fn:1},
   {id:'doc-to-pdf',c:'file',n:'DOC to PDF',d:'Turn the text of a Word file into a PDF',i:'📄'},
   {id:'xls-converter',c:'file',n:'XLS Converter',d:'Convert Excel files to various formats',i:'📊'},
-  {id:'ai-essay',c:'write',n:'AI Essay Writer',d:'Generate full essays on any topic with AI',i:'📝',new:1},
-  {id:'ai-paragraph',c:'write',n:'Paragraph Writer',d:'Write compelling paragraphs instantly',i:'📝'},
-  {id:'ai-blog',c:'write',n:'Blog Post Writer',d:'Create full blog posts with AI assistance',i:'✍️'},
-  {id:'resume-writer',c:'write',n:'Resume Writer',d:'Build professional ATS-friendly resumes',i:'📋'},
-  {id:'cover-letter',c:'write',n:'Cover Letter',d:'Write standout cover letters with AI',i:'📧'},
-  {id:'email-writer',c:'write',n:'Email Writer',d:'Draft professional emails in seconds',i:'📧'},
-  {id:'content-improver',c:'write',n:'Content Improver',d:'Enhance and polish your existing writing',i:'✨'},
-  {id:'ai-summarize',c:'write',n:'Text Summarizer',d:'Summarize long documents with AI',i:'📄'},
-  {id:'grammar-check',c:'write',n:'Grammar Check',d:'Fix grammar, spelling and punctuation errors',i:'✅'},
-  {id:'paraphraser',c:'write',n:'Paraphraser',d:'Rewrite text in different words',i:'🔄'},
-  {id:'title-gen',c:'write',n:'Title Generator',d:'Generate catchy titles and headlines',i:'💡'},
-  {id:'hashtag-gen',c:'write',n:'Hashtag Generator',d:'Find the best hashtags for your content',i:'#️⃣'},
   {id:'word-counter',c:'write',n:'Word Counter',d:'Count words, characters, sentences and more',i:'🔢',fn:1},
   {id:'case-converter',c:'write',n:'Case Converter',d:'Convert text to any case format instantly',i:'Aa',fn:1},
   {id:'text-reverser',c:'write',n:'Text Reverser',d:'Reverse text, words or lines easily',i:'↩️',fn:1}
@@ -670,7 +656,7 @@ bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1
 casing:'<path d="M3 18L8 6l5 12M5 14h6M15 18l3.5-8 3.5 8M16.5 15.5h4"/>',
 bg:'<rect x="3" y="3" width="18" height="18" rx="2" stroke-dasharray="3 3"/><circle cx="12" cy="10" r="3"/><path d="M6 19c1-3 3-4 6-4s5 1 6 4"/>'
 };
-const GRULES=[[/unlock/,'unlock'],[/^lock-/,'lock'],[/^merge/,'merge'],[/^split/,'split'],[/^compress-files|extract-zip/,'archive'],[/^compress/,'compress'],[/rotate|flip/,'rotate'],[/^resize/,'resize'],[/^crop/,'crop'],[/^trim/,'scissors'],[/watermark/,'drop'],[/remove-bg/,'bg'],[/upscale/,'upscale'],[/grayscale/,'contrast'],[/photo-filter/,'palette'],[/ocr|image-to-text/,'scan'],[/pdf-to-text|word-counter/,'text'],[/^sign|edit-pdf/,'pen'],[/subtitles/,'subs'],[/gif/,'film'],[/extract-audio|video-to-mp3/,'audio'],[/mute/,'mute'],[/speed/,'bolt'],[/excel|xls|csv/,'table'],[/ppt/,'slides'],[/json/,'braces'],[/xml|base64/,'code'],[/hash/,'hash'],[/url/,'link'],[/email|cover-letter/,'mail'],[/grammar/,'check'],[/summar|paragraph/,'list'],[/title/,'bulb'],[/case-conv/,'casing'],[/ai-essay|content-improver/,'sparkle'],[/ai-blog/,'pen'],[/resume/,'doc'],[/-to-|^convert|paraphraser|reverser/,'convert']];
+const GRULES=[[/unlock/,'unlock'],[/^lock-/,'lock'],[/^merge/,'merge'],[/^split/,'split'],[/^compress-files|extract-zip/,'archive'],[/^compress/,'compress'],[/rotate|flip/,'rotate'],[/^resize/,'resize'],[/^crop/,'crop'],[/^trim/,'scissors'],[/watermark/,'drop'],[/remove-bg/,'bg'],[/upscale/,'upscale'],[/grayscale/,'contrast'],[/photo-filter/,'palette'],[/ocr|image-to-text/,'scan'],[/pdf-to-text|word-counter/,'text'],[/^sign|edit-pdf/,'pen'],[/subtitles/,'subs'],[/gif/,'film'],[/extract-audio|video-to-mp3/,'audio'],[/mute/,'mute'],[/speed/,'bolt'],[/excel|xls|csv/,'table'],[/ppt/,'slides'],[/json/,'braces'],[/xml|base64/,'code'],[/hash/,'hash'],[/url/,'link'],[/email|cover-letter/,'mail'],[/grammar/,'check'],[/summar|paragraph/,'list'],[/title/,'bulb'],[/case-conv/,'casing'],[/resume/,'doc'],[/-to-|^convert|paraphraser|reverser/,'convert']];
 const CATGL={pdf:'doc',image:'image',video:'video',file:'archive',write:'pen'};
 function glKey(t){for(const [r,k] of GRULES)if(r.test(t.id))return k;return CATGL[t.c]||'doc'}
 function svgIco(k,s){return `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${GL[k]}</svg>`}

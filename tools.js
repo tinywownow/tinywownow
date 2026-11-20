@@ -785,5 +785,251 @@ TOOLS['crop-image'] = {
   }
 };
 
+/* ---------- video tools (ffmpeg.wasm, runs locally) ---------- */
+const FF_FILES = {
+  lib: ['vendor/ffmpeg/ffmpeg.js', 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js', 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js'],
+  worker: ['vendor/ffmpeg/814.ffmpeg.js', 'https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/814.ffmpeg.js', 'https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/814.ffmpeg.js'],
+  core: ['vendor/ffmpeg/ffmpeg-core.js', 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js', 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.js'],
+  wasm: ['vendor/ffmpeg/ffmpeg-core.wasm', 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm', 'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm']
+};
+let ffInst = null;
+/* Downloads a file with progress and a stall timeout, returning a blob: URL. */
+async function fetchProgress(url, type, o, label) {
+  const c = new AbortController(); let timer;
+  const bump = () => { clearTimeout(timer); timer = setTimeout(() => c.abort(), 15000); };
+  bump();
+  try {
+    const r = await fetch(url, { signal: c.signal });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const total = +r.headers.get('content-length') || 0, reader = r.body.getReader(), chunks = []; let got = 0;
+    for (;;) {
+      const { done, value } = await reader.read(); if (done) break;
+      chunks.push(value); got += value.length; bump();
+      if (label) o.prog(Math.min(0.1, 0.02 + 0.08 * (total ? Math.min(1, got / total) : 0.5)), label + ' ' + (got / 1048576).toFixed(1) + ' MB');
+    }
+    return URL.createObjectURL(new Blob(chunks, { type }));
+  } finally { clearTimeout(timer); }
+}
+async function fetchFirst(key, type, o, label) {
+  let last;
+  for (const u of FF_FILES[key]) { try { return await fetchProgress(u, type, o, label); } catch (e) { last = e; } }
+  throw last;
+}async function getFF(o) {
+  if (ffInst) return ffInst;
+  try {
+    if (!window.FFmpegWASM) await loadScript(await fetchFirst('lib', 'text/javascript', o));
+    const ff = new FFmpegWASM.FFmpeg();
+    await ff.load({
+      coreURL: await fetchFirst('core', 'text/javascript', o),
+      wasmURL: await fetchFirst('wasm', 'application/wasm', o, 'Downloading the video engine (one-time, about 30 MB)â€¦'),
+      classWorkerURL: await fetchFirst('worker', 'text/javascript', o)
+    });
+    ffInst = ff; return ff;
+  } catch (e) { throw new Error('The video engine could not be loaded. Check your internet connection and try again.'); }
+}
+const VID = { accept: 'video/*,.mkv,.avi,.mov,.m4v,.wmv,.flv,.3gp,.mpg,.mpeg', exts: ['.mp4', '.mov', '.webm', '.mkv', '.avi', '.m4v', '.wmv', '.flv', '.3gp', '.mpg', '.mpeg'] };
+const extOf = n => ((n.match(/\.[^.]+$/) || ['.mp4'])[0]).toLowerCase();
+function parseTime(s) {
+  s = String(s || '').trim(); if (!s) return null;
+  const p = s.split(':').map(Number); if (p.some(isNaN)) throw new Error('Invalid time "' + s + '". Use seconds (90) or mm:ss (1:30).');
+  return p.reduce((a, b) => a * 60 + b, 0);
+}
+async function probe(ff, name) {
+  const logs = [], h = ({ message }) => logs.push(message);
+  ff.on('log', h);
+  try { await ff.exec(['-hide_banner', '-i', name]); } catch (e) { /* ffmpeg exits non-zero without an output file */ }
+  ff.off('log', h);
+  const t = logs.join('\n'), d = t.match(/Duration:\s*(\d+):(\d+):(\d+\.?\d*)/);
+  return { hasAudio: /Stream #\d+:\d+.*Audio:/.test(t), hasVideo: /Stream #\d+:\d+.*Video:/.test(t), duration: d ? +d[1] * 3600 + +d[2] * 60 + +d[3] : 0 };
+}
+/* Runs ffmpeg: writes inputs, builds args from (names, infos), returns the output blob. */
+async function ffRun(o, files, build, outName, mime) {
+  const total = files.reduce((a, f) => a + f.size, 0);
+  if (total > 700 * 1048576) throw new Error('These files are too large for in-browser processing (' + fmtSize(total) + '). Please use files under about 700 MB.');
+  const ff = await getFF(o);
+  const names = [], used = [];
+  const logs = [], onLog = ({ message }) => logs.push(message);
+  const onProg = ({ progress }) => { if (progress >= 0 && progress <= 1) o.prog(0.12 + progress * 0.84, 'Processing ' + Math.round(progress * 100) + '%'); };
+  try {
+    for (let i = 0; i < files.length; i++) {
+      const n = 'in' + i + extOf(files[i].name);
+      o.prog(0.06, 'Reading ' + files[i].name + '…');
+      await ff.writeFile(n, new Uint8Array(await files[i].arrayBuffer())); names.push(n); used.push(n);
+    }
+    const infos = [];
+    for (const n of names) infos.push(/\.(srt|vtt|ass)$/i.test(n) ? {} : await probe(ff, n));
+    const args = await build(names, infos);
+    ff.on('log', onLog); ff.on('progress', onProg);
+    o.prog(0.12, 'Processing…');
+    const code = await ff.exec(args);
+    if (code !== 0) {
+      const err = logs.filter(l => /error|invalid|no such|not found|unsupported|does not/i.test(l)).slice(-2).join(' ');
+      const fe = new Error('This file could not be processed' + (err ? ' (' + err.slice(0, 160) + ')' : '') + '. It may use an unsupported format.'); fe._ff = true; throw fe;
+    }
+    const data = await ff.readFile(outName);
+    if (!data || !data.length) throw new Error('The result was empty. Try different settings.');
+    return { blob: new Blob([data], { type: mime }), infos };
+  } catch (e) {
+    if (e && e._ff) { try { ff.terminate(); } catch (x) { /* ignore */ } ffInst = null; }
+    throw e;
+  } finally {
+    try { ff.off('log', onLog); ff.off('progress', onProg); } catch (x) { /* ignore */ }
+    if (ffInst) for (const n of used.concat([outName])) { try { await ff.deleteFile(n); } catch (x) { /* ignore */ } }
+  }
+}
+const VNOTE = '<p class="up-sub">Runs on your device, so large videos can take a while. Keep this tab open until it finishes.</p>';
+const vfMap = { x264: ['-c:v', 'libx264', '-preset', 'veryfast', '-pix_fmt', 'yuv420p'] };
+function audioArgs(info) { return info && info.hasAudio ? ['-c:a', 'aac', '-b:a', '128k'] : ['-an']; }
+
+TOOLS['compress-video'] = Object.assign({}, VID, {
+  label: 'Compress video',
+  opts: sel('o_lvl', 'Compression', [['28', 'Balanced (recommended)'], ['32', 'Strong (smallest)'], ['24', 'Light (best quality)']]) +
+    sel('o_res', 'Resolution', [['0', 'Keep original'], ['1080', 'Max 1080p'], ['720', 'Max 720p'], ['480', 'Max 480p']]) + VNOTE,
+  async run(files, o) {
+    const f = files[0], h = parseInt(o.v('o_res'));
+    const { blob, infos } = await ffRun(o, files, (n, i) => ['-i', n[0], ...(h ? ['-vf', 'scale=-2:min(' + h + '\\,ih)'] : []), ...vfMap.x264, '-crf', o.v('o_lvl'), ...audioArgs(i[0]), '-movflags', '+faststart', 'out.mp4'], 'out.mp4', 'video/mp4');
+    if (blob.size >= f.size) return [{ name: f.name, blob: f, info: 'unchanged', note: 'This video is already well compressed, so a smaller file could not be made. The original is returned unchanged.' }];
+    return [{ name: baseName(f.name) + '-compressed.mp4', blob, info: fmtSize(f.size) + ' → ' + fmtSize(blob.size) + ' (−' + Math.round((1 - blob.size / f.size) * 100) + '%)' }];
+  }
+});
+
+TOOLS['trim-video'] = Object.assign({}, VID, {
+  label: 'Trim video',
+  opts: txt('o_start', 'Start', 'e.g. 0:05 (blank = beginning)') + txt('o_end', 'End', 'e.g. 0:30 (blank = to the end)') +
+    sel('o_mode', 'Method', [['copy', 'Fast (no re-encode, cuts at nearest keyframe)'], ['exact', 'Exact (re-encodes, slower)']]) + VNOTE,
+  async run(files, o) {
+    const s = parseTime(o.v('o_start')) || 0, e = parseTime(o.v('o_end'));
+    if (e !== null && e <= s) throw new Error('The end time must be after the start time.');
+    const ext = extOf(files[0].name), out = 'out' + ext, exact = o.v('o_mode') === 'exact';
+    const { blob } = await ffRun(o, files, (n, i) => {
+      if (i[0].duration && s >= i[0].duration) throw new Error('The start time is past the end of the video (' + Math.round(i[0].duration) + ' s).');
+      const t = e !== null ? ['-t', String(e - s)] : [];
+      return exact ? ['-ss', String(s), '-i', n[0], ...t, ...vfMap.x264, '-crf', '23', ...audioArgs(i[0]), 'out.mp4'] : ['-ss', String(s), '-i', n[0], ...t, '-c', 'copy', '-avoid_negative_ts', 'make_zero', out];
+    }, exact ? 'out.mp4' : out, exact ? 'video/mp4' : 'video/*');
+    return [{ name: baseName(files[0].name) + '-trimmed' + (exact ? '.mp4' : ext), blob }];
+  }
+});
+
+TOOLS['convert-video'] = Object.assign({}, VID, {
+  label: 'Convert video',
+  opts: sel('o_fmt', 'Convert to', [['mp4', 'MP4 (works everywhere)'], ['webm', 'WebM'], ['mov', 'MOV'], ['mkv', 'MKV'], ['avi', 'AVI']]) + VNOTE,
+  async run(files, o) {
+    const f = o.v('o_fmt'), out = 'out.' + f;
+    const codecs = { mp4: [...vfMap.x264, '-crf', '23', '-movflags', '+faststart'], mov: [...vfMap.x264, '-crf', '23'], mkv: [...vfMap.x264, '-crf', '23'], webm: ['-c:v', 'libvpx', '-b:v', '1M', '-crf', '10', '-deadline', 'realtime', '-cpu-used', '5'], avi: ['-c:v', 'mpeg4', '-q:v', '5'] }[f];
+    const { blob } = await ffRun(o, files, (n, i) => {
+      const a = !i[0].hasAudio ? ['-an'] : f === 'webm' ? ['-c:a', 'libvorbis', '-b:a', '128k'] : f === 'avi' ? ['-c:a', 'libmp3lame', '-b:a', '128k'] : ['-c:a', 'aac', '-b:a', '128k'];
+      return ['-i', n[0], ...codecs, ...a, out];
+    }, out, f === 'webm' ? 'video/webm' : 'video/' + f);
+    return [{ name: baseName(files[0].name) + '.' + f, blob }];
+  }
+});
+
+TOOLS['merge-videos'] = Object.assign({}, VID, {
+  multiple: true, min: 2, sortable: true, title: 'Drop video clips here', sub: 'Add at least 2 clips. Use the arrows to set the order.', label: 'Merge videos',
+  opts: sel('o_size', 'Output size', [['1280x720', '1280×720 (720p)'], ['1920x1080', '1920×1080 (1080p)'], ['854x480', '854×480 (480p)']]) + VNOTE,
+  async run(files, o) {
+    const [W, H] = o.v('o_size').split('x'); let note = '';
+    const { blob } = await ffRun(o, files, (n, infos) => {
+      const allA = infos.every(i => i.hasAudio), anyA = infos.some(i => i.hasAudio);
+      if (anyA && !allA) note = 'Some clips have no audio, so the merged video has no sound.';
+      const keepA = allA;
+      let fc = n.map((_, i) => `[${i}:v]scale=${W}:${H}:force_original_aspect_ratio=decrease,pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2,setsar=1,fps=30,format=yuv420p[v${i}]` + (keepA ? `;[${i}:a]aresample=44100,aformat=channel_layouts=stereo[a${i}]` : '')).join(';');
+      fc += ';' + n.map((_, i) => `[v${i}]` + (keepA ? `[a${i}]` : '')).join('') + `concat=n=${n.length}:v=1:a=${keepA ? 1 : 0}[v]` + (keepA ? '[a]' : '');
+      return [...n.flatMap(x => ['-i', x]), '-filter_complex', fc, '-map', '[v]', ...(keepA ? ['-map', '[a]', '-c:a', 'aac', '-b:a', '128k'] : []), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '23', 'out.mp4'];
+    }, 'out.mp4', 'video/mp4');
+    return [{ name: 'merged.mp4', blob, note: note || undefined }];
+  }
+});
+
+TOOLS['extract-audio'] = Object.assign({}, VID, {
+  label: 'Extract audio',
+  opts: sel('o_fmt', 'Format', [['mp3', 'MP3'], ['m4a', 'M4A (AAC)'], ['wav', 'WAV (uncompressed)']]),
+  async run(files, o) {
+    const f = o.v('o_fmt'), out = 'out.' + f, codec = { mp3: ['-c:a', 'libmp3lame', '-q:a', '2'], m4a: ['-c:a', 'aac', '-b:a', '192k'], wav: ['-c:a', 'pcm_s16le'] }[f];
+    const { blob } = await ffRun(o, files, (n, i) => { if (!i[0].hasAudio) throw new Error('This video has no audio track.'); return ['-i', n[0], '-vn', ...codec, out]; }, out, { mp3: 'audio/mpeg', m4a: 'audio/mp4', wav: 'audio/wav' }[f]);
+    return [{ name: baseName(files[0].name) + '.' + f, blob }];
+  }
+});
+
+TOOLS['mute-video'] = Object.assign({}, VID, {
+  label: 'Remove audio',
+  async run(files, o) {
+    const ext = extOf(files[0].name), out = 'out' + ext;
+    const { blob } = await ffRun(o, files, (n, i) => { if (!i[0].hasAudio) throw new Error('This video already has no audio.'); return ['-i', n[0], '-c', 'copy', '-an', out]; }, out, 'video/*');
+    return [{ name: baseName(files[0].name) + '-muted' + ext, blob }];
+  }
+});
+
+TOOLS['video-to-gif'] = Object.assign({}, VID, {
+  label: 'Create GIF',
+  opts: txt('o_start', 'Start', 'e.g. 0:02 (blank = beginning)') + txt('o_dur', 'Length (seconds)', 'max 20', '5') +
+    sel('o_fps', 'Frame rate', [['12', '12 fps (balanced)'], ['8', '8 fps (smaller)'], ['18', '18 fps (smoother)']]) +
+    sel('o_w', 'Width', [['480', '480 px'], ['320', '320 px (smaller)'], ['640', '640 px']]),
+  async run(files, o) {
+    const s = parseTime(o.v('o_start')) || 0, d = Math.min(20, Math.max(0.5, parseFloat(o.v('o_dur')) || 5));
+    const { blob } = await ffRun(o, files, n => ['-ss', String(s), '-t', String(d), '-i', n[0], '-vf', `fps=${o.v('o_fps')},scale=${o.v('o_w')}:-1:flags=lanczos,split[a][b];[a]palettegen[p];[b][p]paletteuse`, '-loop', '0', 'out.gif'], 'out.gif', 'image/gif');
+    return [{ name: baseName(files[0].name) + '.gif', blob }];
+  }
+});
+
+TOOLS['gif-to-video'] = {
+  accept: 'image/gif,.gif', exts: ['.gif'], label: 'Convert to MP4',
+  async run(files, o) {
+    const { blob } = await ffRun(o, files, n => ['-i', n[0], '-movflags', '+faststart', '-pix_fmt', 'yuv420p', '-vf', 'scale=trunc(iw/2)*2:trunc(ih/2)*2', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '23', 'out.mp4'], 'out.mp4', 'video/mp4');
+    return [{ name: baseName(files[0].name) + '.mp4', blob }];
+  }
+};
+
+TOOLS['rotate-video'] = Object.assign({}, VID, {
+  label: 'Rotate video',
+  opts: sel('o_ang', 'Rotate', [['transpose=1', '90° clockwise'], ['transpose=2', '90° counter-clockwise'], ['transpose=1,transpose=1', '180°']]) + VNOTE,
+  async run(files, o) {
+    const { blob } = await ffRun(o, files, (n, i) => ['-i', n[0], '-vf', o.v('o_ang'), ...vfMap.x264, '-crf', '23', ...audioArgs(i[0]), 'out.mp4'], 'out.mp4', 'video/mp4');
+    return [{ name: baseName(files[0].name) + '-rotated.mp4', blob }];
+  }
+});
+
+TOOLS['flip-video'] = Object.assign({}, VID, {
+  label: 'Flip video',
+  opts: sel('o_dir', 'Flip', [['hflip', 'Horizontally (mirror)'], ['vflip', 'Vertically (upside down)']]) + VNOTE,
+  async run(files, o) {
+    const { blob } = await ffRun(o, files, (n, i) => ['-i', n[0], '-vf', o.v('o_dir'), ...vfMap.x264, '-crf', '23', ...audioArgs(i[0]), 'out.mp4'], 'out.mp4', 'video/mp4');
+    return [{ name: baseName(files[0].name) + '-flipped.mp4', blob }];
+  }
+});
+
+TOOLS['resize-video'] = Object.assign({}, VID, {
+  label: 'Resize video',
+  opts: sel('o_h', 'Height', [['720', '720p'], ['1080', '1080p'], ['480', '480p'], ['360', '360p'], ['240', '240p']]) + VNOTE,
+  async run(files, o) {
+    const { blob } = await ffRun(o, files, (n, i) => ['-i', n[0], '-vf', 'scale=-2:' + o.v('o_h'), ...vfMap.x264, '-crf', '23', ...audioArgs(i[0]), '-movflags', '+faststart', 'out.mp4'], 'out.mp4', 'video/mp4');
+    return [{ name: baseName(files[0].name) + '-' + o.v('o_h') + 'p.mp4', blob }];
+  }
+});
+
+TOOLS['video-speed'] = Object.assign({}, VID, {
+  label: 'Change speed',
+  opts: sel('o_sp', 'Speed', [['2', '2× faster'], ['1.5', '1.5× faster'], ['3', '3× faster'], ['4', '4× faster'], ['0.75', '0.75× (slower)'], ['0.5', '0.5× (half speed)']]) + VNOTE,
+  async run(files, o) {
+    const sp = parseFloat(o.v('o_sp'));
+    const at = sp > 2 ? 'atempo=2,atempo=' + (sp / 2) : 'atempo=' + sp;
+    const { blob } = await ffRun(o, files, (n, i) => ['-i', n[0], '-filter:v', 'setpts=PTS/' + sp, ...(i[0].hasAudio ? ['-filter:a', at, '-c:a', 'aac', '-b:a', '128k'] : ['-an']), ...vfMap.x264, '-crf', '23', 'out.mp4'], 'out.mp4', 'video/mp4');
+    return [{ name: baseName(files[0].name) + '-' + sp + 'x.mp4', blob }];
+  }
+});
+
+TOOLS['add-subtitles'] = {
+  accept: 'video/*,.mkv,.avi,.mov,.m4v,.srt,.vtt', exts: VID.exts.concat(['.srt', '.vtt']), multiple: true, min: 2, title: 'Drop a video and its subtitle file',
+  sub: 'Add one video (MP4, MOV…) and one .srt or .vtt subtitle file.', label: 'Add subtitles',
+  opts: '<p class="up-sub">Adds a subtitle track that viewers can switch on or off (not burned into the picture). Works best with MP4 and MOV.</p>',
+  async run(files, o) {
+    const sub = files.find(f => /\.(srt|vtt)$/i.test(f.name)), vid = files.find(f => !/\.(srt|vtt)$/i.test(f.name));
+    if (!sub || !vid) throw new Error('Please add one video file and one subtitle file (.srt or .vtt).');
+    const soft = /\.(mp4|mov|m4v)$/i.test(vid.name);
+    const { blob } = await ffRun(o, [vid, sub], (n, i) => ['-i', n[0], '-i', n[1], ...(soft ? ['-c', 'copy'] : [...vfMap.x264, '-crf', '23', ...audioArgs(i[0])]), '-c:s', 'mov_text', '-map', '0', '-map', '1', 'out.mp4'], 'out.mp4', 'video/mp4');
+    return [{ name: baseName(vid.name) + '-subtitled.mp4', blob }];
+  }
+};
+
 window.TWN = { has: id => !!TOOLS[id], render, ids: Object.keys(TOOLS) };
 })();
