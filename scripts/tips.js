@@ -10,7 +10,7 @@ module.exports = {
   ],
   'merge-pdf': [
     'Set the final order before you merge. The up and down arrows move a file, and the merged pages follow the list from top to bottom.',
-    'The page count of the result is simply the sum of your files, so a 10-page and a 5-page PDF give a 15-page PDF.',
+    'Want to confirm that nothing is uploaded? Our guide shows how to check it yourself: <a href="/blog/merge-pdf-without-uploading">how to merge PDF files without uploading them</a>.',
     'Need only some pages from a file? Pull them out first with <a href="/split-pdf">Split PDF</a>, then merge the extracts.',
     'If the merged file is too big to email, run it through <a href="/compress-pdf">Compress PDF</a>. It helps most on scans and photo-heavy documents.'
   ],

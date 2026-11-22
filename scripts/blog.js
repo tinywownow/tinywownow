@@ -4,6 +4,65 @@
 'use strict';
 module.exports = [
   {
+    slug: 'merge-pdf-without-uploading',
+    title: 'How to Merge PDF Files Without Uploading Them',
+    seoTitle: 'Merge PDF Files Without Uploading Them',
+    h1: 'How to merge PDF files without uploading them',
+    meta: 'Merge PDFs privately: use a tool that runs in your browser, check for uploads in the Network tab, or merge offline. Steps, a privacy check and free options.',
+    published: '2026-11-23',
+    updated: '2026-11-23',
+    readMin: 5,
+    answer: 'To merge PDF files without uploading them, use a tool that runs inside your browser, such as Merge PDF on TinyWow Now, or a program on your own computer. Add your files, set the order, click merge and download merged.pdf. You can prove that nothing is uploaded by watching the Network tab in your browser developer tools while you merge.',
+    body:
+      '<h2 id="why">Why it matters where your PDF goes</h2>' +
+      '<p>PDFs often hold the documents you least want to leak: contracts, ID scans, bank statements, medical reports and exam forms. Many online mergers work by sending your files to their server, merging them there and sending the result back. Most promise to delete the files afterwards, but then you are relying on their policy and their security. A tool that runs in your browser avoids the question, because your files never leave your device.</p>' +
+      '<h2 id="how">How to merge PDFs in your browser</h2>' +
+      '<ol>' +
+      '<li>Open <a href="/merge-pdf">Merge PDF</a> and drag in two or more files, or click <em>Choose files</em>.</li>' +
+      '<li>Put the files in the order you want. The up and down arrows move a file, and the merged pages follow the list from top to bottom.</li>' +
+      '<li>Click <em>Merge PDF</em>.</li>' +
+      '<li>Download <b>merged.pdf</b>.</li>' +
+      '</ol>' +
+      '<p>Pages are copied as they are, so text stays selectable and images keep their original quality. There is no fixed limit on the number of files. The practical limit is your device memory, and a few dozen normal documents merge without trouble on most computers.</p>' +
+      '<h2 id="verify">How to check that nothing is uploaded</h2>' +
+      '<p>Do not take a "no upload" label on trust, including ours. You can test it in about a minute:</p>' +
+      '<ol>' +
+      '<li>Open the merge page and press <b>F12</b> to open your browser developer tools, then go to the <b>Network</b> tab.</li>' +
+      '<li>Clear the list, then merge two files.</li>' +
+      '<li>Look at the requests. The first time you use the tool you may see one request for a library script, which is code coming into your browser. You should not see a request that sends your PDF out, such as a POST or PUT carrying a payload the size of your files.</li>' +
+      '</ol>' +
+      '<p>We ran this check ourselves on 23 November 2026. Merging two PDFs made a single request, the download of the open-source pdf-lib library, and no request that sent any data out. The merged file had both pages, and the text on each page was still selectable.</p>' +
+      '<h2 id="options">Three ways to merge without uploading</h2>' +
+      '<div class="tbl-wrap"><table><thead><tr><th>Option</th><th>Where your files go</th><th>Install needed</th><th>Good for</th></tr></thead><tbody>' +
+      '<tr><td><b>Browser tool</b> (<a href="/merge-pdf">Merge PDF</a>)</td><td>Stay on your device</td><td>No</td><td>Quick merges on any computer or phone</td></tr>' +
+      '<tr><td><b>Desktop program</b> (PDFsam)</td><td>Stay on your device</td><td>Yes</td><td>Regular or heavy use</td></tr>' +
+      '<tr><td><b>Preview</b> on a Mac</td><td>Stay on your device</td><td>No, it is built in</td><td>Mac users merging a few files</td></tr>' +
+      '</tbody></table></div>' +
+      '<p>PDFsam is an open-source desktop program, so you can check how it works. On a Mac, Apple\'s guide to Preview describes dragging a PDF file from the Finder into the thumbnail sidebar of an open document to combine them. Preview saves changes automatically, so duplicate your originals first if you want to keep them.</p>' +
+      '<h2 id="tips">Tips for a clean merge</h2>' +
+      '<ul>' +
+      '<li><b>Remove pages you do not need first.</b> Use <a href="/split-pdf">Split PDF</a> to extract just the page ranges you want, then merge the extracts.</li>' +
+      '<li><b>Straighten sideways pages.</b> Fix them with <a href="/rotate-pdf">Rotate PDF</a> before you merge.</li>' +
+      '<li><b>Think before compressing.</b> If the merged file is too big, <a href="/compress-pdf">Compress PDF</a> can shrink scans and photo-heavy documents, but it turns pages into images, so text in the compressed copy can no longer be selected. Keep the uncompressed merged file as well.</li>' +
+      '<li><b>Unlock protected files first.</b> A password-protected PDF cannot be merged. Remove the password in the app that created it. The tool tells you which file is protected.</li>' +
+      '</ul>',
+    faq: [
+      ['Is it safe to merge PDFs online?', 'It depends on the tool. Many sites upload your files to a server, so you rely on their deletion policy. A tool that runs in your browser keeps the files on your device, and you can check that yourself in the Network tab of your developer tools.'],
+      ['Does merging reduce the quality of my PDFs?', 'No. Pages are copied as they are, so text stays selectable and images keep their original quality.'],
+      ['Can I merge password-protected PDFs?', 'No. Remove the password in the app that created the file, then merge. The tool tells you which file is protected.'],
+      ['How many PDFs can I merge at once?', 'There is no fixed limit. The practical limit is your device memory, and a few dozen normal documents merge without trouble on most computers.'],
+      ['Can I change the order of the files?', 'Yes. Use the up and down arrows next to each file before you click Merge PDF. The merged pages follow the order of the list.'],
+      ['Does it work on a phone?', 'Yes, in a modern phone browser. Very large files depend on your phone memory, so a big merge may be easier on a computer.']
+    ],
+    sources: [
+      { n: 'pdf-lib: create and modify PDF documents in JavaScript', u: 'https://pdf-lib.js.org/' },
+      { n: 'Chrome for Developers: Inspect network activity', u: 'https://developer.chrome.com/docs/devtools/network/' },
+      { n: 'Apple Support: Combine PDFs in Preview on Mac', u: 'https://support.apple.com/guide/preview/combine-pdfs-prvw43696/mac' },
+      { n: 'PDFsam: open-source PDF split and merge', u: 'https://pdfsam.org/' }
+    ],
+    tools: ['merge-pdf', 'split-pdf', 'rotate-pdf', 'compress-pdf']
+  },
+  {
     slug: 'compress-image-to-100kb',
     title: 'How to Compress an Image to 100 KB, 50 KB or 20 KB',
     seoTitle: 'Compress Image to 100 KB, 50 KB or 20 KB',
