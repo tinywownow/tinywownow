@@ -186,7 +186,7 @@ module.exports = {
     tips: [
       'Convert to CSV when you need to import a spreadsheet into another system. A workbook with several sheets produces one CSV file per sheet.',
       'Remember that formulas stay intact between Excel formats, while CSV stores only the calculated values.',
-      'Choose HTML to get a table that you can paste into a web page.',
+      'Read what you keep and lose in our guide to <a href="/blog/convert-excel-to-csv">converting Excel to CSV</a>, including zeros, dates and formulas.',
       'Share a read-only copy with <a href="/excel-to-pdf">Excel to PDF</a>.'
     ],
     limits: ['CSV holds one sheet only, so the tool saves each sheet as its own CSV file.', 'CSV stores calculated values, not formulas.', 'Large files depend on your device memory.'],

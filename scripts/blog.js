@@ -4,6 +4,62 @@
 'use strict';
 module.exports = [
   {
+    slug: 'convert-excel-to-csv',
+    title: 'How to Convert Excel to CSV Without Losing Data',
+    seoTitle: 'Convert Excel to CSV: What You Keep and Lose',
+    h1: 'How to convert Excel to CSV without losing data',
+    meta: 'Convert Excel to CSV in your browser and know what changes: one file per sheet, values instead of formulas, and how zeros, dates and numbers export.',
+    published: '2026-11-24',
+    updated: '2026-11-24',
+    readMin: 5,
+    answer: 'To convert Excel to CSV, open XLS Converter, add your workbook, choose CSV and download the result. A CSV holds one sheet and stores values instead of formulas, so the tool saves each sheet as its own file. Check dates, formatted numbers and leading zeros before you import the result.',
+    body:
+      '<h2 id="changes">What changes when you save Excel as CSV</h2>' +
+      '<p>A CSV file is plain text. It cannot hold several sheets, formulas, colours or charts. Microsoft says the same: the CSV formats save only the active sheet, and a text format removes formatting. We tested what the XLS Converter writes, so the table below shows real results.</p>' +
+      '<div class="tbl-wrap"><table><thead><tr><th>In your workbook</th><th>In the CSV file</th></tr></thead><tbody>' +
+      '<tr><td>Two sheets, Sales and Notes</td><td>Two files: report-Sales.csv and report-Notes.csv</td></tr>' +
+      '<tr><td>A formula, =C2*D2</td><td>Its calculated value, 28.5</td></tr>' +
+      '<tr><td>Text 00123, and a number 456 shown as 00456</td><td>00123 and 00456, exactly as displayed</td></tr>' +
+      '<tr><td>A number shown as 1,234.50</td><td>"1,234.50", with the comma, inside quotes</td></tr>' +
+      '<tr><td>A date shown as 15/01/2026</td><td>15/01/2026, the displayed text</td></tr>' +
+      '<tr><td>Smith, John and Say "hello"</td><td>"Smith, John" and "Say ""hello"""</td></tr>' +
+      '<tr><td>Zo&euml; and Z&uuml;rich</td><td>Kept, in UTF-8 with a byte order mark</td></tr>' +
+      '</tbody></table></div>' +
+      '<h2 id="how">How to convert Excel to CSV</h2>' +
+      '<ol>' +
+      '<li>Open <a href="/xls-converter">XLS Converter</a> and add your .xlsx, .xls or .ods file.</li>' +
+      '<li>Under <em>Convert to</em>, choose <em>CSV (.csv)</em>.</li>' +
+      '<li>Click <em>Convert</em>.</li>' +
+      '<li>Download each CSV file, or download all of them as one ZIP.</li>' +
+      '</ol>' +
+      '<p>A workbook with one sheet gives report.csv. A workbook with several sheets gives one file per sheet, named after the workbook and the sheet, such as report-Sales.csv.</p>' +
+      '<h2 id="problems">Four problems to check before you import</h2>' +
+      '<ul>' +
+      '<li><b>Leading zeros.</b> Excel removes leading zeros from numbers you type. Microsoft advises formatting the column as Text first, or rebuilding the zeros with the TEXT function. The tool exports what the cell displays, so zeros you can see stay in the CSV.</li>' +
+      '<li><b>Thousands separators.</b> A number that displays as 1,234.50 exports with its comma, inside quotes. Set the cells to a plain Number format without separators before you convert.</li>' +
+      '<li><b>Dates.</b> The CSV holds the date as text in your display format, so 05/06/2026 can mean two different days. Switch the column to yyyy-mm-dd before you convert.</li>' +
+      '<li><b>Formulas.</b> The CSV keeps the result and loses the formula. Keep the original .xlsx as your master copy.</li>' +
+      '</ul>' +
+      '<h2 id="open">Opening the CSV in Excel again</h2>' +
+      '<p>The file starts with a UTF-8 byte order mark. This helps Excel recognise accents and other non-English letters. Excel may still show long numbers in scientific notation, so format those columns as Text before you import.</p>' +
+      '<h2 id="privacy">Does the workbook upload?</h2>' +
+      '<p>No. XLS Converter runs on your device, in your browser. In our test on 24 November 2026, the conversion made no network requests and sent no data out, because the page had already loaded its spreadsheet library. On a fresh visit, the first conversion downloads that library, and your file never travels with it.</p>',
+    faq: [
+      ['Can a CSV file hold more than one sheet?', 'No. A CSV holds one sheet. XLS Converter saves each sheet as its own CSV file and lets you download all of them as one ZIP.'],
+      ['Does the CSV keep my formulas?', 'No. The CSV stores the calculated value, such as 28.5, and not the formula behind it. Keep the original workbook if you need the formulas.'],
+      ['Why did my leading zeros disappear?', 'Excel removes leading zeros from numbers by default. Format the column as Text before you type the values. The tool exports exactly what each cell displays.'],
+      ['Why does my number have a comma and quotes?', 'The CSV stores the displayed text, so a number with a thousands separator keeps its comma. The quotes stop that comma from splitting the field.'],
+      ['Which files can the tool read?', 'The tool reads .xlsx, .xls, .csv and .ods files, and converts them to XLSX, XLS, CSV, ODS or HTML.'],
+      ['Does the tool upload my workbook?', 'No. The tool runs in your browser, on your device. You can confirm this in the Network tab of your developer tools.']
+    ],
+    sources: [
+      { n: 'Microsoft Support: Save a workbook to text format (.txt or .csv)', u: 'https://support.microsoft.com/en-us/excel/save-a-workbook-to-text-format-txt-or-csv' },
+      { n: 'Microsoft Support: Save a workbook in another file format', u: 'https://support.microsoft.com/en-us/excel/save-a-workbook-in-another-file-format' },
+      { n: 'Microsoft Support: TEXT function', u: 'https://support.microsoft.com/en-us/excel/functions/text-function' }
+    ],
+    tools: ['xls-converter', 'csv-to-json', 'excel-to-pdf', 'pdf-to-excel']
+  },
+  {
     slug: 'compress-video-for-email',
     title: 'How to Compress a Video for Email',
     seoTitle: 'Compress a Video for Email Under 25 MB',
