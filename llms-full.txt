@@ -788,7 +788,7 @@ A: Older Safari versions do not support the canvas filters that this tool uses. 
 
 ## Compress Video
 URL: https://www.tinywownow.com/compress-video
-Compress Video makes a video file smaller by re-encoding it with H.264 and AAC, with a choice of quality and maximum resolution. It runs on your own device, so the video never leaves it.
+Compress Video makes a video file smaller by re-encoding it with H.264 video and AAC audio. You choose a quality level and an optional maximum resolution, and the tool never enlarges a video. It runs on your own device, so the video never leaves it.
 
 How to use:
 1. Add a video (MP4, MOV, MKV, WebM, AVI and more).
@@ -807,16 +807,16 @@ Q: Is there a size limit?
 A: Yes. The tool refuses files over about 700 MB, because browsers have limited memory.
 
 Q: What if my video is already small?
-A: The tool returns your original unchanged and says so.
+A: The tool returns your original unchanged and says so, so you never get a bigger file.
 
-Q: Why does the tool download 30 MB first?
-A: It downloads a video engine the first time you use a video tool. Your browser keeps it for next time.
+Q: What do the quality levels do?
+A: Light uses H.264 CRF 24, Balanced uses 28 and Strong uses 32. A higher CRF gives a smaller file with more visible loss. The tool saves the audio as AAC at 128 kbps.
 
 ---
 
 ## Trim Video
 URL: https://www.tinywownow.com/trim-video
-Trim Video cuts a video to the start and end times you set. Fast mode copies the video without re-encoding, which works quickly but cuts at the nearest keyframe. Exact mode re-encodes the clip for frame-accurate cuts.
+Trim Video cuts a video to the start and end times you set. Fast mode copies the video without re-encoding and keeps your original format, but it cuts at the nearest keyframe. Exact mode re-encodes the clip to an MP4 for frame-accurate cuts.
 
 How to use:
 1. Add a video.
@@ -825,11 +825,11 @@ How to use:
 
 Limits:
 - Fast mode can cut a moment early or late, because it cuts at keyframes.
-- The tool refuses files over about 700 MB.
-- Exact mode takes longer, because it re-encodes the clip.
+- The tool stops with a message when the end time is before the start time, or when the start time passes the end of the video.
+- Exact mode re-encodes the clip, so it takes longer and always saves an MP4.
 
 Q: What is the difference between Fast and Exact?
-A: Fast copies the existing video data, so it works quickly with no quality loss, but the cut can sit a moment off. Exact re-encodes the clip, so the cut lands precisely.
+A: Fast copies the existing video data, so it works quickly with no quality loss, but the cut can sit a moment off. Exact re-encodes the clip with H.264, so the cut lands precisely.
 
 Q: Which time formats can I use?
 A: Use seconds (90), minutes and seconds (1:30), or hours, minutes and seconds (0:01:30).
@@ -837,14 +837,14 @@ A: Use seconds (90), minutes and seconds (1:30), or hours, minutes and seconds (
 Q: Can I leave the end time blank?
 A: Yes. The clip then runs from your start time to the end of the video.
 
-Q: Which formats can I trim?
-A: You can trim MP4, MOV, MKV, WebM and AVI files.
+Q: Which formats can I trim, and which format do I get?
+A: You can trim MP4, MOV, MKV, WebM and AVI files. Fast mode keeps your original format, and Exact mode saves an MP4.
 
 ---
 
 ## Convert Video
 URL: https://www.tinywownow.com/convert-video
-Convert Video changes a video file into MP4, WebM, MOV, MKV or AVI. The conversion runs in your browser, so the file stays on your device, and MP4 (H.264 and AAC) plays on nearly every device.
+Convert Video changes a video file into MP4, WebM, MOV, MKV or AVI. The tool re-encodes the picture and sound on your device, so the file never leaves it. MP4 with H.264 and AAC plays on nearly every phone, computer and TV.
 
 How to use:
 1. Add a video.
@@ -852,9 +852,9 @@ How to use:
 3. Click Convert video, then download the file.
 
 Limits:
-- The tool re-encodes the video at good quality (H.264 CRF 23 for MP4, MOV and MKV), so a small loss is possible.
+- The tool re-encodes MP4, MOV and MKV with H.264 at CRF 23, so a small loss is possible.
 - The tool refuses files over about 700 MB.
-- The tool aims for quality, not for a file size.
+- AVI output uses older MPEG-4 video with MP3 audio, so the file is usually larger than an MP4.
 
 Q: Which format should I pick?
 A: MP4 works almost everywhere. WebM suits websites, MOV suits Apple software, and MKV and AVI suit specific players.
@@ -863,7 +863,7 @@ Q: Will the quality change?
 A: The tool re-encodes the video at good quality (H.264 CRF 23 for MP4, MOV and MKV), so you may lose a little detail.
 
 Q: Why is conversion slow?
-A: It runs on your device, so long or high-resolution videos take longer.
+A: It runs on your device, so long or high-resolution videos take longer. Keep the tab open until the tool finishes.
 
 Q: Can I convert a video to MP3?
 A: Not here. Use Extract Audio from Video to save the sound as MP3, M4A or WAV.
@@ -872,7 +872,7 @@ A: Not here. Use Extract Audio from Video to save the sound as MP3, M4A or WAV.
 
 ## Merge Videos
 URL: https://www.tinywownow.com/merge-videos
-Merge Videos joins two or more clips into one MP4, in the order you choose. The tool scales every clip to one output size (720p, 1080p or 480p), so videos of different sizes play smoothly together.
+Merge Videos joins two or more clips into one MP4, in the order you choose. The tool scales every clip to one output size (480p, 720p or 1080p) at 30 frames per second, so videos of different sizes play smoothly together.
 
 How to use:
 1. Add at least two video clips.
@@ -881,17 +881,17 @@ How to use:
 
 Limits:
 - The merged video has no sound when any clip has no audio, and the tool tells you.
-- The total size must stay under about 700 MB.
-- The tool saves the result as an MP4 file.
+- The combined size of all clips must stay under about 700 MB.
+- The tool saves one MP4 at 30 frames per second.
 
 Q: What happens when my clips have different sizes?
-A: The tool scales each clip to fit the output size you choose, with black bars where needed.
+A: The tool scales each clip to fit the output size you choose and adds black bars where the proportions differ. Every clip keeps its own proportions.
 
 Q: What if one clip has no audio?
-A: The merged video has no audio, and the tool tells you.
+A: The merged video has no audio, and the tool tells you. Add sound to every clip, or merge only clips that have none.
 
 Q: Is there a limit on clips?
-A: The tool sets no fixed limit, but the total size must stay under about 700 MB.
+A: The tool sets no fixed limit on the number of clips, but the combined size must stay under about 700 MB.
 
 Q: Can I change the clip order?
 A: Yes. Use the arrows next to each clip before you merge.
@@ -900,7 +900,7 @@ A: Yes. Use the arrows next to each clip before you merge.
 
 ## Extract Audio from Video
 URL: https://www.tinywownow.com/extract-audio-from-video
-Extract Audio from Video saves the sound of a video as an MP3, M4A (AAC) or WAV file. It runs in your browser, so the video stays on your device.
+Extract Audio from Video saves the sound of a video as an MP3, M4A (AAC) or WAV file. MP3 uses high-quality variable bitrate, M4A uses 192 kbps AAC, and WAV stays uncompressed. It runs in your browser, so the video stays on your device.
 
 How to use:
 1. Add a video that has sound.
@@ -908,7 +908,7 @@ How to use:
 3. Click Extract audio, then download the file.
 
 Limits:
-- The tool saves MP3 at high quality (VBR level 2).
+- The tool saves MP3 at high quality (VBR level 2) and M4A at 192 kbps.
 - The tool refuses files over about 700 MB.
 - The tool finds no sound in videos without an audio track.
 
@@ -919,7 +919,7 @@ Q: What if the video has no audio?
 A: The tool tells you that the video has no audio track.
 
 Q: Does the tool reduce the audio quality?
-A: MP3 uses high quality (VBR level 2). Choose WAV for no compression.
+A: MP3 and M4A compress with a small loss at high quality. WAV stores the sound as uncompressed 16-bit audio, so choose WAV when you plan to edit.
 
 Q: Which video formats work?
 A: MP4, MOV, MKV, WebM and AVI files work.
@@ -928,7 +928,7 @@ A: MP4, MOV, MKV, WebM and AVI files work.
 
 ## Remove Audio from Video
 URL: https://www.tinywownow.com/remove-audio-from-video
-Remove Audio from Video deletes the sound track from a video and keeps the picture exactly as it is. The tool copies the video without re-encoding it, so it works fast and loses no quality.
+Remove Audio from Video deletes the sound track from a video and keeps the picture exactly as it is. The tool copies the video without re-encoding it, so it works fast, loses no quality and keeps your original format.
 
 How to use:
 1. Add a video.
@@ -936,12 +936,12 @@ How to use:
 3. Download the silent video.
 
 Limits:
-- The tool keeps the original format.
-- The tool tells you when the video already has no audio.
+- The tool keeps the original format and does not convert it.
+- The tool stops with a message when the video already has no audio.
 - The tool refuses files over about 700 MB.
 
 Q: Does removing audio change the video quality?
-A: No. The tool copies the video stream unchanged.
+A: No. The tool copies the video stream unchanged, so the picture stays exactly as it was.
 
 Q: Can I keep my original with the sound?
 A: Yes. The tool leaves your original file unchanged and gives you a new silent copy.
@@ -956,7 +956,7 @@ A: MP4, MOV, MKV, WebM and AVI files work, and the result keeps the same format.
 
 ## Video to GIF
 URL: https://www.tinywownow.com/video-to-gif
-Video to GIF converts a clip of up to 20 seconds into an animated GIF. You choose the start, length, frame rate and width, and the tool generates a colour palette for good results.
+Video to GIF converts a clip of up to 20 seconds into an animated GIF that loops forever. You choose the start, length, frame rate (8, 12 or 18 fps) and width (320, 480 or 640 px). The tool builds a custom colour palette for good results.
 
 How to use:
 1. Add a video.
@@ -972,19 +972,19 @@ Q: Why is my GIF so large?
 A: GIFs use an inefficient format. Use a shorter clip, a lower frame rate (8 fps) or a smaller width (320 px).
 
 Q: What is the maximum length?
-A: The maximum length is 20 seconds.
+A: The maximum length is 20 seconds. The default length is 5 seconds, and the tool rounds anything below half a second up to 0.5 seconds.
 
 Q: Does the GIF carry a watermark?
 A: No. The tool adds no watermark to your GIF.
 
-Q: Which video formats work?
-A: MP4, MOV, MKV, WebM and AVI files work.
+Q: Which settings should I start with?
+A: Start with 12 fps and 480 px for balanced results. Choose 8 fps and 320 px for a small file, or 18 fps and 640 px for the smoothest picture.
 
 ---
 
 ## GIF to Video
 URL: https://www.tinywownow.com/gif-to-video
-GIF to Video turns an animated GIF into an MP4 video. The MP4 is usually much smaller than the GIF and plays smoothly on phones and websites. The conversion runs in your browser.
+GIF to Video turns an animated GIF into an MP4 video with H.264. The MP4 is usually much smaller than the GIF and plays smoothly on phones and websites. The tool runs in your browser, so the GIF stays on your device.
 
 How to use:
 1. Add a GIF.
@@ -994,25 +994,25 @@ How to use:
 Limits:
 - The tool accepts GIF files only.
 - The MP4 does not loop by itself. Your player or embed controls looping.
-- Colours can shift slightly after the conversion.
+- The tool trims an odd width or height by one pixel, because MP4 needs even sizes.
 
 Q: Why convert a GIF to MP4?
 A: MP4 files are usually many times smaller than the same animation as a GIF, and they play more smoothly.
 
 Q: Does the MP4 loop?
-A: The file is a normal video. Most players and websites can loop it.
+A: The file is a normal video, so it plays once. Most players and websites can loop it, and you can switch looping on in your embed.
 
 Q: Will the colours change?
 A: Slightly. MP4 uses a different colour format, but the results look close.
 
 Q: Can I turn the MP4 back into a GIF?
-A: Yes. Use Video to GIF.
+A: Yes. Use Video to GIF, and keep the clip short to keep the GIF small.
 
 ---
 
 ## Rotate Video
 URL: https://www.tinywownow.com/rotate-video
-Rotate Video turns a video 90 degrees clockwise, 90 degrees counter-clockwise or 180 degrees, and saves the result as a new MP4. It fixes clips that you filmed sideways or upside down.
+Rotate Video turns a video 90 degrees clockwise, 90 degrees counter-clockwise or 180 degrees, and saves the result as a new MP4. It fixes clips that you filmed sideways or upside down, and it keeps the audio.
 
 How to use:
 1. Add a video.
@@ -1025,13 +1025,13 @@ Limits:
 - The tool refuses files over about 700 MB.
 
 Q: Does rotating re-encode the video?
-A: Yes. The tool must redraw the picture, so it saves a new MP4 at good quality.
+A: Yes. The tool must redraw every frame, so it saves a new MP4 with H.264 video at CRF 23 and keeps the audio as AAC.
 
 Q: Can I flip the video instead?
 A: Yes. Use the Flip Video tool for mirroring.
 
 Q: Does the tool keep the audio?
-A: Yes. The tool keeps the audio.
+A: Yes. The tool keeps the audio, and it also handles videos that have none.
 
 Q: Which formats work?
 A: MP4, MOV, MKV, WebM and AVI files work, and the tool saves an MP4.
@@ -1040,7 +1040,7 @@ A: MP4, MOV, MKV, WebM and AVI files work, and the tool saves an MP4.
 
 ## Resize Video
 URL: https://www.tinywownow.com/resize-video
-Resize Video changes the height of a video to 1080p, 720p, 480p, 360p or 240p and adjusts the width to keep the proportions. The tool saves the result as an MP4.
+Resize Video changes the height of a video to 1080p, 720p, 480p, 360p or 240p and sets the width automatically to keep the proportions. The tool re-encodes with H.264 and saves an MP4 that suits web playback.
 
 How to use:
 1. Add a video.
@@ -1049,26 +1049,26 @@ How to use:
 
 Limits:
 - The tool changes the height only and sets the width automatically.
-- The tool cannot add detail when you scale up.
+- The tool can scale a video up, but it cannot add detail.
 - The tool refuses files over about 700 MB.
 
 Q: Does the aspect ratio change?
 A: No. The tool sets the width automatically to keep the original proportions.
 
 Q: Can it make a video bigger?
-A: It can scale up, but it cannot add detail. Use it mainly to scale down.
+A: Yes, it can scale a video up, but it cannot add detail. Use it mainly to scale down.
 
 Q: Does resizing make the file smaller?
-A: Usually yes, because fewer pixels need less data.
+A: Usually yes, because fewer pixels need less data. The tool also re-encodes the video at H.264 CRF 23.
 
-Q: Which resolutions can I choose?
-A: You can choose 1080p, 720p, 480p, 360p or 240p.
+Q: Which resolution should I choose?
+A: Choose 720p for messaging apps, 1080p for general use, 480p for small files, and 360p or 240p for slow connections.
 
 ---
 
 ## Change Video Speed
 URL: https://www.tinywownow.com/change-video-speed
-Change Video Speed makes a video play faster (1.5x, 2x, 3x or 4x) or slower (0.75x or 0.5x) and matches the audio speed. It runs in your browser and saves an MP4.
+Change Video Speed makes a video play faster (1.5x, 2x, 3x or 4x) or slower (0.75x or 0.5x). The tool keeps the audio in step with the picture. It runs in your browser and saves an MP4.
 
 How to use:
 1. Add a video.
@@ -1081,7 +1081,7 @@ Limits:
 - The tool refuses files over about 700 MB.
 
 Q: Does the audio pitch change?
-A: No. The tool adjusts the audio speed without changing its pitch.
+A: No. The tool changes the audio tempo, not the pitch. For 3x and 4x it chains two tempo filters, because one filter reaches only 2x.
 
 Q: Which speeds can I choose?
 A: You can choose 0.5x, 0.75x, 1.5x, 2x, 3x or 4x.
@@ -1090,7 +1090,7 @@ Q: What if my video has no audio?
 A: The tool processes only the picture, and the result has no sound.
 
 Q: Which format does the tool save?
-A: It saves an MP4.
+A: It saves an MP4 with H.264 video and AAC audio.
 
 ---
 
@@ -1104,7 +1104,7 @@ How to use:
 3. Download the MP4 and turn the subtitles on in your player.
 
 Limits:
-- The tool adds a soft subtitle track. It does not burn text into the picture.
+- The tool adds a soft subtitle track (mov_text). It does not burn text into the picture.
 - The tool accepts SRT and VTT files only.
 - The tool adds one subtitle file to one video at a time.
 
@@ -1115,7 +1115,7 @@ Q: Which subtitle formats work?
 A: SRT and VTT files work.
 
 Q: Which videos work best?
-A: The tool copies MP4 and MOV videos without re-encoding. It converts other formats to MP4.
+A: The tool copies MP4, MOV and M4V videos without re-encoding. It converts other formats to MP4 with H.264, so those files take longer.
 
 Q: Can I add several languages?
 A: Not yet. The tool adds one subtitle file to one video.
@@ -1124,7 +1124,7 @@ A: Not yet. The tool adds one subtitle file to one video.
 
 ## Flip Video
 URL: https://www.tinywownow.com/flip-video
-Flip Video mirrors a video left to right, or turns it upside down, and saves the result as an MP4. It runs in your browser, so the video stays on your device.
+Flip Video mirrors a video left to right, or turns it upside down, and saves the result as an MP4. It runs in your browser, so the video stays on your device, and it keeps the audio.
 
 How to use:
 1. Add a video.
@@ -1143,7 +1143,7 @@ Q: Does the tool keep the audio?
 A: Yes. The tool keeps the audio as it is.
 
 Q: Does flipping re-encode the video?
-A: Yes. The tool redraws every frame, at good quality.
+A: Yes. The tool redraws every frame with H.264 at CRF 23, so you may lose a little detail.
 
 Q: Which flips can I choose?
 A: You can flip horizontally or vertically.
