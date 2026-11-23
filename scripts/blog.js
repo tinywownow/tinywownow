@@ -24,16 +24,17 @@ module.exports = [
       '<tr><td>3 minutes (180 s)</td><td>18 MB</td><td>0.8 Mbps (18 &times; 8 &divide; 180)</td></tr>' +
       '<tr><td>5 minutes (300 s)</td><td>18 MB</td><td>0.48 Mbps (18 &times; 8 &divide; 300)</td></tr>' +
       '</tbody></table></div>' +
-      '<p>Treat these numbers as a guide. Compress Video sets quality and resolution, not bitrate, so you check the result and adjust. A longer video needs a lower bitrate, which means a smaller picture or stronger compression.</p>' +
+      '<p>Compress Video applies this maths for you when you type a target size. The table shows why a longer video needs a lower bitrate, which means a smaller picture or stronger compression.</p>' +
       '<h2 id="how">How to compress a video for email</h2>' +
       '<ol>' +
       '<li>Open <a href="/compress-video">Compress Video</a> and add your file.</li>' +
-      '<li>Set <em>Compression</em> to Balanced (recommended) first. Choose Strong (smallest) when the result is still too big.</li>' +
-      '<li>Set <em>Resolution</em> to Max 720p for most clips, or Max 480p for long ones.</li>' +
+      '<li>Type your size in <em>Target size (MB)</em>, such as 18, or tap a preset. The tool then picks the bitrate for you.</li>' +
+      '<li>Set <em>Resolution</em> to Max 720p or Max 480p if you want to cap the picture size. Small targets lower the resolution on their own.</li>' +
       '<li>Click <em>Compress video</em>, then read the sizes before and after.</li>' +
-      '<li>Download the MP4 and check that it plays. If it is still over your limit, follow the next section and run it again.</li>' +
+      '<li>Download the MP4 and check that it plays. If the tool marks it as missing the target, follow the next section.</li>' +
       '</ol>' +
-      '<p>The tool compresses with H.264 video and AAC audio, and it never scales a video up. Balanced uses H.264 CRF 28 and Strong uses CRF 32. A higher number gives a smaller file with more visible loss.</p>' +
+      '<p>The tool compresses with H.264 video and AAC audio, and it never scales a video up. With a target size, it works out the bitrate from your video length. It then adjusts the bitrate over up to three passes and keeps the largest result that fits. It counts 1 MB as 1,000,000 bytes, so the file also fits limits that count the other way. Without a target, Balanced uses H.264 CRF 28 and Strong uses CRF 32. A higher number gives a smaller file with more visible loss.</p>' +
+      '<p>We tested target sizes on 23 November 2026 with short test clips. A 0.5 MB target gave a 0.49 MB file, which is 98 percent of the target. A 0.25 MB target gave 89 percent, and the tool lowered the picture size to reach it. A clip that was already smaller than the target stayed unchanged. An extreme target of 0.12 MB for a five-second clip stayed out of reach, and the tool said so. Results on real footage vary, so always check the size.</p>' +
       '<h2 id="shrink">What shrinks a video the most</h2>' +
       '<ul>' +
       '<li><b>A shorter video.</b> Every second you cut removes data. Use <a href="/trim-video">Trim Video</a> to keep only the part you need.</li>' +
@@ -52,7 +53,7 @@ module.exports = [
       ['How do I send a video that is too big for email?', 'Compress it with Compress Video, or share a link. Gmail adds a Google Drive link automatically when your attachments exceed 25 MB.'],
       ['Does compressing a video reduce its quality?', 'Yes, a little. The tool uses lossy H.264 compression, and stronger levels and lower resolutions show more loss. Keep your original file.'],
       ['Which format should I send?', 'Send an MP4 with H.264 video and AAC audio, because it plays on nearly every device. Compress Video saves an MP4.'],
-      ['Can I set an exact size such as 20 MB?', 'Not yet. Compress Video sets quality and resolution, not a target size. Use the size formula above, then check the result and adjust.'],
+      ['Can I set a target size such as 20 MB?', 'Yes. Type it in Target size (MB). The tool aims for it with up to three passes and keeps the largest result that fits. It does not promise an exact size, so check the result.'],
       ['Does the tool upload my video?', 'No. The tool runs in your browser, on your device. You can confirm this in the Network tab of your developer tools.']
     ],
     sources: [

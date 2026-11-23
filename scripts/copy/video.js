@@ -5,20 +5,20 @@ module.exports = {
   'compress-video': {
     title: 'Compress Video Online, Reduce Size',
     meta: 'Shrink video files in your browser with H.264 compression. Choose the quality and resolution. Free and private, with no upload and no sign-up.',
-    answer: 'Compress Video makes a video file smaller by re-encoding it with H.264 video and AAC audio. You choose a quality level and an optional maximum resolution, and the tool never enlarges a video. It runs on your own device, so the video never leaves it.',
-    steps: ['Add a video (MP4, MOV, MKV, WebM, AVI and more).', 'Pick the compression level and, if you want, a maximum resolution.', 'Click Compress video, then download the smaller MP4.'],
+    answer: 'Compress Video makes a video file smaller by re-encoding it with H.264 video and AAC audio. Pick a quality level, or type a target size in MB and let the tool aim for it. It runs on your own device, so the video never leaves it.',
+    steps: ['Add a video (MP4, MOV, MKV, WebM, AVI and more).', 'Pick a compression level, or type a target size in MB, and choose a maximum resolution if you want.', 'Click Compress video, then download the smaller MP4.'],
     use: ['A chat app or portal rejects your video as too large.', 'You want to email a clip without hitting the attachment limit.', 'You need to free storage space and keep a watchable copy.'],
     tips: [
-      'Choose Strong for the smallest file, Balanced for everyday sharing and Light when quality matters most. The levels use H.264 CRF values of 32, 28 and 24, and a higher number gives a smaller file.',
-      'Lower the maximum resolution for the biggest saving. The tool offers 1080p, 720p and 480p caps, and it never scales a smaller video up.',
-      'Trim the parts you do not need first with <a href="/trim-video">Trim Video</a>, so you do not encode footage that you will cut.',
+      'Got a size limit? Type it in Target size, or tap 10, 25, 50 or 100 MB. The tool turns your size and the video length into a bitrate, then adjusts it over up to three passes.',
+      'Without a target, choose Strong for the smallest file, Balanced for everyday sharing and Light when quality matters most. The levels use H.264 CRF values of 32, 28 and 24.',
+      'Trim the parts you do not need first with <a href="/trim-video">Trim Video</a>, so the tool has fewer seconds to fit into your size.',
       'Keep the tab open until the tool finishes, because long, high-resolution videos take minutes. Sending the video by email? Read <a href="/blog/compress-video-for-email">how to compress a video for email</a>.'
     ],
-    limits: ['The tool refuses files over about 700 MB, because browsers have limited memory.', 'The first run downloads a video engine of about 30 MB.', 'The tool returns your original when it cannot make a smaller file.'],
+    limits: ['The tool refuses files over about 700 MB, because browsers have limited memory.', 'The tool aims for your target in up to three passes and tells you when a tiny target stays out of reach.', 'Small targets lower the resolution automatically, and the tool keeps your original when it is already under the target.'],
     faq: [
-      ['How long does it take?', 'It runs on your device, so the time depends on the video length and your computer. Short clips take seconds, and long high-resolution videos take several minutes.'],
+      ['How long does it take?', 'It runs on your device, so the time depends on the video length and your computer. Short clips take seconds, and long high-resolution videos take several minutes. The first run also downloads a video engine of about 30 MB.'],
       ['Is there a size limit?', 'Yes. The tool refuses files over about 700 MB, because browsers have limited memory.'],
-      ['What if my video is already small?', 'The tool returns your original unchanged and says so, so you never get a bigger file.'],
+      ['How does the target size work?', 'You type a size in MB. The tool divides it by the video length to find a bitrate, encodes the video, and adjusts the bitrate over up to three passes. It counts 1 MB as 1,000,000 bytes and lowers the resolution when the size is small.'],
       ['What do the quality levels do?', 'Light uses H.264 CRF 24, Balanced uses 28 and Strong uses 32. A higher CRF gives a smaller file with more visible loss. The tool saves the audio as AAC at 128 kbps.']
     ],
     next: [['trim-video', 'Cut unwanted parts before you compress.'], ['resize-video', 'Lower the resolution for a smaller file.'], ['convert-video', 'Change the format if a device will not play the file.']],

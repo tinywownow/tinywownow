@@ -283,7 +283,7 @@ function render(ui, t) {
       ${items.length > 1 ? '<button class="btn-dl" id="tfZip">Download all (ZIP)</button>' : ''}</div>${notes}
       ${items.map((r, i) => `<div class="tf-res">
         <div class="tf-ic">${esc((r.name.split('.').pop() || '').slice(0, 4).toUpperCase())}</div>
-        <div class="tf-nm">${esc(r.name)}<span>${fmtSize(r.blob.size)}${r.info ? ' · ' + esc(r.info) : ''}</span></div>
+        <div class="tf-nm">${esc(r.name)}<span>${r.sizeText || fmtSize(r.blob.size)}${r.info ? ' · ' + esc(r.info) : ''}</span></div>
         <button class="btn-dl" data-dl="${i}">Download</button></div>
         ${r.text !== undefined ? `<textarea class="tf-txt" readonly>${esc(r.text)}</textarea><button class="btn-dl" data-cp="${i}" style="margin-top:8px">Copy text</button>` : ''}`).join('')}`;
     out.classList.add('show');
@@ -942,14 +942,54 @@ async function ffRun(o, files, build, outName, mime) {
 }
 const VNOTE = '<p class="up-sub">Runs on your device, so large videos can take a while. Keep this tab open until it finishes.</p>';
 const vfMap = { x264: ['-c:v', 'libx264', '-preset', 'veryfast', '-pix_fmt', 'yuv420p'] };
-function audioArgs(info) { return info && info.hasAudio ? ['-c:a', 'aac', '-b:a', '128k'] : ['-an']; }
+function audioArgs(info, kb) { return info && info.hasAudio ? ['-c:a', 'aac', '-b:a', (kb || 128) + 'k'] : ['-an']; }
+
+/* Target size: the tool turns the wanted size and the video length into a bitrate, encodes,
+   then adjusts the bitrate and tries again (up to three passes) until the file fits and uses most of the budget. */
+async function compressToTarget(files, o, f, capUser, mb) {
+  const T = Math.round(mb * 1e6);                     /* 1 MB counts as 1,000,000 bytes, which also fits limits counted in MiB */
+  if (f.size <= T) return [{ name: f.name, blob: f, info: 'unchanged', note: 'This video is already under your target size, so the original is returned unchanged.' }];
+  let vb = null, usedH = 0, forceH = 0, dur = 0, best = null, last = null;  /* vb = video bitrate in kbit/s */
+  for (let pass = 0; pass < 3; pass++) {
+    const { blob } = await ffRun(o, files, (n, i) => {
+      dur = i[0].duration;
+      if (!dur) throw new Error('The tool could not read the length of this video, so it cannot aim for a target size. Choose a compression level instead.');
+      const budget = T * 8 / dur / 1000;                                   /* total kbit/s the whole file may use */
+      const ak = !i[0].hasAudio ? 0 : budget < 300 ? 64 : 128;             /* small targets get lighter audio */
+      if (vb === null) vb = Math.max(40, budget * 0.93 - ak);
+      const auto = vb < 250 ? 360 : vb < 600 ? 480 : vb < 1200 ? 720 : 0;   /* low bitrates need a smaller picture to look clean */
+      const caps = [capUser, auto, forceH].filter(Boolean);
+      usedH = caps.length ? Math.min(...caps) : 0;
+      return ['-i', n[0], ...(usedH ? ['-vf', 'scale=-2:min(' + usedH + '\\,ih)'] : []), ...vfMap.x264, '-b:v', Math.round(vb) + 'k', '-maxrate', Math.round(vb * 1.3) + 'k', '-bufsize', Math.round(vb * 2) + 'k', ...audioArgs(i[0], ak), '-movflags', '+faststart', 'out.mp4'];
+    }, 'out.mp4', 'video/mp4');
+    last = { blob, h: usedH };
+    if (blob.size <= T) { if (!best || blob.size > best.blob.size) best = last; if (blob.size >= 0.85 * T) break; }
+    else if (pass >= 1) forceH = !usedH || usedH > 480 ? 480 : usedH > 360 ? 360 : 240;   /* still too big: step the picture down */
+    if (vb <= 40 && blob.size > T) break;                                  /* nothing left to lower */
+    vb = Math.max(40, vb + ((T * 0.95 - blob.size) * 8 / dur) / 1000);     /* move the bitrate by the real error, so fixed audio cannot skew it */
+  }
+  const pick = best || last, miss = !best;
+  const dec = b => (b / 1e6).toFixed(2) + ' MB';       /* decimal MB, so the numbers match the target you typed */
+  const out = { name: baseName(f.name) + '-compressed.mp4', blob: pick.blob, sizeText: dec(pick.blob.size), info: dec(f.size) + ' → ' + dec(pick.blob.size) + ' (target ' + mb + ' MB' + (pick.h ? ', up to ' + pick.h + 'p' : '') + ')' };
+  if (miss) out.note = 'The tool could not reach ' + mb + ' MB. The smallest result is ' + dec(pick.blob.size) + '. Try a larger target, a lower resolution cap or a shorter clip.';
+  return [out];
+}
 
 TOOLS['compress-video'] = Object.assign({}, VID, {
   label: 'Compress video',
-  opts: sel('o_lvl', 'Compression', [['28', 'Balanced (recommended)'], ['32', 'Strong (smallest)'], ['24', 'Light (best quality)']]) +
+  init(ui) {
+    const tg = ui.querySelector('#o_tg'), lvl = ui.querySelector('#o_lvl'), chips = ui.querySelector('#o_chips');
+    const sync = () => { const on = parseFloat(tg.value) > 0; lvl.disabled = on; chips.querySelectorAll('.fbtn').forEach(b => b.classList.toggle('on', on && parseFloat(tg.value) === parseFloat(b.dataset.mb))); };
+    tg.oninput = sync;
+    chips.onclick = e => { const b = e.target.closest('.fbtn'); if (!b) return; tg.value = parseFloat(tg.value) === parseFloat(b.dataset.mb) ? '' : b.dataset.mb; sync(); };
+  },
+  opts: '<div class="opt-row"><span class="opt-lbl">Target size (MB, optional)</span><input class="opt-inp" id="o_tg" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="e.g. 25" style="max-width:150px"><span class="cz-chips" id="o_chips"><button type="button" class="fbtn" data-mb="10">10</button><button type="button" class="fbtn" data-mb="25">25</button><button type="button" class="fbtn" data-mb="50">50</button><button type="button" class="fbtn" data-mb="100">100</button></span></div>' +
+    '<p class="up-sub">With a target size, the tool picks the bitrate for your video length and lowers the resolution when the size is very small. It may run up to three passes. The compression level then does not apply.</p>' +
+    sel('o_lvl', 'Compression', [['28', 'Balanced (recommended)'], ['32', 'Strong (smallest)'], ['24', 'Light (best quality)']]) +
     sel('o_res', 'Resolution', [['0', 'Keep original'], ['1080', 'Max 1080p'], ['720', 'Max 720p'], ['480', 'Max 480p']]) + VNOTE,
   async run(files, o) {
-    const f = files[0], h = parseInt(o.v('o_res'));
+    const f = files[0], h = parseInt(o.v('o_res')), mb = parseFloat(o.v('o_tg'));
+    if (mb > 0) return compressToTarget(files, o, f, h, mb);
     const { blob, infos } = await ffRun(o, files, (n, i) => ['-i', n[0], ...(h ? ['-vf', 'scale=-2:min(' + h + '\\,ih)'] : []), ...vfMap.x264, '-crf', o.v('o_lvl'), ...audioArgs(i[0]), '-movflags', '+faststart', 'out.mp4'], 'out.mp4', 'video/mp4');
     if (blob.size >= f.size) return [{ name: f.name, blob: f, info: 'unchanged', note: 'This video is already well compressed, so a smaller file could not be made. The original is returned unchanged.' }];
     return [{ name: baseName(f.name) + '-compressed.mp4', blob, info: fmtSize(f.size) + ' → ' + fmtSize(blob.size) + ' (−' + Math.round((1 - blob.size / f.size) * 100) + '%)' }];
