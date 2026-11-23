@@ -4,6 +4,65 @@
 'use strict';
 module.exports = [
   {
+    slug: 'compress-video-for-email',
+    title: 'How to Compress a Video for Email',
+    seoTitle: 'Compress a Video for Email Under 25 MB',
+    h1: 'How to compress a video for email',
+    meta: 'Get a video under your email limit: check the limit, work out the size you need, then compress it in your browser. Steps, a size formula and a privacy check.',
+    published: '2026-11-23',
+    updated: '2026-11-23',
+    readMin: 5,
+    answer: 'To compress a video for email, check your limit first. Gmail allows up to 25 MB of attachments for personal accounts. Then lower the resolution and raise the compression until the file fits with room to spare. Compress Video on TinyWow Now does this in your browser, so your video never uploads.',
+    body:
+      '<h2 id="limit">Know your limit before you compress</h2>' +
+      '<p>Gmail lets you attach up to 25 MB in total on a personal account. When you attach more, Gmail adds a Google Drive link instead. Work and school accounts differ, because the Google Workspace administrator sets their limits. Other providers set their own limits, so check yours before you start.</p>' +
+      '<p>Email adds overhead to every attachment, so the message grows larger than the file. As a rule of thumb, aim for 15 to 18 MB when the limit is 25 MB. This margin is our own advice, not a figure from Google.</p>' +
+      '<h2 id="maths">Work out the size your video needs</h2>' +
+      '<p>A video file grows with its bitrate and its length. Multiply the size you want in megabytes by 8, then divide by the length in seconds. The answer is the average bitrate, in megabits per second, that fits.</p>' +
+      '<div class="tbl-wrap"><table><thead><tr><th>Video length</th><th>Target size</th><th>Average bitrate that fits</th></tr></thead><tbody>' +
+      '<tr><td>1 minute (60 s)</td><td>18 MB</td><td>2.4 Mbps (18 &times; 8 &divide; 60)</td></tr>' +
+      '<tr><td>3 minutes (180 s)</td><td>18 MB</td><td>0.8 Mbps (18 &times; 8 &divide; 180)</td></tr>' +
+      '<tr><td>5 minutes (300 s)</td><td>18 MB</td><td>0.48 Mbps (18 &times; 8 &divide; 300)</td></tr>' +
+      '</tbody></table></div>' +
+      '<p>Treat these numbers as a guide. Compress Video sets quality and resolution, not bitrate, so you check the result and adjust. A longer video needs a lower bitrate, which means a smaller picture or stronger compression.</p>' +
+      '<h2 id="how">How to compress a video for email</h2>' +
+      '<ol>' +
+      '<li>Open <a href="/compress-video">Compress Video</a> and add your file.</li>' +
+      '<li>Set <em>Compression</em> to Balanced (recommended) first. Choose Strong (smallest) when the result is still too big.</li>' +
+      '<li>Set <em>Resolution</em> to Max 720p for most clips, or Max 480p for long ones.</li>' +
+      '<li>Click <em>Compress video</em>, then read the sizes before and after.</li>' +
+      '<li>Download the MP4 and check that it plays. If it is still over your limit, follow the next section and run it again.</li>' +
+      '</ol>' +
+      '<p>The tool compresses with H.264 video and AAC audio, and it never scales a video up. Balanced uses H.264 CRF 28 and Strong uses CRF 32. A higher number gives a smaller file with more visible loss.</p>' +
+      '<h2 id="shrink">What shrinks a video the most</h2>' +
+      '<ul>' +
+      '<li><b>A shorter video.</b> Every second you cut removes data. Use <a href="/trim-video">Trim Video</a> to keep only the part you need.</li>' +
+      '<li><b>A lower resolution.</b> A 1280 &times; 720 picture holds 921,600 pixels, against 2,073,600 at 1920 &times; 1080. That is more than half fewer pixels to store. <a href="/resize-video">Resize Video</a> does only this step.</li>' +
+      '<li><b>Stronger compression.</b> Move from Balanced to Strong when the picture still looks good at the smaller size.</li>' +
+      '</ul>' +
+      '<p>A ZIP file does not help. Video already uses compression, so a ZIP barely shrinks it and only bundles files.</p>' +
+      '<h2 id="too-big">When compression is not enough</h2>' +
+      '<p>Share a link instead. Gmail turns large attachments into Google Drive links, and you can upload the file to any cloud storage and send its link. The tool refuses files over about 700 MB, so trim a long recording first or share it as a link.</p>' +
+      '<p>Sending the video on WhatsApp instead? Its limits differ by platform and change over time, so read the current WhatsApp help page for your device before you compress.</p>' +
+      '<h2 id="privacy">Does the video upload?</h2>' +
+      '<p>No. Compress Video runs on your device, in your browser. The first run downloads a video engine of about 30 MB, and your browser keeps it for next time. You can check this yourself with the Network tab, as our guide to <a href="/blog/merge-pdf-without-uploading">merging PDF files without uploading them</a> explains.</p>' +
+      '<p>We ran this check on 23 November 2026 with a short test clip. The tool made four requests, all downloads of its own video engine files, and no request that sent data out. The compression finished in five seconds on a four-second clip, and longer videos take longer.</p>',
+    faq: [
+      ['What size should a video be for email?', 'It must fit your provider limit with room to spare. Gmail allows 25 MB in total for personal accounts, and Workspace administrators set their own limits for work and school accounts.'],
+      ['How do I send a video that is too big for email?', 'Compress it with Compress Video, or share a link. Gmail adds a Google Drive link automatically when your attachments exceed 25 MB.'],
+      ['Does compressing a video reduce its quality?', 'Yes, a little. The tool uses lossy H.264 compression, and stronger levels and lower resolutions show more loss. Keep your original file.'],
+      ['Which format should I send?', 'Send an MP4 with H.264 video and AAC audio, because it plays on nearly every device. Compress Video saves an MP4.'],
+      ['Can I set an exact size such as 20 MB?', 'Not yet. Compress Video sets quality and resolution, not a target size. Use the size formula above, then check the result and adjust.'],
+      ['Does the tool upload my video?', 'No. The tool runs in your browser, on your device. You can confirm this in the Network tab of your developer tools.']
+    ],
+    sources: [
+      { n: 'Gmail Help: Send attachments with your Gmail message', u: 'https://support.google.com/mail/answer/6584' },
+      { n: 'WhatsApp Help Center: How to send media, contacts, or location', u: 'https://faq.whatsapp.com/453914586839706/' },
+      { n: 'Chrome for Developers: Inspect network activity', u: 'https://developer.chrome.com/docs/devtools/network/' }
+    ],
+    tools: ['compress-video', 'trim-video', 'resize-video', 'convert-video']
+  },
+  {
     slug: 'merge-pdf-without-uploading',
     title: 'How to Merge PDF Files Without Uploading Them',
     seoTitle: 'Merge PDF Files Without Uploading Them',

@@ -12,7 +12,7 @@ module.exports = {
       'Choose Strong for the smallest file, Balanced for everyday sharing and Light when quality matters most. The levels use H.264 CRF values of 32, 28 and 24, and a higher number gives a smaller file.',
       'Lower the maximum resolution for the biggest saving. The tool offers 1080p, 720p and 480p caps, and it never scales a smaller video up.',
       'Trim the parts you do not need first with <a href="/trim-video">Trim Video</a>, so you do not encode footage that you will cut.',
-      'Keep the tab open until the tool finishes. Long, high-resolution videos take minutes, and the result is an MP4 that plays on almost every phone and computer.'
+      'Keep the tab open until the tool finishes, because long, high-resolution videos take minutes. Sending the video by email? Read <a href="/blog/compress-video-for-email">how to compress a video for email</a>.'
     ],
     limits: ['The tool refuses files over about 700 MB, because browsers have limited memory.', 'The first run downloads a video engine of about 30 MB.', 'The tool returns your original when it cannot make a smaller file.'],
     faq: [

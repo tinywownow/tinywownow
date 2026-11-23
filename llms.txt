@@ -73,6 +73,7 @@
 - [Text Reverser](https://www.tinywownow.com/text-reverser): Reverse text, words or lines easily
 
 ## Blog
+- [How to Compress a Video for Email](https://www.tinywownow.com/blog/compress-video-for-email): To compress a video for email, check your limit first. Gmail allows up to 25 MB of attachments for personal accounts. Then lower the resolution and raise the compression until the file fits with room to spare. Compress Video on TinyWow Now does this in your browser, so your video never uploads.
 - [How to Merge PDF Files Without Uploading Them](https://www.tinywownow.com/blog/merge-pdf-without-uploading): To merge PDF files without uploading them, use a tool that runs in your browser, such as Merge PDF, or a program on your own computer. Add your files, set the order, click merge and download merged.pdf. You can prove that nothing uploads by watching the Network tab in your browser developer tools while you merge.
 - [How to Compress an Image to 100 KB, 50 KB or 20 KB](https://www.tinywownow.com/blog/compress-image-to-100kb): To get a photo under 100 KB, crop it and reduce its width to about 1,000 to 1,200 pixels. Then save it as a JPG at roughly 70 to 80 percent quality. Cutting pixels does most of the work, and lowering quality alone rarely shrinks a phone photo that far without visible damage. The Compress Image tool on TinyWow Now does this for you. Type a target size such as 100 KB, and the tool finds the best quality that fits. It runs in your browser, so your photo never uploads.
 
