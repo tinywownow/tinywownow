@@ -15,7 +15,10 @@ Edit the sources, run the build, then commit **both** the sources and the genera
 |---|---|
 | `site.config.json` | Site name, **public URL** (used for canonical links, sitemap, schema) and contact email |
 | `site-data.js` | Tool catalogue (id, name, description, URL slug) and icons - shared by the build and the browser |
-| `scripts/content.js` | All SEO copy: per-tool answer, steps and FAQ, category text, home FAQ, About/Privacy/Terms/Contact |
+| `scripts/copy/*.js` | Copy for every tool, one file per cluster (pdf, image, video, file, text). Every tool follows one blueprint |
+| `scripts/content.js` | Category pages, home, About/Privacy/Terms/Contact, and the merge of the cluster files |
+| `scripts/lint.js` | Checks active voice, readability, punctuation, spelling style and symmetry. Run `npm run lint` before you build |
+| `scripts/topical-map.md` | The topical map, page blueprint, linking rules and writing rules |
 | `scripts/build.js` | The generator |
 | `styles.css`, `app.js` | Design and behaviour (nav, search, image compressor, text and image utilities) |
 | `tools.js` | PDF, video, file, converter and image-extra tools (libraries load on demand) |
@@ -28,7 +31,7 @@ Edit the sources, run the build, then commit **both** the sources and the genera
 3. Submit `https://yourdomain.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 
 ### Adding a tool
-Add it to `TOOLS` in `site-data.js`, add its copy to `scripts/content.js`, implement it in `tools.js`
+Add it to `TOOLS` in `site-data.js`, add its copy to the right file in `scripts/copy/` (follow the blueprint, then run `npm run lint`), implement it in `tools.js`
 (`TOOLS['id']`) or `app.js`, then rebuild.
 
 ## Run locally

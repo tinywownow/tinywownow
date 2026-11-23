@@ -22,6 +22,7 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 const hash = f => crypto.createHash('md5').update(fs.readFileSync(path.join(ROOT, f))).digest('hex').slice(0, 8);
 const V = { css: hash('styles.css'), app: hash('app.js'), data: hash('site-data.js'), tools: hash('tools.js') };
 const abs = p => SITE + (p === '/' ? '/' : p);
+const lc = s => (s === 'PDF' ? s : s.toLowerCase());
 const cat = id => D.CATS.find(c => c.id === id);
 const toolsOf = id => D.TOOLS.filter(t => t.c === id);
 const byId = id => D.TOOLS.find(t => t.id === id);
@@ -62,7 +63,7 @@ function nav() {
 function footer() {
   const cols = D.CATS.map(c => '<div><div class="fcol-t">' + c.name + '</div><div class="flinks">' +
     toolsOf(c.id).slice(0, 5).map(t => '<a class="flink" href="/' + t.slug + '">' + esc(t.n) + '</a>').join('') +
-    '<a class="flink" href="/' + c.slug + '" style="color:var(--sage3);font-weight:600">All ' + c.short.toLowerCase() + ' tools</a></div></div>').join('');
+    '<a class="flink" href="/' + c.slug + '" style="color:var(--sage3);font-weight:600">All ' + lc(c.short) + ' tools</a></div></div>').join('');
   return '<footer class="footer"><div class="wrap"><div class="footer-g" style="grid-template-columns:2fr repeat(5,1fr)"><div>' +
     '<div style="display:flex;align-items:center;gap:9px">' + LOGO(32) + '<span class="logo-txt" style="font-size:1rem">TinyWow <em>Now</em></span></div>' +
     '<p class="f-desc">Free online tools for images, PDFs, videos, files and text. They run in your browser, so your files stay private.</p>' +
@@ -146,6 +147,8 @@ const urls = []; // for sitemap: {path, priority}
     '<section class="sec"><div class="wrap"><div class="sec-row"><div><span class="eyebrow">Categories</span><h2 class="sec-h">' + D.TOOLS.length + ' free tools for everyday files</h2><p class="sec-sub">Pick a category and get it done in seconds.</p></div><a class="fbtn" href="/tools">View all tools &rarr;</a></div>' +
     '<div class="cats-g">' + D.CATS.map(c => '<a class="cat-card ' + c.cls + '" href="/' + c.slug + '"><div class="cat-ico">' + D.cgl(c, 28) + '</div><h3 class="cat-nm">' + c.name + '</h3><div class="cat-cnt">' + toolsOf(c.id).length + ' tools available</div><div class="cat-pills">' + toolsOf(c.id).slice(0, 3).map(t => '<span class="cpill">' + esc(t.n) + '</span>').join('') + '</div></a>').join('') + '</div></div></section>' +
     '<section class="sec" style="padding-top:0"><div class="wrap"><div class="sec-row"><div><span class="eyebrow">Popular</span><h2 class="sec-h">Handy tools to try next</h2><p class="sec-sub">Free to use, with no account needed.</p></div></div><div class="tools-g">' + POPULAR.map(t => toolCard(t, true)).join('') + '</div></div></section>' +
+    '<section class="sec" style="padding-top:0"><div class="wrap"><div class="seo-sec" style="margin-top:0"><h2 class="sec-h">How TinyWow Now works</h2><ol class="seo-steps">' + H.how.map(s => '<li><span><b>' + esc(s[0]) + '.</b> ' + esc(s[1]) + '</span></li>').join('') + '</ol></div></div></section>' +
+    '<section class="sec" style="padding-top:0"><div class="wrap"><div class="seo-sec" style="margin-top:0"><h2 class="sec-h">Why use TinyWow Now</h2><ul class="tip-list">' + H.why.map(s => '<li><b>' + esc(s[0]) + '.</b> ' + esc(s[1]) + '</li>').join('') + '</ul></div></div></section>' +
     '<section class="sec" style="padding-top:0"><div class="wrap"><div class="seo-sec" style="margin-top:0"><h2 class="sec-h">Frequently asked questions</h2><div class="faq-grid">' + H.faq.map(q => '<div class="faq-i"><h3>' + esc(q[0]) + '</h3><p>' + esc(q[1]) + '</p></div>').join('') + '</div></div></div></section>' +
     '<section class="sec-sm"><div class="wrap"><div class="cta-band"><h2 class="cta-h">Start using free tools today</h2><p class="cta-s">No registration, no watermarks, no limits. Your files never leave your device.</p><div class="cta-btns"><a class="btn-white" href="/tools">Browse all ' + D.TOOLS.length + ' tools</a><a class="btn-out-w" href="/pdf-tools">Start with PDF tools</a></div></div></div></section>';
   const ld = [orgLd,
@@ -161,16 +164,19 @@ D.TOOLS.forEach(t => {
   if (!K) throw new Error('Missing content for ' + t.id);
   const crumbs = [{ name: 'Home', href: '/' }, { name: c.name, href: '/' + c.slug }, { name: t.n }];
   const related = toolsOf(t.c).filter(x => x.id !== t.id).slice(0, 6);
-  const faq = K.faq.concat([[C.PRIVACY_Q[0], C.PRIVACY_Q[1].replace('{n}', t.n)]]);
+  const faq = K.faq.concat([[C.PRIVACY_Q[0].replace(/\{n\}/g, t.n), C.PRIVACY_Q[1].replace(/\{n\}/g, t.n)]]);
   const body = '<div class="tool-pg">' + breadcrumb(crumbs) +
     '<div class="tool-hdr"><div class="tool-hdr-ico ' + c.ic + '" style="background:' + c.col[1] + '">' + D.gl(t, 30) + '</div><div><h1 class="tool-hdr-title">' + esc(t.n) + '</h1>' +
     '<p class="tool-hdr-desc">' + esc(K.answer) + '</p><div class="feat-pills"><div class="fpill"><span>&#10003;</span> Free forever</div><div class="fpill"><span>&#10003;</span> No sign-up</div><div class="fpill"><span>&#10003;</span> Files stay on your device</div></div></div></div>' +
     '<div id="toolUI"><noscript><p class="noscript-msg">This tool needs JavaScript. Please turn it on in your browser.</p></noscript></div>' +
     '<section class="seo-sec"><h2>How to use ' + esc(t.n) + '</h2><ol class="seo-steps">' + K.steps.map(s => '<li><span>' + esc(s) + '</span></li>').join('') + '</ol></section>' +
-    (K.tips && K.tips.length ? '<section class="seo-sec"><h2>Tips for ' + esc(t.n) + '</h2><ul class="tip-list">' + K.tips.map(s => '<li>' + s + '</li>').join('') + '</ul></section>' : '') +
+    '<section class="seo-sec"><h2>When to use ' + esc(t.n) + '</h2><ul class="tip-list use-list">' + K.use.map(s => '<li>' + esc(s) + '</li>').join('') + '</ul></section>' +
+    '<section class="seo-sec"><h2>Tips for ' + esc(t.n) + '</h2><ul class="tip-list">' + K.tips.map(s => '<li>' + s + '</li>').join('') + '</ul></section>' +
+    '<section class="seo-sec"><h2>Limits of ' + esc(t.n) + '</h2><ul class="tip-list limit-list">' + K.limits.map(s => '<li>' + esc(s) + '</li>').join('') + '</ul></section>' +
+    '<section class="seo-sec"><h2>What to do next</h2><ul class="next-list">' + K.next.map(n => { const x = byId(n[0]); if (!x) throw new Error('Unknown next tool ' + n[0] + ' in ' + t.id); return '<li><a href="/' + x.slug + '">' + esc(x.n) + '</a><span>' + esc(n[1]) + '</span></li>'; }).join('') + '</ul></section>' +
     faqBlock(t.n + ': frequently asked questions', faq) +
     '<section class="seo-sec"><h2>' + esc(t.n) + ' at a glance</h2><ul class="fact-list"><li><b>Input</b>' + esc(K.io[0]) + '</li><li><b>Output</b>' + esc(K.io[1]) + '</li><li><b>Price</b>Free, no sign-up, no watermark</li><li><b>Privacy</b>Runs in your browser; files are not uploaded</li><li><b>Last updated</b>' + TODAY_LONG + '</li></ul></section>' +
-    '<section class="seo-sec"><h2>Related ' + esc(c.short.toLowerCase()) + ' tools</h2><div class="tools-g" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">' + related.map(r => toolCard(r, false)).join('') + '</div></section></div>';
+    '<section class="seo-sec"><h2>Related ' + esc(lc(c.short)) + ' tools</h2><div class="tools-g" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">' + related.map(r => toolCard(r, false)).join('') + '</div></section></div>';
   const ld = [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: t.n, url: abs('/' + t.slug), description: K.answer, applicationCategory: (t.c === 'image' || t.c === 'video') ? 'MultimediaApplication' : 'UtilitiesApplication', operatingSystem: 'Any (web browser)', browserRequirements: 'Requires JavaScript', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, dateModified: TODAY, inLanguage: 'en', publisher: { '@id': ORG_ID } },
     crumbLd(crumbs.map(x => ({ name: x.name, href: x.href || '/' + t.slug }))), faqLd(faq)];
   write(t.slug + '/index.html', shell({ title: K.title + ' | ' + NAME, desc: K.meta, path: '/' + t.slug, body, jsonld: ld, bodyAttrs: 'data-tool="' + t.id + '" data-name="' + esc(t.n) + '"', needsTools: !IN_APP.has(t.id) }));
@@ -184,7 +190,11 @@ D.CATS.forEach(c => {
   const body = '<section class="cat-hero"><div class="wrap">' + breadcrumb(crumbs) + '<div class="cat-ph"><div class="cat-ph-ico ' + c.cls + '" style="background:' + c.col[1] + ';color:' + c.col[0] + '">' + D.cgl(c, 34) + '</div><div>' +
     '<h1 style="font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:8px">' + esc(K.h1) + '</h1><p style="color:var(--text2);font-size:1.05rem;max-width:680px">' + esc(K.answer) + '</p>' +
     '<div style="margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;font-size:.85rem"><span style="color:var(--text2)">' + list.length + ' tools available</span><span style="color:var(--sage2)">&#10003; 100% free</span><span style="color:var(--sage2)">&#10003; No sign-up</span></div></div></div></div></section>' +
-    '<section class="sec-sm"><div class="wrap"><div class="tools-g">' + list.map(t => toolCard(t, false)).join('') + '</div></div></section>' +
+    '<section class="sec-sm"><div class="wrap"><h2 class="sec-h" style="margin-bottom:14px">Pick the right ' + esc(lc(c.short)) + ' tool</h2><div class="tbl-wrap pick-tbl"><table><thead><tr><th>If you want to</th><th>Use</th></tr></thead><tbody>' +
+    K.pick.map(p => { const x = byId(p[1]); if (!x) throw new Error('Unknown pick tool ' + p[1]); return '<tr><td>' + esc(p[0]) + '</td><td><a href="/' + x.slug + '">' + esc(x.n) + '</a></td></tr>'; }).join('') + '</tbody></table></div></div></section>' +
+    '<section class="sec-sm" style="padding-top:0"><div class="wrap"><h2 class="sec-h" style="margin-bottom:14px">All ' + esc(lc(c.short)) + ' tools</h2><div class="tools-g">' + list.map(t => toolCard(t, false)).join('') + '</div></div></section>' +
+    '<section class="sec-sm" style="padding-top:0"><div class="wrap"><h2 class="sec-h" style="margin-bottom:14px">Common ' + esc(lc(c.short)) + ' workflows</h2><div class="flow-g">' +
+    K.workflows.map(w => '<div class="flow"><h3>' + esc(w[0]) + '</h3><ol>' + w[1].map(id => { const x = byId(id); if (!x) throw new Error('Unknown workflow tool ' + id); return '<li><a href="/' + x.slug + '">' + esc(x.n) + '</a></li>'; }).join('') + '</ol><p>' + esc(w[2]) + '</p></div>').join('') + '</div></div></section>' +
     '<section class="sec-sm" style="padding-top:0"><div class="wrap">' + faqBlock(c.name + ': frequently asked questions', K.faq) + '</div></section>';
   const ld = [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: K.h1, url: abs('/' + c.slug), description: K.meta, isPartOf: { '@id': SITE + '/#website' }, dateModified: TODAY, mainEntity: { '@type': 'ItemList', itemListElement: list.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.n, url: abs('/' + t.slug) })) } },
     crumbLd([{ name: 'Home', href: '/' }, { name: c.name, href: '/' + c.slug }]), faqLd(K.faq)];
@@ -278,7 +288,7 @@ write('llms.txt', '# ' + NAME + '\n\n> Free online tools for images, PDFs, video
   '\n\n## Optional\n- [About](' + abs('/about') + '): who we are and how the tools work\n- [Privacy Policy](' + abs('/privacy') + ')\n- [Full tool guide for language models](' + abs('/llms-full.txt') + ')\n');
 write('llms-full.txt', '# ' + NAME + ' - full tool guide\n\nLast updated: ' + TODAY + '\n\n' + D.TOOLS.map(t => {
   const K = C.tools[t.id];
-  return '## ' + t.n + '\nURL: ' + abs('/' + t.slug) + '\n' + K.answer + '\n\nHow to use:\n' + K.steps.map((s, i) => (i + 1) + '. ' + s).join('\n') + '\n\n' + K.faq.map(q => 'Q: ' + q[0] + '\nA: ' + q[1]).join('\n\n') + '\n';
+  return '## ' + t.n + '\nURL: ' + abs('/' + t.slug) + '\n' + K.answer + '\n\nHow to use:\n' + K.steps.map((s, i) => (i + 1) + '. ' + s).join('\n') + '\n\nLimits:\n' + K.limits.map(s => '- ' + s).join('\n') + '\n\n' + K.faq.map(q => 'Q: ' + q[0] + '\nA: ' + q[1]).join('\n\n') + '\n';
 }).join('\n---\n\n'));
 
 console.log('Built ' + written.length + ' files for ' + SITE + ' (' + urls.length + ' URLs in sitemap)' + (hasOg ? '' : ' - no og-image.png found'));

@@ -1,210 +1,284 @@
 # TinyWow Now - full tool guide
 
-Last updated: 2026-11-22
+Last updated: 2026-11-23
 
 ## Merge PDF
 URL: https://www.tinywownow.com/merge-pdf
-Merge PDF joins two or more PDF files into a single document in the order you choose. It runs in your browser, so nothing is uploaded, and the merged file keeps selectable text and original image quality.
+Merge PDF joins two or more PDF files into one document, in the order you choose. It runs in your browser, so your files stay on your device, and the merged PDF keeps selectable text and original image quality.
 
 How to use:
-1. Add two or more PDF files by dragging them in or clicking Choose files.
-2. Use the up and down arrows to put the files in the order you want.
+1. Drag in two or more PDF files, or click Choose files.
+2. Move the files up or down until they sit in the order you want.
 3. Click Merge PDF, then download merged.pdf.
 
-Q: How many PDF files can I merge at once?
-A: There is no fixed limit. The practical limit is your device memory, and a few dozen normal documents merge without trouble on most computers.
+Limits:
+- The tool cannot merge password-protected PDFs. Remove the password first, and the tool names the protected file.
+- Your device memory sets the practical limit. A few dozen normal documents merge without trouble on most computers.
+- The tool joins whole files. It does not reorder single pages inside a file.
 
-Q: Can I merge password-protected PDFs?
-A: No. Remove the password in the app that created the file, then merge. The tool tells you which file is protected.
+Q: How many PDF files can I merge at once?
+A: You can merge as many files as your device memory allows. A few dozen normal documents merge without trouble on most computers.
 
 Q: Does merging reduce quality?
-A: No. Pages are copied as they are, so text stays selectable and images keep their original quality.
+A: No. The tool copies pages as they are, so text stays selectable and images keep their original quality.
+
+Q: Can I change the order after I add the files?
+A: Yes. Use the up and down arrows next to each file. The merged pages follow the order of the list.
+
+Q: Why does the tool refuse one of my files?
+A: The file is probably password protected or damaged. Remove the password in the app that created the file, then try again.
 
 ---
 
 ## Split PDF
 URL: https://www.tinywownow.com/split-pdf
-Split PDF separates one PDF into individual pages, or extracts the pages you choose (for example 1-3, 5, 8-10) into a new PDF. It works in your browser and nothing is uploaded.
+Split PDF separates one PDF into single pages, or extracts the pages you choose, such as 1-3, 5, 8-10, into a new PDF. It runs in your browser, so nothing leaves your device.
 
 How to use:
 1. Add the PDF you want to split.
-2. Choose "Every page as its own PDF", or "Extract page ranges" and type the pages, such as 1-3, 5.
-3. Click Split PDF and download the files, or all of them as one ZIP.
+2. Choose every page as its own PDF, or type the page ranges you want.
+3. Click Split PDF, then download the files or one ZIP.
+
+Limits:
+- The tool cannot split password-protected PDFs. Remove the password first.
+- Extracted ranges keep their original page order. The tool does not reorder pages.
+- Splitting every page of a long PDF depends on your device memory.
 
 Q: How do I extract only certain pages?
-A: Choose Extract page ranges and type the pages separated by commas, for example 2, 4-6. You get one new PDF containing just those pages.
+A: Choose Extract page ranges and type the pages, separated by commas, such as 2, 4-6. You get one new PDF with only those pages.
 
 Q: What happens when I split every page?
-A: Each page becomes its own PDF named after the original file with the page number. When there are several files you can download them together as a ZIP.
+A: Each page becomes its own PDF, named after the original file plus the page number. With several files, you can download them together as a ZIP.
+
+Q: Does splitting change my pages?
+A: No. The tool copies the pages unchanged, so text stays selectable and images keep their quality.
 
 Q: Can I split a password-protected PDF?
-A: No. Remove the password first, then split the file.
+A: No. Remove the password in the app that created the file, then split it.
 
 ---
 
 ## Compress PDF
 URL: https://www.tinywownow.com/compress-pdf
-Compress PDF reduces the file size of scanned or image-heavy PDFs by re-rendering each page as an optimised image. Text in the compressed copy is no longer selectable, so it works best for scans and picture-based documents.
+Compress PDF shrinks scanned and image-heavy PDFs by redrawing each page as an optimised image. The text in the compressed copy is no longer selectable, so the tool works best for scans and picture-based documents.
 
 How to use:
 1. Add the PDF you want to make smaller.
 2. Pick Light, Recommended or Strong compression.
-3. Click Compress PDF and download the result. The tool shows the size before and after.
+3. Click Compress PDF, then compare the sizes before and after.
+
+Limits:
+- The tool turns every page into an image, so you lose selectable text.
+- The tool returns your original file when it cannot make a smaller one.
+- The tool has no target-size setting. You pick a level and check the result.
 
 Q: How much smaller will my PDF get?
-A: It depends on the content. Scans and photo-heavy PDFs often shrink a lot (a test PDF full of photos dropped by about 79%), while simple text PDFs may not shrink at all.
+A: It depends on the content. Scans and photo-heavy PDFs often shrink a lot. In our test, a PDF full of photos dropped by about 79 percent, while simple text PDFs may not shrink at all.
 
 Q: What if my PDF is already small?
-A: If a smaller file cannot be made, the tool returns your original file unchanged and tells you so, so you never get a bigger result.
+A: The tool returns your original file unchanged and tells you so, so you never get a bigger result.
 
-Q: Is text still selectable after compression?
-A: No. Pages are saved as images to reduce size, so text can no longer be selected or searched. Keep the original if you need that.
+Q: Can I still select text after compression?
+A: No. The tool saves pages as images, so you cannot select or search the text. Keep the original, or run OCR PDF on the compressed copy.
+
+Q: Which level should I choose?
+A: Choose Light for the best quality, Recommended for a good balance, and Strong for the smallest file.
 
 ---
 
 ## OCR PDF
 URL: https://www.tinywownow.com/ocr-pdf
-OCR PDF reads the text in a scanned PDF and adds it as an invisible layer on top of your original pages, so the PDF becomes searchable and its text can be selected and copied. It runs in your browser, so the file is not uploaded, and you also get the text as a .txt file.
+OCR PDF reads the text in a scanned PDF and adds it as an invisible layer on top of your original pages. The PDF becomes searchable, you can select and copy its text, and the tool also gives you a .txt file. Everything runs in your browser.
 
 How to use:
 1. Add a scanned PDF.
-2. Choose the language of the text and, if you like, the pages to read, such as 1-3, 5.
-3. Click Make PDF searchable, then download the searchable PDF and the text file.
+2. Choose the language of the text and, if you want, the pages to read.
+3. Click Make PDF searchable, then download the PDF and the text file.
+
+Limits:
+- English, Spanish, French and German give a searchable PDF. Urdu, Hindi and Arabic give a text file only.
+- The tool reads up to 100 pages at a time.
+- Handwriting, faint scans and tilted photos read poorly.
 
 Q: What is the difference between OCR PDF and Image to Text?
-A: Image to Text reads one picture and gives you plain text. OCR PDF works on a whole PDF, keeps your original pages exactly as they look, and adds the text underneath so the PDF itself becomes searchable.
+A: Image to Text reads one picture and returns plain text. OCR PDF reads a whole PDF, keeps your pages exactly as they look, and adds the text underneath so the PDF itself becomes searchable.
 
-Q: Does it change how my PDF looks?
-A: No. The original pages are kept as they are, and the recognised text is added as an invisible layer. The pages look the same, but you can now search and copy text.
+Q: Does OCR PDF change how my PDF looks?
+A: No. The tool keeps the original pages and adds the recognised text as an invisible layer. The pages look the same, but you can now search and copy text.
 
-Q: Which languages work?
-A: English, Spanish, French and German give a searchable PDF and a text file. Urdu, Hindi and Arabic give the text file only, because the searchable layer needs a Latin-script font.
+Q: Why do Urdu, Hindi and Arabic give only a text file?
+A: The searchable layer needs a Latin-script font. The tool reads those languages and gives you the text, but it cannot place the text inside the PDF.
 
-Q: What if some pages already have text?
-A: Those pages are detected and left as they are, so nothing is read twice.
-
-Q: How accurate is it?
-A: It depends on the scan. Sharp, straight, high-contrast pages read well. Skewed, faint or handwritten pages read poorly, so check names and numbers by eye.
+Q: What happens to pages that already have text?
+A: The tool detects them and leaves them as they are, so it never reads a page twice.
 
 ---
 
 ## PDF to Word
 URL: https://www.tinywownow.com/pdf-to-word
-PDF to Word extracts the text from a PDF and saves it as an editable .docx file. It keeps paragraphs and page breaks, but not the original layout, fonts or images, and it needs a PDF with real text (not a scan).
+PDF to Word extracts the text from a PDF and saves it as an editable .docx file. It keeps paragraphs and page breaks, but not the layout, fonts or images, and it needs a PDF with real text instead of a scan.
 
 How to use:
 1. Add a PDF that contains selectable text.
 2. Click Convert to Word.
 3. Download the .docx file and open it in Word, Google Docs or LibreOffice.
 
-Q: Will the layout and images be kept?
-A: No. This tool extracts text only. Tables, images, columns and fonts are not reproduced, so expect to reformat the document.
+Limits:
+- The tool drops images, tables, columns and fonts.
+- The tool finds no text in scanned PDFs.
+- Complex layouts, such as multi-column pages, need manual tidying afterwards.
 
-Q: Why do I get a "no selectable text" message?
-A: The PDF is probably a scan, which contains pictures of text instead of text. Run it through OCR PDF first to add a text layer, then convert the searchable PDF.
+Q: Will the layout and images stay?
+A: No. This tool extracts text only. Tables, images, columns and fonts do not carry over, so expect to reformat the document.
 
-Q: Which file format does it create?
-A: A standard .docx file that opens in Microsoft Word, Google Docs, LibreOffice and Pages.
+Q: Why do I see a "no selectable text" message?
+A: The PDF is probably a scan, which holds pictures of text. Run OCR PDF first to add a text layer, then convert the searchable PDF.
+
+Q: Which file format does the tool create?
+A: It creates a standard .docx file that opens in Microsoft Word, Google Docs, LibreOffice and Pages.
+
+Q: Can I convert a PDF that has several columns?
+A: Yes, but the tool reads the text line by line, so columns can mix. Tidy the result in your editor.
 
 ---
 
 ## PDF to JPG
 URL: https://www.tinywownow.com/pdf-to-jpg
-PDF to JPG turns each page of a PDF into a JPG image. You can convert all pages or only chosen ones, pick the quality, and download the images individually or as one ZIP. Everything runs in your browser.
+PDF to JPG turns each page of a PDF into a JPG image. You can convert all pages or only chosen ones, pick the quality, and download the images one by one or as a ZIP. Everything runs in your browser.
 
 How to use:
 1. Add the PDF you want to convert.
-2. Choose a quality (Small, Standard or High) and optionally the pages, such as 1-3, 5.
-3. Click Convert to JPG and download the images or the ZIP.
+2. Choose a quality (Small, Standard or High) and, if you want, the pages.
+3. Click Convert to JPG, then download the images or the ZIP.
+
+Limits:
+- The tool makes one JPG per page, so a long PDF produces many files.
+- Standard renders pages at 1.5 times their PDF size, High at 2 times and Small at 1 time.
+- JPG compresses with some loss, so fine text can look soft on Small.
 
 Q: What resolution do the images have?
-A: Standard renders pages at 1.5 times their PDF size, High at 2 times and Small at 1 times. Higher settings give sharper but larger files.
+A: Standard renders pages at 1.5 times their PDF size, High at 2 times and Small at 1 time. Higher settings give sharper but larger files.
 
-Q: Can I convert just one page?
+Q: Can I convert a single page?
 A: Yes. Type the page number, or a range such as 2-4, in the Pages box.
 
 Q: Do I get one file or many?
-A: One JPG per page. When there are several you can download them all together as a ZIP.
+A: You get one JPG per page. With several pages, you can download them all together as a ZIP.
+
+Q: Should I choose JPG or PNG?
+A: Choose JPG for pages with photos, because the files stay smaller. Choose PNG for text, line art and screenshots, because the edges stay sharp.
 
 ---
 
 ## JPG to PDF
 URL: https://www.tinywownow.com/jpg-to-pdf
-JPG to PDF combines one or more images into a single PDF, one image per page. You can place each image on an A4 page or keep its own size, and reorder the pages before you create the file.
+JPG to PDF combines one or more images into a single PDF, with one image per page. You can place each image on an A4 page or keep its own size, and you can reorder the pages before you create the file.
 
 How to use:
 1. Add your images (JPG, PNG, WebP, GIF or BMP).
-2. Use the arrows to set the page order and choose A4 or same-size pages.
-3. Click Create PDF and download images.pdf.
+2. Set the page order and choose A4 or same-size pages.
+3. Click Create PDF, then download images.pdf.
+
+Limits:
+- The PDF holds your images as pictures, so the text inside photos stays unsearchable until you run OCR PDF.
+- The tool converts non-JPG images to PNG inside the PDF to keep transparency and quality.
+- Many large photos depend on your device memory.
 
 Q: Which image formats can I use?
-A: JPG, PNG, WebP, GIF and BMP. Non-JPG images are converted to PNG inside the PDF so transparency and quality are kept.
+A: Use JPG, PNG, WebP, GIF or BMP. The tool converts non-JPG images to PNG inside the PDF, so transparency and quality stay intact.
 
 Q: Can I put many images in one PDF?
-A: Yes. Add as many as you like; each becomes its own page in the order shown.
+A: Yes. Add as many as you like. Each image becomes its own page, in the order shown.
 
 Q: Does the PDF reduce my image quality?
-A: JPG images are embedded as they are, so quality is not reduced.
+A: No. The tool embeds JPG images as they are, so their quality does not drop.
+
+Q: Can I search the text in my photos?
+A: Not at first. The PDF holds pictures, not text. Run OCR PDF on the result to make it searchable.
 
 ---
 
 ## Word to PDF
 URL: https://www.tinywownow.com/word-to-pdf
-Word to PDF converts the text of a .docx document into a simple A4 PDF. It does not keep images, tables, fonts or styling, so use it for plain text documents rather than formatted reports.
+Word to PDF converts the text of a .docx document into a simple A4 PDF. It does not keep images, tables, fonts or styling, so it suits plain text documents better than formatted reports.
 
 How to use:
 1. Add a .docx Word file.
 2. Click Convert to PDF.
 3. Download the PDF.
 
+Limits:
+- The tool keeps text and simple paragraph spacing only.
+- The tool reads .docx files, not older .doc files.
+- The tool supports Latin characters only and replaces all others with a question mark.
+
 Q: Does it keep my formatting?
-A: No. Only the text is converted, with simple paragraph spacing. Images, tables, headers and fonts are not reproduced.
+A: No. The tool converts only the text, with simple paragraph spacing. Images, tables, headers and fonts do not carry over.
 
 Q: Can it convert old .doc files?
-A: No. Only the modern .docx format is supported. Open an old file in Word and save it as .docx first.
+A: No. It reads only the modern .docx format. Open the old file in Word and save it as .docx first.
 
-Q: What about non-English characters?
-A: The PDF uses a standard Latin font, so characters outside it (for example Arabic, Urdu or Chinese) are replaced with a question mark.
+Q: What happens to non-English characters?
+A: The PDF uses a standard Latin font, so characters outside it, such as Arabic, Urdu or Chinese, turn into question marks.
+
+Q: Which page size does the PDF use?
+A: The tool creates A4 pages and wraps the text to fit.
 
 ---
 
 ## PDF to PNG
 URL: https://www.tinywownow.com/pdf-to-png
-PDF to PNG renders each page of a PDF as a lossless PNG image. Choose all pages or a range, set the quality, and download the images one by one or as a ZIP. It runs entirely in your browser.
+PDF to PNG renders each page of a PDF as a lossless PNG image. You can choose all pages or a range, set the quality, and download the images one by one or as a ZIP. It runs entirely in your browser.
 
 How to use:
-1. Add the PDF to convert.
-2. Choose a quality and, if needed, the pages to export.
-3. Click Convert to PNG and download the images.
+1. Add the PDF you want to convert.
+2. Choose a quality and, if you want, the pages to export.
+3. Click Convert to PNG, then download the images.
+
+Limits:
+- PNG files stay large, because PNG keeps every detail.
+- The tool makes one image per page.
+- The images hold pictures of words, not text you can select.
 
 Q: When should I choose PNG instead of JPG?
-A: PNG is lossless, so it is better for text, line art and screenshots. JPG makes smaller files for photographs.
+A: Choose PNG for text, line art and screenshots, because it stays sharp. Choose JPG for photographs, because the files stay smaller.
 
 Q: Why are the PNG files large?
-A: PNG does not discard detail. Use the Small quality setting, or PDF to JPG, for smaller files.
+A: PNG keeps every detail and discards nothing. Use the Small quality setting, or switch to PDF to JPG, for smaller files.
 
 Q: Can I export only some pages?
 A: Yes. Enter pages such as 1-3, 5 in the Pages box.
+
+Q: Do the images keep the PDF text?
+A: No. Each image is a picture of the page. Use PDF to Text when you need the words.
 
 ---
 
 ## PDF to Excel
 URL: https://www.tinywownow.com/pdf-to-excel
-PDF to Excel reads the text on each PDF page, groups it into rows and columns, and saves it as an .xlsx workbook with one sheet per page. It works best on clean text-based tables, not on scans or complex layouts.
+PDF to Excel reads the text on each PDF page, groups it into rows and columns, and saves an .xlsx workbook with one sheet per page. It works best on clean text tables, not on scans or complex layouts.
 
 How to use:
 1. Add a PDF that contains selectable text.
 2. Click Convert to Excel.
 3. Download the .xlsx file and check the columns.
 
+Limits:
+- The tool guesses table structure from text positions, so merged cells and multi-column layouts need manual tidying.
+- The tool finds no text in scanned PDFs.
+- The tool makes one sheet per page. It does not join tables across pages.
+
 Q: How accurate is the table detection?
-A: It is a best-effort approach based on text positions. Clean tables convert well; merged cells, scans and multi-column layouts usually need manual tidying.
+A: The tool does a best-effort job based on text positions. Clean tables convert well. Merged cells, scans and multi-column layouts usually need manual tidying.
 
 Q: Does it work on scanned PDFs?
-A: Not directly. Scanned PDFs have no selectable text. Run the scan through OCR PDF first, then convert the searchable PDF.
+A: Not directly. Scans have no selectable text. Run OCR PDF first, then convert the searchable PDF.
 
-Q: How are pages arranged in the workbook?
+Q: How does the tool arrange pages in the workbook?
 A: Each PDF page becomes its own sheet, named Page 1, Page 2 and so on.
+
+Q: Which Excel format does it create?
+A: It creates an .xlsx workbook that opens in Excel, Google Sheets and LibreOffice.
 
 ---
 
@@ -217,34 +291,50 @@ How to use:
 2. Click Convert to PDF.
 3. Download the PDF, which has one section per sheet.
 
-Q: Are colours, charts and formulas kept?
-A: No. The PDF shows the cell values as plain text in a table. Charts, colours and formatting are not reproduced.
+Limits:
+- The tool drops colours, charts and cell formatting.
+- The tool scales wide sheets to the page width and shortens long cell text.
+- The tool supports Latin characters only and replaces other scripts with a question mark.
 
-Q: What happens to very wide sheets?
-A: Columns are scaled to fit the page width and long cell text is shortened so the table stays on the page.
+Q: Does the PDF keep colours, charts and formulas?
+A: No. The PDF shows the cell values as plain text in a table. Colours, charts and formatting do not carry over.
+
+Q: What happens to wide sheets?
+A: The tool scales the columns to fit the page width and shortens long cell text so the table stays on the page.
 
 Q: Can it handle non-English text?
-A: Only Latin characters are supported. Other scripts are replaced with a question mark.
+A: Only Latin characters work. The tool replaces other scripts with a question mark.
+
+Q: How does the tool handle several sheets?
+A: It adds one section to the PDF for each sheet.
 
 ---
 
 ## Rotate PDF
 URL: https://www.tinywownow.com/rotate-pdf
-Rotate PDF turns every page, or only the pages you choose, by 90 degrees clockwise, 90 degrees counter-clockwise or 180 degrees. The rest of the document is unchanged, and the file is processed in your browser.
+Rotate PDF turns every page, or only the pages you choose, by 90 degrees clockwise, 90 degrees counter-clockwise or 180 degrees. The rest of the document stays unchanged, and the tool works in your browser.
 
 How to use:
 1. Add the PDF.
-2. Choose the rotation and, optionally, the pages such as 2-4.
-3. Click Rotate PDF and download the result.
+2. Choose the rotation and, if you want, the pages, such as 2-4.
+3. Click Rotate PDF, then download the result.
+
+Limits:
+- The tool rotates by 90 degrees either way, or by 180 degrees.
+- The tool cannot rotate password-protected PDFs.
+- The tool changes orientation only. It does not straighten tilted scans.
 
 Q: Can I rotate only one page?
-A: Yes. Type the page number in the Pages box, and only that page is rotated.
+A: Yes. Type the page number in the Pages box, and the tool rotates only that page.
 
 Q: Is the rotation permanent?
-A: Yes. It is saved into the new file, so every PDF viewer shows the pages the new way up.
+A: Yes. The tool saves it into the new file, so every PDF viewer shows the pages the new way up.
 
-Q: Will text stay selectable?
-A: Yes. Only the page orientation changes; content is not re-rendered.
+Q: Will the text stay selectable?
+A: Yes. The tool changes only the page orientation and does not redraw the content.
+
+Q: Can I rotate by any angle?
+A: No. Choose 90 degrees clockwise, 90 degrees counter-clockwise or 180 degrees.
 
 ---
 
@@ -255,50 +345,71 @@ Watermark PDF stamps your own text, such as CONFIDENTIAL or DRAFT, across every 
 How to use:
 1. Add the PDF.
 2. Type your watermark text and pick the opacity and angle.
-3. Click Add watermark and download the stamped PDF.
+3. Click Add watermark, then download the stamped PDF.
+
+Limits:
+- The tool adds text watermarks only. It cannot add a logo or image.
+- The tool supports standard Latin letters, numbers and punctuation.
+- The tool draws the text onto each page, so it does not protect the file from copying.
 
 Q: Can I choose the watermark text?
-A: Yes. Type any text using standard Latin letters, numbers and punctuation.
+A: Yes. Type any text with standard Latin letters, numbers and punctuation.
 
-Q: Can the watermark be removed afterwards?
-A: The text is drawn onto each page. It is not a secure protection, so keep your original file.
+Q: Can someone remove the watermark afterwards?
+A: The tool draws the text onto each page and gives no real protection. Keep your original file and share only the stamped copy.
 
 Q: Can I use a logo or an image?
 A: Not yet. This tool adds text watermarks only.
+
+Q: Does the watermark change my original file?
+A: No. The tool creates a new stamped PDF and leaves your original untouched.
 
 ---
 
 ## PDF to Text
 URL: https://www.tinywownow.com/pdf-to-text
-PDF to Text pulls the selectable text out of a PDF, page by page, and gives you a plain .txt file. It works on PDFs that contain real text; scanned PDFs need OCR PDF first.
+PDF to Text pulls the selectable text out of a PDF, page by page, and gives you a plain .txt file. It works on PDFs with real text, while scanned PDFs need OCR PDF first.
 
 How to use:
 1. Add the PDF.
 2. Click Extract text.
 3. Copy the text from the box, or download the .txt file.
 
-Q: Why is the result empty?
-A: The PDF is probably a scan made of images. Run it through OCR PDF to add a text layer, then extract the text from the searchable PDF.
+Limits:
+- The tool finds no text in scanned PDFs.
+- The tool reads each page top to bottom and left to right, so columns can mix.
+- The tool drops images and layout. You get plain text only.
 
-Q: Is the original line order kept?
-A: Text is read top to bottom and left to right on each page, with a blank line between pages. Columns and tables may need tidying.
+Q: Why is the result empty?
+A: The PDF is probably a scan made of images. Run OCR PDF to add a text layer, then extract the text from the searchable PDF.
+
+Q: Does the tool keep the line order?
+A: The tool reads each page top to bottom and left to right, with a blank line between pages. Columns and tables may need tidying.
 
 Q: Can I copy the text without downloading?
 A: Yes. The extracted text appears in a box with a Copy text button.
+
+Q: Does the text keep its formatting?
+A: No. You get plain text. Bold, fonts, images and layout do not carry over.
 
 ---
 
 ## Sign PDF
 URL: https://www.tinywownow.com/sign-pdf
-Sign PDF lets you draw your signature and place it on the first, last or every page of a PDF, in the position and size you choose. It adds a visual signature image, not a certificate-based digital signature.
+Sign PDF lets you draw your signature and place it on the first, last or every page of a PDF. You choose the position and size. The tool adds a visual signature image, not a certificate-based digital signature.
 
 How to use:
-1. Add the PDF to sign.
-2. Draw your signature in the box, then choose the page, position and size.
-3. Click Sign PDF and download the signed copy.
+1. Add the PDF you want to sign.
+2. Draw your signature, then choose the page, position and size.
+3. Click Sign PDF, then download the signed copy.
+
+Limits:
+- The tool adds an image of your signature. It does not add a certificate-based digital signature.
+- The tool offers four positions and three page choices: first, last or all pages.
+- The tool cannot sign password-protected PDFs.
 
 Q: Is this a legally binding digital signature?
-A: It is a visual signature image placed on the page. It does not use a certificate, so check whether the person or authority you are signing for accepts that.
+A: It is a visual signature image placed on the page. It uses no certificate, so check that the person or authority you sign for accepts it.
 
 Q: Can I sign on my phone?
 A: Yes. Draw with your finger in the signature box.
@@ -306,419 +417,584 @@ A: Yes. Draw with your finger in the signature box.
 Q: Can I place the signature anywhere?
 A: You can choose bottom right, bottom left, bottom centre or centre, on the first, last or all pages.
 
+Q: Where does my signature go?
+A: Nowhere outside your device. You draw it in your browser, and the tool places it on your PDF locally.
+
 ---
 
 ## PDF to PPT
 URL: https://www.tinywownow.com/pdf-to-ppt
-PDF to PPT converts each page of a PDF into a slide in a .pptx file. The slides are page images, so they look exactly like the PDF but the text on them cannot be edited.
+PDF to PPT converts each page of a PDF into a slide in a .pptx file. The slides hold page images, so they look exactly like the PDF, but you cannot edit the text on them.
 
 How to use:
 1. Add the PDF.
 2. Click Convert to PowerPoint.
 3. Download the .pptx file and open it in PowerPoint, Keynote or Google Slides.
 
-Q: Can I edit the text on the slides?
-A: No. Each slide is an image of the PDF page, so text and shapes are not editable.
+Limits:
+- The tool cannot edit slide text, because each slide holds an image.
+- The tool sizes the slides to the first PDF page.
+- Long PDFs create large .pptx files.
 
-Q: What slide size does it use?
-A: The slide takes the proportions of the first PDF page.
+Q: Can I edit the text on the slides?
+A: No. Each slide holds an image of the PDF page, so you cannot edit text or shapes.
+
+Q: What slide size does the tool use?
+A: The slides take the proportions of the first PDF page.
 
 Q: Does it work on scanned PDFs?
-A: Yes. Because pages are used as images, scans convert fine.
+A: Yes. The tool uses pages as images, so scans convert fine.
+
+Q: Which presentation programs open the file?
+A: PowerPoint, Keynote and Google Slides open the .pptx file.
 
 ---
 
 ## Compress Image
 URL: https://www.tinywownow.com/compress-image
-The image compressor reduces the file size of JPG, PNG and WebP images right in your browser, so your photos are never uploaded. Pick a compression level, or type a target size such as 100 KB, add as many images as you like, and download the smaller files.
+The image compressor reduces the file size of JPG, PNG and WebP images in your browser, so your photos never leave your device. Pick a compression level or type a target size such as 100 KB, add as many images as you like, and download the smaller files.
 
 How to use:
 1. Drop your images in, or click Choose images. You can add many at once.
-2. Pick Light, Balanced, Strong or Maximum compression, or type a target size in KB (or tap 20, 50, 100 or 200). Results update instantly.
-3. Download each image, or use Download all.
+2. Pick Light, Balanced, Strong or Maximum, or type a target size in KB.
+3. Download each image, or click Download all.
+
+Limits:
+- PNG is lossless, so the quality slider does not change PNG files. Resize, or switch to WebP or JPG.
+- With a target size, the tool saves PNG images as JPG and fills transparent areas with white.
+- The tool marks a file as Over target when it cannot reach your limit.
+
+Q: How much smaller will my images get?
+A: Typical photos shrink by 40 to 80 percent at Balanced quality with little visible change. Images that are already well compressed shrink less.
 
 Q: How do I compress an image to 100 KB, 50 KB or 20 KB?
-A: Type the size in the Target size box, or tap the 20, 50, 100 or 200 KB button. The tool finds the highest quality that fits under that size and reduces the pixel size only if it has to. When a target is set, PNG images are saved as JPG, because PNG cannot be shrunk with a quality setting.
-
-Q: How much smaller will my images be?
-A: Typical photos shrink by 40 to 80 percent at Balanced quality with little visible change. Images that are already well compressed may shrink less.
+A: Type the size in the Target size box, or tap the 20, 50, 100 or 200 KB button. The tool finds the highest quality that fits and reduces the pixel size only when it must.
 
 Q: Is PNG compression lossless?
-A: Yes. PNG is a lossless format, so the quality slider does not change it. To shrink a PNG, resize it, or convert it to WebP or JPG.
+A: Yes. PNG is lossless, so the quality slider does not change it. To shrink a PNG, resize it, or convert it to WebP or JPG.
 
 Q: What if the result is bigger than the original?
-A: When format and size are unchanged and the new file would be larger, the tool keeps your original and marks it "Already optimal".
+A: When the format and size stay the same and the new file would grow, the tool keeps your original and marks it Already optimal.
 
 ---
 
 ## Resize Image
 URL: https://www.tinywownow.com/resize-image
-Resize Image changes the width and height of a picture to the exact pixel size you enter. It runs in your browser, so your image is not uploaded, and you can download the resized file immediately.
+Resize Image changes the width and height of a picture to the exact pixel size you enter. It runs in your browser, so your image stays on your device, and you can download the resized file straight away.
 
 How to use:
 1. Add an image.
 2. Enter the width and height in pixels.
-3. Click Resize Image and download the result.
+3. Click Resize Image, then download the result.
+
+Limits:
+- The tool saves the result as a JPG.
+- The tool fills transparent areas with white.
+- The tool cannot add detail when you enlarge a picture.
 
 Q: Does it keep the aspect ratio?
-A: Turn on Keep proportions and enter one side; the other is calculated for you. Turn it off to stretch the image to exact dimensions.
+A: Turn on Keep proportions and enter one side. The tool calculates the other side for you. Turn it off to stretch the image to exact dimensions.
 
 Q: Which formats can I resize?
-A: JPG, PNG, WebP, GIF and BMP images. The result is saved as a JPG.
+A: You can resize JPG, PNG, WebP, GIF and BMP images. The tool saves the result as a JPG.
 
-Q: Will resizing reduce file size?
-A: Usually yes, because fewer pixels means a smaller file. For more control use the Image Compressor.
+Q: Will resizing reduce the file size?
+A: Usually yes, because fewer pixels need less data. For more control, use the Image Compressor.
+
+Q: Can I resize many images at once?
+A: Not yet. Resize one image at a time, or set a Max width in the Image Compressor to shrink a batch.
 
 ---
 
 ## Convert to JPG
 URL: https://www.tinywownow.com/convert-to-jpg
-Convert to JPG changes PNG, WebP, GIF and BMP images into the widely supported JPG format. Transparent areas are filled with white because JPG does not support transparency.
+Convert to JPG changes PNG, WebP, GIF and BMP images into the widely supported JPG format. The tool fills transparent areas with white, because JPG does not support transparency.
 
 How to use:
 1. Add an image.
 2. Click Convert to JPG.
 3. Download the JPG file.
 
+Limits:
+- The tool saves JPG at high quality (92 percent), which still loses a little detail.
+- The tool fills transparency with white.
+- The tool converts one image at a time.
+
 Q: What happens to transparency?
-A: JPG cannot store transparency, so transparent areas become white.
+A: JPG cannot store transparency, so the tool fills transparent areas with white.
 
 Q: Will the quality drop?
-A: JPG is a lossy format, so a small amount of detail is lost. The file is saved at high quality (92 percent).
+A: JPG is a lossy format, so you lose a small amount of detail. The tool saves the file at high quality (92 percent).
 
 Q: Can I convert many images at once?
 A: Not yet. Convert one image at a time, or use the Image Compressor for batches.
+
+Q: Which formats can I convert?
+A: You can convert PNG, WebP, GIF and BMP images.
 
 ---
 
 ## Convert to PNG
 URL: https://www.tinywownow.com/convert-to-png
-Convert to PNG saves JPG, WebP, GIF and BMP images as lossless PNG files. PNG keeps sharp edges and transparency, which makes it suited to graphics, screenshots and logos.
+Convert to PNG saves JPG, WebP, GIF and BMP images as lossless PNG files. PNG keeps sharp edges and transparency, which suits graphics, screenshots and logos. It runs in your browser.
 
 How to use:
 1. Add an image.
 2. Click Convert to PNG.
 3. Download the PNG file.
 
+Limits:
+- The tool cannot restore detail that a JPG already lost.
+- The tool makes larger files than JPG for photos.
+- The tool keeps transparency only when the source image has it.
+
 Q: Does converting JPG to PNG improve quality?
-A: No. It cannot restore detail that JPG already removed, but it stops further loss when you edit and save again.
+A: No. PNG cannot restore detail that the JPG already removed. It only stops further loss when you edit and save again.
 
 Q: Why is the PNG bigger than the JPG?
 A: PNG stores every pixel without discarding detail, so photographs make larger files.
 
-Q: Is transparency preserved?
-A: Yes, if the source image has it (for example a WebP or GIF).
+Q: Does the tool keep transparency?
+A: Yes, when the source image has it, for example a WebP or GIF.
+
+Q: Which formats can I convert?
+A: You can convert JPG, WebP, GIF and BMP images.
 
 ---
 
 ## Convert to WebP
 URL: https://www.tinywownow.com/convert-to-webp
-Convert to WebP changes JPG, PNG, GIF and BMP images into WebP, a modern format that is usually smaller than JPG or PNG at similar quality. It is supported by all current browsers.
+Convert to WebP changes JPG, PNG, GIF and BMP images into WebP, a modern format that is usually smaller than JPG or PNG at similar quality. All current browsers support it.
 
 How to use:
 1. Add an image.
 2. Click Convert to WebP.
 3. Download the WebP file.
 
+Limits:
+- Some older software and apps cannot open WebP files.
+- The saving varies by picture, so WebP is not always smaller.
+- The tool keeps your original file and creates a new WebP copy.
+
 Q: Why use WebP?
 A: WebP files are typically smaller than equivalent JPG or PNG files, which makes web pages load faster.
 
-Q: Is WebP supported everywhere?
+Q: Does every program support WebP?
 A: All current browsers support it. Some older software and apps cannot open WebP files.
 
 Q: Does WebP support transparency?
-A: Yes, WebP supports transparency, like PNG.
+A: Yes. WebP supports transparency, like PNG.
+
+Q: How much smaller is WebP?
+A: Google reports that lossy WebP files are 25 to 34 percent smaller than comparable JPEGs. Your saving depends on the picture.
 
 ---
 
 ## Crop Image
 URL: https://www.tinywownow.com/crop-image
-Crop Image lets you drag a selection box over your picture, choose a free or fixed shape such as 1:1, 4:3 or 16:9, and download the cropped result as PNG, JPG or WebP. It works in your browser.
+Crop Image lets you drag a selection box over your picture. Choose a free or fixed shape, such as 1:1, 4:3 or 16:9, and download the cropped result as PNG, JPG or WebP. It runs in your browser.
 
 How to use:
 1. Add an image.
 2. Choose a shape, then drag the box and its corners to frame the part you want.
-3. Click Crop image and download the result.
+3. Click Crop image, then download the result.
+
+Limits:
+- The tool offers free, 1:1, 4:3, 16:9 and 3:4 shapes.
+- The tool crops rectangular areas only, not freehand shapes.
+- The tool saves PNG, JPG or WebP.
 
 Q: Can I crop to a square or 16:9?
-A: Yes. Pick 1:1, 4:3, 16:9 or 3:4 and the box keeps that ratio while you resize it.
+A: Yes. Pick 1:1, 4:3, 16:9 or 3:4, and the box keeps that ratio while you resize it.
 
-Q: What quality is the cropped image?
-A: The crop is taken from the original full-size image, not the preview, so no resolution is lost.
+Q: What quality does the cropped image have?
+A: The tool cuts from the original full-size image, not the preview, so you lose no resolution.
 
 Q: Which formats can I save as?
-A: PNG, JPG or WebP.
+A: You can save as PNG, JPG or WebP.
+
+Q: Which formats can I crop?
+A: You can crop JPG, PNG, WebP, GIF and BMP images.
 
 ---
 
 ## Rotate and Flip Image
 URL: https://www.tinywownow.com/rotate-flip-image
-Rotate and Flip Image turns a picture 90 degrees left or right, 180 degrees, and optionally mirrors it horizontally or vertically. It runs in your browser and saves the result as a JPG.
+Rotate and Flip Image turns a picture 90 degrees left or right, or 180 degrees, and optionally mirrors it horizontally or vertically. It runs in your browser and saves the result as a JPG.
 
 How to use:
 1. Add an image.
-2. Choose the rotation and, if needed, a flip direction.
-3. Click Rotate and Flip Image and download the result.
+2. Choose the rotation and, if you need it, a flip direction.
+3. Click Rotate and Flip Image, then download the result.
+
+Limits:
+- The tool rotates by 90 degrees left, 90 degrees right or 180 degrees only.
+- The tool re-saves the image as a high-quality JPG, so you lose a tiny amount of detail.
+- The tool fills transparency with white.
 
 Q: Can I flip without rotating?
-A: Choose a flip direction and rotate by 180 or 90 degrees as needed; combining them covers every orientation.
+A: Choose a flip direction and rotate by 180 or 90 degrees as needed. Combining them covers every orientation.
 
-Q: Is quality lost?
-A: The file is re-saved as a high-quality JPG, so there is a very small loss.
+Q: Does the tool lose quality?
+A: The tool re-saves the file as a high-quality JPG, so you lose a small amount of detail.
 
 Q: Can I rotate by any angle?
 A: Not yet. You can rotate by 90 degrees left, 90 degrees right or 180 degrees.
+
+Q: Which formats can I use?
+A: You can use JPG, PNG, WebP, GIF and BMP images.
 
 ---
 
 ## Grayscale Image
 URL: https://www.tinywownow.com/grayscale-image
-Grayscale Image converts a colour image to black and white using standard luminance weights. It runs in your browser and saves the result as a JPG.
+Grayscale Image converts a colour picture to black and white with standard luminance weights. It runs in your browser, so your photo stays on your device, and it saves the result as a JPG.
 
 How to use:
 1. Add a colour image.
 2. Click Grayscale Image.
 3. Download the black and white image.
 
-Q: How is the grey level calculated?
+Limits:
+- The tool cannot restore the colours.
+- The tool saves the result as a JPG file.
+- The tool uses fixed luminance weights, with no manual contrast control.
+
+Q: How does the tool calculate the grey level?
 A: Each pixel uses the common luminance formula (29.9 percent red, 58.7 percent green and 11.4 percent blue), which matches how the eye sees brightness.
 
 Q: Can I get the colours back?
 A: No. Keep your original image if you may need the colour version.
 
-Q: What format is the result?
-A: A high-quality JPG.
+Q: Which format does the tool save?
+A: It saves a high-quality JPG.
+
+Q: Can I adjust the contrast?
+A: Not yet. The tool uses fixed luminance weights.
 
 ---
 
 ## Watermark Image
 URL: https://www.tinywownow.com/watermark-image
-Watermark Image writes your own text diagonally across a picture with adjustable opacity. It runs in your browser, so your photo is not uploaded, and the result is saved as a JPG.
+Watermark Image writes your own text diagonally across a picture, with adjustable opacity. It runs in your browser, so your photo stays on your device, and the tool saves the result as a JPG.
 
 How to use:
 1. Add an image.
 2. Type your watermark text and choose the opacity.
-3. Click Watermark Image and download the result.
+3. Click Watermark Image, then download the result.
+
+Limits:
+- The tool adds text watermarks only. It cannot add a logo.
+- The tool centres the text across the image at a slight angle.
+- The tool saves the result as a JPG file.
 
 Q: Can I use my own text?
 A: Yes. Type any text, such as your name or website, and choose how visible it is.
 
-Q: Where is the watermark placed?
-A: It is centred across the image at a slight angle.
+Q: Where does the watermark sit?
+A: The tool centres it across the image at a slight angle.
 
 Q: Can I add a logo?
 A: Not yet. This tool adds text watermarks only.
+
+Q: Does the watermark change my original?
+A: No. The tool saves a new file and leaves your original untouched.
 
 ---
 
 ## Upscale Image
 URL: https://www.tinywownow.com/upscale-image
-Upscale Image makes a picture 2, 3 or 4 times larger using smooth resampling followed by optional sharpening. It enlarges cleanly but does not invent new detail the way AI upscalers do.
+Upscale Image makes a picture 2, 3 or 4 times larger with smooth resampling and optional sharpening. It enlarges cleanly, but it does not invent new detail the way AI upscalers do.
 
 How to use:
 1. Add an image.
-2. Choose the scale, sharpening level and output format.
-3. Click Upscale image and download the larger version.
+2. Choose the scale, the sharpening level and the output format.
+3. Click Upscale image, then download the larger version.
+
+Limits:
+- The tool does not add missing detail, because it is not an AI upscaler.
+- The tool refuses results above about 9,000 pixels on a side or 64 megapixels.
+- PNG keeps every detail but makes big files.
 
 Q: Is this AI upscaling?
-A: No. It uses high-quality resampling and sharpening, so results are cleaner than simple stretching but will not add missing detail.
+A: No. The tool uses high-quality resampling and sharpening. The results look cleaner than simple stretching, but they do not add missing detail.
 
 Q: What is the maximum size?
-A: Results larger than about 9,000 pixels on a side, or 64 megapixels, are refused to protect your device.
+A: The tool refuses results larger than about 9,000 pixels on a side or 64 megapixels, to protect your device.
 
 Q: Which output format is best?
-A: PNG keeps every detail but makes big files. JPG and WebP are smaller.
+A: PNG keeps every detail but makes big files. JPG and WebP make smaller files.
+
+Q: Which scale should I choose?
+A: Try 2x first. Higher scales enlarge every flaw in the picture.
 
 ---
 
 ## Image to Text
 URL: https://www.tinywownow.com/image-to-text
-Image to Text uses optical character recognition (OCR) to read the text in a photo or screenshot and give it to you as editable text. It runs in your browser, so the picture is not uploaded.
+Image to Text uses optical character recognition (OCR) to read the text in a photo or screenshot and return it as editable text. It runs in your browser, so the picture stays on your device.
 
 How to use:
 1. Add an image or screenshot that contains text.
 2. Choose the language of the text.
 3. Click Extract text, then copy the result or download the .txt file.
 
-Q: Which languages are supported?
-A: English, Urdu, Hindi, Arabic, Spanish, French and German.
+Limits:
+- The tool reads English, Urdu, Hindi, Arabic, Spanish, French and German.
+- The tool reads one image at a time. For a whole scanned PDF, use OCR PDF.
+- Blurry pictures and handwriting read poorly.
 
-Q: Why is the first run slow?
-A: The first time you use a language, your browser downloads its recognition data. After that it is quicker.
+Q: Which languages does the tool support?
+A: It supports English, Urdu, Hindi, Arabic, Spanish, French and German.
+
+Q: Why does the first run take longer?
+A: Your browser downloads the recognition data for the language the first time. After that, the tool runs faster.
 
 Q: How can I get better results?
 A: Use a sharp, high-resolution picture with dark text on a plain background and straight lines of text.
+
+Q: Can it read a whole PDF?
+A: Not here. Use OCR PDF to read a scanned PDF and keep the pages as they look.
 
 ---
 
 ## Photo Filters
 URL: https://www.tinywownow.com/photo-filters
-Photo Filters applies a one-click look to your picture, such as Vivid, Warm, Cool, Sepia, Fade or Black and White. It runs in your browser and saves the result as a JPG.
+Photo Filters applies a one-click look to your picture, such as Vivid, Warm, Cool, Sepia, Fade or Black and white. It runs in your browser and saves the result as a JPG.
 
 How to use:
 1. Add a photo.
 2. Choose a filter.
-3. Click Apply filter and download the result.
+3. Click Apply filter, then download the result.
 
-Q: Which filters are available?
-A: Vivid, Warm, Cool, Sepia, Fade and Black and White.
+Limits:
+- The tool offers six fixed filters and no strength slider.
+- The tool needs a browser that supports canvas filters. Older Safari versions do not.
+- The tool saves the result as a JPG file.
+
+Q: Which filters does the tool offer?
+A: It offers Vivid, Warm, Cool, Sepia, Fade and Black and white.
 
 Q: Does it change my original?
-A: No. Your original stays untouched; you download a new file.
+A: No. Your original stays untouched, and you download a new file.
 
 Q: Can I adjust the strength?
 A: Not yet. Each filter has a fixed strength.
+
+Q: Why does nothing happen in my browser?
+A: Older Safari versions do not support the canvas filters that this tool uses. Try a current Chrome, Edge or Firefox.
 
 ---
 
 ## Compress Video
 URL: https://www.tinywownow.com/compress-video
-Compress Video makes a video file smaller by re-encoding it with H.264 and AAC, with a choice of quality and maximum resolution. It runs on your own device, so the video is never uploaded.
+Compress Video makes a video file smaller by re-encoding it with H.264 and AAC, with a choice of quality and maximum resolution. It runs on your own device, so the video never leaves it.
 
 How to use:
 1. Add a video (MP4, MOV, MKV, WebM, AVI and more).
-2. Pick the compression level and, if you like, a maximum resolution.
-3. Click Compress video and download the smaller MP4.
+2. Pick the compression level and, if you want, a maximum resolution.
+3. Click Compress video, then download the smaller MP4.
+
+Limits:
+- The tool refuses files over about 700 MB, because browsers have limited memory.
+- The first run downloads a video engine of about 30 MB.
+- The tool returns your original when it cannot make a smaller file.
 
 Q: How long does it take?
-A: It runs on your device, so time depends on the video length and your computer. Short clips take seconds; long, high-resolution videos can take several minutes.
+A: It runs on your device, so the time depends on the video length and your computer. Short clips take seconds, and long high-resolution videos take several minutes.
 
 Q: Is there a size limit?
-A: Files over about 700 MB are refused because browsers have limited memory.
+A: Yes. The tool refuses files over about 700 MB, because browsers have limited memory.
 
 Q: What if my video is already small?
-A: If a smaller file cannot be made, the tool returns your original unchanged and says so.
+A: The tool returns your original unchanged and says so.
+
+Q: Why does the tool download 30 MB first?
+A: It downloads a video engine the first time you use a video tool. Your browser keeps it for next time.
 
 ---
 
 ## Trim Video
 URL: https://www.tinywownow.com/trim-video
-Trim Video cuts a video to the start and end times you set. Fast mode copies the video without re-encoding it, which is quick but cuts at the nearest keyframe. Exact mode re-encodes for frame-accurate cuts.
+Trim Video cuts a video to the start and end times you set. Fast mode copies the video without re-encoding, which works quickly but cuts at the nearest keyframe. Exact mode re-encodes the clip for frame-accurate cuts.
 
 How to use:
 1. Add a video.
 2. Type the start and end time, such as 0:05 and 0:30, and choose Fast or Exact.
-3. Click Trim video and download the clip.
+3. Click Trim video, then download the clip.
+
+Limits:
+- Fast mode can cut a moment early or late, because it cuts at keyframes.
+- The tool refuses files over about 700 MB.
+- Exact mode takes longer, because it re-encodes the clip.
 
 Q: What is the difference between Fast and Exact?
-A: Fast copies the existing video data, so there is no quality loss and it is quick, but the cut can be a moment off. Exact re-encodes the clip so the cut is precise.
+A: Fast copies the existing video data, so it works quickly with no quality loss, but the cut can sit a moment off. Exact re-encodes the clip, so the cut lands precisely.
 
-Q: What time formats can I use?
-A: Seconds (90), minutes and seconds (1:30), or hours, minutes and seconds (0:01:30).
+Q: Which time formats can I use?
+A: Use seconds (90), minutes and seconds (1:30), or hours, minutes and seconds (0:01:30).
 
 Q: Can I leave the end time blank?
 A: Yes. The clip then runs from your start time to the end of the video.
+
+Q: Which formats can I trim?
+A: You can trim MP4, MOV, MKV, WebM and AVI files.
 
 ---
 
 ## Convert Video
 URL: https://www.tinywownow.com/convert-video
-Convert Video changes a video file into MP4, WebM, MOV, MKV or AVI. The conversion runs in your browser, so the file is not uploaded, and MP4 (H.264 and AAC) works on nearly every device.
+Convert Video changes a video file into MP4, WebM, MOV, MKV or AVI. The conversion runs in your browser, so the file stays on your device, and MP4 (H.264 and AAC) plays on nearly every device.
 
 How to use:
 1. Add a video.
 2. Choose the format to convert to.
-3. Click Convert video and download the file.
+3. Click Convert video, then download the file.
+
+Limits:
+- The tool re-encodes the video at good quality (H.264 CRF 23 for MP4, MOV and MKV), so a small loss is possible.
+- The tool refuses files over about 700 MB.
+- The tool aims for quality, not for a file size.
 
 Q: Which format should I pick?
-A: MP4 works almost everywhere. WebM suits websites, MOV suits Apple software, and MKV and AVI are for specific players.
+A: MP4 works almost everywhere. WebM suits websites, MOV suits Apple software, and MKV and AVI suit specific players.
 
 Q: Will the quality change?
-A: The video is re-encoded at good quality (H.264 CRF 23 for MP4, MOV and MKV), so a small loss is possible.
+A: The tool re-encodes the video at good quality (H.264 CRF 23 for MP4, MOV and MKV), so you may lose a little detail.
 
 Q: Why is conversion slow?
 A: It runs on your device, so long or high-resolution videos take longer.
+
+Q: Can I convert a video to MP3?
+A: Not here. Use Extract Audio from Video to save the sound as MP3, M4A or WAV.
 
 ---
 
 ## Merge Videos
 URL: https://www.tinywownow.com/merge-videos
-Merge Videos joins two or more clips into a single MP4, in the order you choose. Clips are scaled to one output size (720p, 1080p or 480p) so differently sized videos play smoothly together.
+Merge Videos joins two or more clips into one MP4, in the order you choose. The tool scales every clip to one output size (720p, 1080p or 480p), so videos of different sizes play smoothly together.
 
 How to use:
 1. Add at least two video clips.
 2. Use the arrows to set the order and choose the output size.
-3. Click Merge videos and download merged.mp4.
+3. Click Merge videos, then download merged.mp4.
 
-Q: What if my clips have different sizes?
-A: Each clip is scaled to fit the output size you choose, with black bars where needed.
+Limits:
+- The merged video has no sound when any clip has no audio, and the tool tells you.
+- The total size must stay under about 700 MB.
+- The tool saves the result as an MP4 file.
+
+Q: What happens when my clips have different sizes?
+A: The tool scales each clip to fit the output size you choose, with black bars where needed.
 
 Q: What if one clip has no audio?
-A: If some clips have no sound, the merged video has no audio, and the tool tells you.
+A: The merged video has no audio, and the tool tells you.
 
 Q: Is there a limit on clips?
-A: Not a fixed one, but the total size must stay under about 700 MB.
+A: The tool sets no fixed limit, but the total size must stay under about 700 MB.
+
+Q: Can I change the clip order?
+A: Yes. Use the arrows next to each clip before you merge.
 
 ---
 
 ## Extract Audio from Video
 URL: https://www.tinywownow.com/extract-audio-from-video
-Extract Audio from Video saves the sound of a video as an MP3, M4A (AAC) or WAV file. It runs in your browser, so the video is not uploaded.
+Extract Audio from Video saves the sound of a video as an MP3, M4A (AAC) or WAV file. It runs in your browser, so the video stays on your device.
 
 How to use:
 1. Add a video that has sound.
 2. Choose MP3, M4A or WAV.
-3. Click Extract audio and download the file.
+3. Click Extract audio, then download the file.
+
+Limits:
+- The tool saves MP3 at high quality (VBR level 2).
+- The tool refuses files over about 700 MB.
+- The tool finds no sound in videos without an audio track.
 
 Q: Which audio format should I choose?
-A: MP3 is the most compatible. M4A gives good quality in smaller files. WAV is uncompressed and large.
+A: MP3 is the most compatible. M4A gives good quality in smaller files. WAV keeps the audio uncompressed and large.
 
 Q: What if the video has no audio?
 A: The tool tells you that the video has no audio track.
 
-Q: Is the audio quality reduced?
-A: MP3 is saved at high quality (VBR level 2). Choose WAV for no compression.
+Q: Does the tool reduce the audio quality?
+A: MP3 uses high quality (VBR level 2). Choose WAV for no compression.
+
+Q: Which video formats work?
+A: MP4, MOV, MKV, WebM and AVI files work.
 
 ---
 
 ## Remove Audio from Video
 URL: https://www.tinywownow.com/remove-audio-from-video
-Remove Audio deletes the sound track from a video and keeps the picture exactly as it is. Because the video is copied without re-encoding, it is fast and loses no quality.
+Remove Audio from Video deletes the sound track from a video and keeps the picture exactly as it is. The tool copies the video without re-encoding it, so it works fast and loses no quality.
 
 How to use:
 1. Add a video.
 2. Click Remove audio.
 3. Download the silent video.
 
-Q: Does removing audio change the video quality?
-A: No. The video stream is copied unchanged.
+Limits:
+- The tool keeps the original format.
+- The tool tells you when the video already has no audio.
+- The tool refuses files over about 700 MB.
 
-Q: Can I keep the audio and remove it later?
-A: Your original file is not changed, so you can keep both versions.
+Q: Does removing audio change the video quality?
+A: No. The tool copies the video stream unchanged.
+
+Q: Can I keep my original with the sound?
+A: Yes. The tool leaves your original file unchanged and gives you a new silent copy.
 
 Q: What if my video has no audio already?
-A: The tool tells you it already has no audio.
+A: The tool tells you that it already has no audio.
+
+Q: Which formats work?
+A: MP4, MOV, MKV, WebM and AVI files work, and the result keeps the same format.
 
 ---
 
 ## Video to GIF
 URL: https://www.tinywownow.com/video-to-gif
-Video to GIF converts a clip of up to 20 seconds into an animated GIF. You choose where it starts, how long it is, the frame rate and the width, and a palette is generated for good colours.
+Video to GIF converts a clip of up to 20 seconds into an animated GIF. You choose the start, length, frame rate and width, and the tool generates a colour palette for good results.
 
 How to use:
 1. Add a video.
-2. Set the start time, length (up to 20 seconds), frame rate and width.
-3. Click Create GIF and download it.
+2. Set the start time, the length (up to 20 seconds), the frame rate and the width.
+3. Click Create GIF, then download it.
+
+Limits:
+- The tool limits clips to 20 seconds.
+- GIF files grow large fast, so long or wide clips make heavy files.
+- GIF files carry no sound, so the result is silent.
 
 Q: Why is my GIF so large?
-A: GIFs are inefficient. Use a shorter clip, a lower frame rate (8 fps) or a smaller width (320 px).
+A: GIFs use an inefficient format. Use a shorter clip, a lower frame rate (8 fps) or a smaller width (320 px).
 
 Q: What is the maximum length?
-A: 20 seconds.
+A: The maximum length is 20 seconds.
 
-Q: Is there a watermark?
-A: No.
+Q: Does the GIF carry a watermark?
+A: No. The tool adds no watermark to your GIF.
+
+Q: Which video formats work?
+A: MP4, MOV, MKV, WebM and AVI files work.
 
 ---
 
 ## GIF to Video
 URL: https://www.tinywownow.com/gif-to-video
-GIF to Video turns an animated GIF into an MP4 video, which is usually much smaller and plays smoothly on phones and websites. The conversion runs in your browser.
+GIF to Video turns an animated GIF into an MP4 video. The MP4 is usually much smaller than the GIF and plays smoothly on phones and websites. The conversion runs in your browser.
 
 How to use:
 1. Add a GIF.
 2. Click Convert to MP4.
 3. Download the MP4.
+
+Limits:
+- The tool accepts GIF files only.
+- The MP4 does not loop by itself. Your player or embed controls looping.
+- Colours can shift slightly after the conversion.
 
 Q: Why convert a GIF to MP4?
 A: MP4 files are usually many times smaller than the same animation as a GIF, and they play more smoothly.
@@ -727,267 +1003,374 @@ Q: Does the MP4 loop?
 A: The file is a normal video. Most players and websites can loop it.
 
 Q: Will the colours change?
-A: Slightly. MP4 uses a different colour format, but results look very close.
+A: Slightly. MP4 uses a different colour format, but the results look close.
+
+Q: Can I turn the MP4 back into a GIF?
+A: Yes. Use Video to GIF.
 
 ---
 
 ## Rotate Video
 URL: https://www.tinywownow.com/rotate-video
-Rotate Video turns a video 90 degrees clockwise, 90 degrees counter-clockwise or 180 degrees and saves it as a new MP4. It is useful for clips filmed sideways or upside down.
+Rotate Video turns a video 90 degrees clockwise, 90 degrees counter-clockwise or 180 degrees, and saves the result as a new MP4. It fixes clips that you filmed sideways or upside down.
 
 How to use:
 1. Add a video.
 2. Choose the rotation.
-3. Click Rotate video and download the MP4.
+3. Click Rotate video, then download the MP4.
+
+Limits:
+- The tool re-encodes the video, so it takes longer than a simple copy.
+- The tool rotates by 90 degrees either way, or by 180 degrees.
+- The tool refuses files over about 700 MB.
 
 Q: Does rotating re-encode the video?
-A: Yes. The picture must be re-drawn, so the result is saved as a new MP4 at good quality.
+A: Yes. The tool must redraw the picture, so it saves a new MP4 at good quality.
 
 Q: Can I flip the video instead?
-A: Yes, use the Flip Video tool for mirroring.
+A: Yes. Use the Flip Video tool for mirroring.
 
-Q: Is audio kept?
-A: Yes, audio is kept.
+Q: Does the tool keep the audio?
+A: Yes. The tool keeps the audio.
+
+Q: Which formats work?
+A: MP4, MOV, MKV, WebM and AVI files work, and the tool saves an MP4.
 
 ---
 
 ## Resize Video
 URL: https://www.tinywownow.com/resize-video
-Resize Video changes the height of a video to 1080p, 720p, 480p, 360p or 240p and adjusts the width automatically to keep the proportions. It saves the result as an MP4.
+Resize Video changes the height of a video to 1080p, 720p, 480p, 360p or 240p and adjusts the width to keep the proportions. The tool saves the result as an MP4.
 
 How to use:
 1. Add a video.
 2. Choose the target height.
-3. Click Resize video and download the MP4.
+3. Click Resize video, then download the MP4.
 
-Q: Will the aspect ratio change?
-A: No. The width is set automatically to keep the original proportions.
+Limits:
+- The tool changes the height only and sets the width automatically.
+- The tool cannot add detail when you scale up.
+- The tool refuses files over about 700 MB.
+
+Q: Does the aspect ratio change?
+A: No. The tool sets the width automatically to keep the original proportions.
 
 Q: Can it make a video bigger?
-A: It can scale up, but it cannot add detail, so use it mainly to scale down.
+A: It can scale up, but it cannot add detail. Use it mainly to scale down.
 
 Q: Does resizing make the file smaller?
-A: Usually yes, because fewer pixels need to be stored.
+A: Usually yes, because fewer pixels need less data.
+
+Q: Which resolutions can I choose?
+A: You can choose 1080p, 720p, 480p, 360p or 240p.
 
 ---
 
 ## Change Video Speed
 URL: https://www.tinywownow.com/change-video-speed
-Change Video Speed makes a video play faster (1.5x, 2x, 3x, 4x) or slower (0.75x, 0.5x), and changes the audio speed to match. It runs in your browser and saves an MP4.
+Change Video Speed makes a video play faster (1.5x, 2x, 3x or 4x) or slower (0.75x or 0.5x) and matches the audio speed. It runs in your browser and saves an MP4.
 
 How to use:
 1. Add a video.
 2. Choose a speed.
-3. Click Change speed and download the MP4.
+3. Click Change speed, then download the MP4.
+
+Limits:
+- The tool offers six fixed speeds.
+- Videos without audio produce a silent result.
+- The tool refuses files over about 700 MB.
 
 Q: Does the audio pitch change?
-A: No. The audio speed is adjusted without changing its pitch.
+A: No. The tool adjusts the audio speed without changing its pitch.
 
-Q: What are the speed options?
-A: 0.5x, 0.75x, 1.5x, 2x, 3x and 4x.
+Q: Which speeds can I choose?
+A: You can choose 0.5x, 0.75x, 1.5x, 2x, 3x or 4x.
 
 Q: What if my video has no audio?
-A: Only the picture is processed, and the result has no sound.
+A: The tool processes only the picture, and the result has no sound.
+
+Q: Which format does the tool save?
+A: It saves an MP4.
 
 ---
 
 ## Add Subtitles
 URL: https://www.tinywownow.com/add-subtitles
-Add Subtitles combines a video with an .srt or .vtt subtitle file and saves an MP4 with a selectable subtitle track that viewers can switch on or off. The text is not burned into the picture.
+Add Subtitles combines a video with an .srt or .vtt subtitle file and saves an MP4 with a selectable subtitle track. Viewers can switch the subtitles on or off, because the tool does not burn the text into the picture.
 
 How to use:
 1. Add one video file and one .srt or .vtt subtitle file.
 2. Click Add subtitles.
-3. Download the MP4 and turn subtitles on in your player.
+3. Download the MP4 and turn the subtitles on in your player.
 
-Q: Are the subtitles burned into the video?
-A: No. They are added as a separate track, so viewers can turn them on or off. Some players and social sites ignore soft subtitle tracks.
+Limits:
+- The tool adds a soft subtitle track. It does not burn text into the picture.
+- The tool accepts SRT and VTT files only.
+- The tool adds one subtitle file to one video at a time.
+
+Q: Does the tool burn the subtitles into the video?
+A: No. It adds them as a separate track, so viewers can switch them on or off. Some players and social sites ignore soft subtitle tracks.
 
 Q: Which subtitle formats work?
-A: SRT and VTT.
+A: SRT and VTT files work.
 
 Q: Which videos work best?
-A: MP4 and MOV videos are copied without re-encoding. Other formats are converted to MP4.
+A: The tool copies MP4 and MOV videos without re-encoding. It converts other formats to MP4.
+
+Q: Can I add several languages?
+A: Not yet. The tool adds one subtitle file to one video.
 
 ---
 
 ## Flip Video
 URL: https://www.tinywownow.com/flip-video
-Flip Video mirrors a video left to right, or turns it upside down, and saves the result as an MP4. It runs in your browser, so the video is not uploaded.
+Flip Video mirrors a video left to right, or turns it upside down, and saves the result as an MP4. It runs in your browser, so the video stays on your device.
 
 How to use:
 1. Add a video.
-2. Choose horizontal or vertical flip.
-3. Click Flip video and download the MP4.
+2. Choose a horizontal or vertical flip.
+3. Click Flip video, then download the MP4.
+
+Limits:
+- The tool re-encodes the video, which takes time on long clips.
+- The tool refuses files over about 700 MB.
+- The tool saves the result as an MP4 file.
 
 Q: What is the difference between flip and rotate?
-A: Flip makes a mirror image. Rotate turns the video around without mirroring it.
+A: Flip makes a mirror image. Rotate turns the video without mirroring it.
 
-Q: Is audio kept?
-A: Yes.
+Q: Does the tool keep the audio?
+A: Yes. The tool keeps the audio as it is.
 
-Q: Does it re-encode the video?
-A: Yes, at good quality, because every frame must be redrawn.
+Q: Does flipping re-encode the video?
+A: Yes. The tool redraws every frame, at good quality.
+
+Q: Which flips can I choose?
+A: You can flip horizontally or vertically.
 
 ---
 
 ## Zip Files
 URL: https://www.tinywownow.com/zip-files
-Zip Files packs any number of files into a single ZIP archive. You can choose normal, maximum or no compression. The ZIP is created in your browser, so your files are not uploaded.
+Zip Files packs any number of files into one ZIP archive. You can choose normal, maximum or no compression. The tool creates the ZIP in your browser, so your files stay on your device.
 
 How to use:
 1. Add the files you want to include.
 2. Choose a compression level.
-3. Click Create ZIP and download archive.zip.
+3. Click Create ZIP, then download archive.zip.
+
+Limits:
+- The tool cannot add folders. Add the files directly.
+- The tool cannot add a password to the ZIP.
+- Large sets of files depend on your device memory.
 
 Q: Can I zip any kind of file?
-A: Yes, any file type. Folders are not supported; add the files directly.
+A: Yes, any file type. The tool does not support folders, so add the files directly.
 
 Q: Can I add a password?
 A: No. This tool does not encrypt ZIP files.
 
 Q: Which compression level should I use?
-A: Normal suits most files. Maximum makes slightly smaller files but is slower. None only bundles the files.
+A: Normal suits most files. Maximum makes slightly smaller files but works more slowly. None only bundles the files.
+
+Q: How do I open the ZIP again?
+A: Use Extract ZIP on this site, or open the file with your operating system.
 
 ---
 
 ## Extract ZIP
 URL: https://www.tinywownow.com/extract-zip
-Extract ZIP opens a ZIP archive in your browser and lists the files inside, so you can download them one by one or all together. Nothing is uploaded.
+Extract ZIP opens a ZIP archive in your browser and lists the files inside, so you can download them one by one or all together. Nothing leaves your device.
 
 How to use:
 1. Add a ZIP file.
 2. Click Extract ZIP.
-3. Download individual files, or all of them.
+3. Download single files, or all of them.
+
+Limits:
+- The tool opens ZIP files only. It does not open RAR or 7z.
+- The tool cannot open password-protected archives.
+- The tool lists files by name and does not recreate folder paths.
 
 Q: Can I open password-protected ZIP files?
-A: No. Encrypted archives are not supported.
+A: No. The tool does not support encrypted archives.
 
-Q: Does it keep folder structure?
-A: Files are listed by name. Folder paths are not recreated.
+Q: Does it keep the folder structure?
+A: The tool lists files by name and does not recreate folder paths.
 
 Q: Which archive types work?
-A: ZIP only. RAR and 7z are not supported.
+A: ZIP only. The tool does not open RAR or 7z.
+
+Q: Can I download a single file?
+A: Yes. Each file in the list has its own download button.
 
 ---
 
 ## JSON Formatter
 URL: https://www.tinywownow.com/json-formatter
-JSON Formatter checks that your JSON is valid and rewrites it with clean indentation so it is easy to read. If something is wrong it shows the error message from the parser.
+JSON Formatter checks that your JSON is valid and rewrites it with clean indentation, so it is easy to read. When something is wrong, it shows the error message from the parser.
 
 How to use:
 1. Paste your JSON into the input box.
-2. The formatted result appears on the right, with a valid or error message.
+2. Read the formatted result on the right, with a valid or error message.
 3. Click Copy JSON to copy the result.
 
-Q: Does it validate JSON?
-A: Yes. It shows "Valid JSON" or the parser error message.
+Limits:
+- The tool checks syntax only. It does not check a schema.
+- The tool indents with two spaces and has no other setting.
+- Large inputs depend on your device memory.
 
-Q: Is my data sent anywhere?
+Q: Does it validate JSON?
+A: Yes. It shows Valid JSON, or the error message from the parser.
+
+Q: Does the tool send my data anywhere?
 A: No. Formatting happens in your browser.
 
-Q: How is the output indented?
-A: With two spaces per level.
+Q: How does the tool indent the output?
+A: It uses two spaces per level.
+
+Q: Why does my JSON show an error?
+A: Common causes are a trailing comma, single quotes instead of double quotes, and keys without quotes. The error message shows what the parser found.
 
 ---
 
 ## CSV to JSON
 URL: https://www.tinywownow.com/csv-to-json
-CSV to JSON turns pasted CSV data into a JSON array of objects, using the first row as keys. It handles quoted fields and detects commas, semicolons or tabs as separators.
+CSV to JSON turns pasted CSV data into a JSON array of objects, with the first row as keys. It reads quoted fields and detects commas, semicolons or tabs as separators.
 
 How to use:
 1. Paste your CSV, with a header row, into the input box.
-2. The JSON appears on the right as you type.
+2. Watch the JSON appear on the right as you type.
 3. Click Copy JSON.
 
+Limits:
+- The tool outputs every value as text.
+- The tool needs a header row to name the keys.
+- The tool detects commas, semicolons and tabs from the first line only.
+
 Q: Does it handle commas inside quotes?
-A: Yes. Quoted fields, including escaped quotes, are parsed correctly.
+A: Yes. The tool reads quoted fields, including escaped quotes, correctly.
 
-Q: Which separators are detected?
-A: Commas, semicolons and tabs, based on the first line.
+Q: Which separators does it detect?
+A: It detects commas, semicolons and tabs, based on the first line.
 
-Q: Are numbers converted to numbers?
-A: No. Every value is output as text.
+Q: Does the tool convert numbers to numbers?
+A: No. The tool outputs every value as text.
+
+Q: Where do the keys come from?
+A: The first row of your CSV provides the keys for every object.
 
 ---
 
 ## Base64 Encoder and Decoder
 URL: https://www.tinywownow.com/base64-encoder-decoder
-The Base64 Encoder and Decoder converts text to Base64 and decodes Base64 back to readable text, including characters outside basic English (UTF-8). It runs in your browser.
+The Base64 Encoder and Decoder converts text to Base64 and decodes Base64 back to readable text, including characters outside basic English (UTF-8). It runs in your browser, so your text stays on your device.
 
 How to use:
 1. Choose Encode or Decode.
 2. Type or paste your text.
 3. Click Copy Result.
 
+Limits:
+- The tool encodes text, not files.
+- Base64 hides nothing, because anyone can decode it.
+- The tool treats text as UTF-8.
+
 Q: What is Base64?
-A: Base64 is a way to represent data using only letters, digits, plus and slash, so it can travel safely through systems that handle only text.
+A: Base64 represents data with only letters, digits, plus and slash, so it can travel safely through systems that handle only text.
 
 Q: Is Base64 encryption?
 A: No. Anyone can decode it, so never use it to protect secrets.
 
 Q: Does it support emoji and other languages?
-A: Yes, text is handled as UTF-8.
+A: Yes. The tool handles text as UTF-8.
+
+Q: Does the encoded text get longer?
+A: Yes. Base64 output is about one third larger than the original.
 
 ---
 
 ## URL Encoder and Decoder
 URL: https://www.tinywownow.com/url-encoder-decoder
-The URL Encoder and Decoder converts text into percent-encoded form that is safe to use in a web address, and decodes it back. For example a space becomes %20 and an ampersand becomes %26.
+The URL Encoder and Decoder converts text into percent-encoded form that is safe to use in a web address, and decodes it back. For example, a space becomes %20 and an ampersand becomes %26.
 
 How to use:
 1. Choose Encode or Decode.
 2. Type or paste your text.
 3. Click Copy Result.
 
-Q: Which characters are encoded?
-A: Everything except letters, digits and - _ . ! ~ * ' ( ), using the standard encodeURIComponent rules.
+Limits:
+- The tool encodes every character except letters, digits and a few safe symbols.
+- The tool shows Invalid input when it cannot decode a string.
+- The tool encodes a whole URL as one piece, including its slashes.
+
+Q: Which characters does the tool encode?
+A: It encodes everything except letters, digits and a few safe symbols, with the standard encodeURIComponent rules.
 
 Q: What does decode do with invalid input?
-A: It shows "Invalid input" instead of guessing.
+A: It shows Invalid input instead of guessing.
 
 Q: Should I encode a whole URL?
 A: Encode only the parts you add, such as query values. Encoding a full URL also encodes its slashes and colons.
+
+Q: Does it work with non-English text?
+A: Yes. The tool encodes any text as UTF-8.
 
 ---
 
 ## Hash Generator
 URL: https://www.tinywownow.com/hash-generator
-Hash Generator creates SHA-256, SHA-1 and SHA-512 hashes of any text using your browser's built-in cryptography. Your text is never sent to a server.
+Hash Generator creates SHA-256, SHA-1 and SHA-512 hashes of any text with the cryptography that your browser provides. The tool never sends your text to a server, so your input stays private.
 
 How to use:
 1. Type or paste your text.
-2. The three hashes appear instantly.
+2. Read the three hashes as they appear.
 3. Copy the one you need.
 
-Q: Is MD5 included?
-A: No. MD5 is not available in the browser's crypto functions and is not secure. SHA-256 is the recommended choice.
+Limits:
+- The tool hashes text only. It does not hash files.
+- The tool does not offer MD5.
+- The tool offers SHA-1, SHA-256 and SHA-512 only.
 
-Q: Can a hash be reversed?
-A: No. Hashes are one-way, though weak hashes of common words can be looked up.
+Q: Does the tool include MD5?
+A: No. The browser does not provide MD5, and MD5 is not secure. SHA-256 is the recommended choice.
+
+Q: Can someone reverse a hash?
+A: No. Hashes work one way, though attackers can look up weak hashes of common words.
 
 Q: Can I hash a file?
 A: Not yet. This tool hashes text only.
+
+Q: Why does one extra space change the hash?
+A: A hash covers every character, so even a space or a new line produces a completely different result.
 
 ---
 
 ## XML Formatter
 URL: https://www.tinywownow.com/xml-formatter
-XML Formatter checks that your XML is well formed and rewrites it with indentation so the structure is easy to read. If the XML is invalid it shows an error.
+XML Formatter checks that your XML is well formed and rewrites it with indentation, so the structure is easy to read. When the XML is invalid, it shows an error.
 
 How to use:
 1. Paste your XML into the input box.
-2. The formatted XML appears on the right.
+2. Read the formatted XML on the right.
 3. Click Copy XML.
+
+Limits:
+- The tool checks that XML is well formed. It does not check against a schema (XSD).
+- The tool shows an error for invalid XML.
+- Large inputs depend on your device memory.
 
 Q: Does it validate XML?
 A: It checks that the XML is well formed. It does not validate against a schema (XSD).
 
-Q: Is my XML uploaded?
-A: No. It is processed in your browser.
+Q: Does the tool upload my XML?
+A: No. The tool processes it in your browser.
 
-Q: Are comments and attributes kept?
-A: Yes, they are preserved.
+Q: Does the tool keep comments and attributes?
+A: Yes. The tool preserves both.
+
+Q: Why does my XML show an error?
+A: Common causes are an unclosed tag, tags whose upper and lower case differ, and a bare & character.
 
 ---
 
@@ -998,73 +1381,105 @@ XLS Converter converts a spreadsheet between Excel (.xlsx, .xls), CSV, OpenDocum
 How to use:
 1. Add a spreadsheet (XLSX, XLS, CSV or ODS).
 2. Choose the format to convert to.
-3. Click Convert and download the file.
+3. Click Convert, then download the file.
+
+Limits:
+- CSV holds one sheet only, so the tool saves each sheet as its own CSV file.
+- CSV stores calculated values, not formulas.
+- Large files depend on your device memory.
 
 Q: What happens with several sheets?
-A: XLSX, XLS, ODS and HTML keep all sheets. CSV can hold one sheet only, so each sheet is saved as its own CSV file.
+A: XLSX, XLS, ODS and HTML keep all sheets. CSV holds one sheet only, so the tool saves each sheet as its own CSV file.
 
-Q: Are formulas kept?
-A: Formulas are kept when converting between Excel formats; CSV stores the calculated values.
+Q: Does the tool keep formulas?
+A: It keeps formulas when you convert between Excel formats. CSV stores the calculated values.
 
 Q: Is there a size limit?
-A: No fixed limit, but very large files depend on your device memory.
+A: The tool sets no fixed limit, but large files depend on your device memory.
+
+Q: Which formats can I convert to?
+A: You can convert to XLSX, XLS, CSV, ODS or HTML.
 
 ---
 
 ## Word Counter
 URL: https://www.tinywownow.com/word-counter
-Word Counter counts the words, characters, sentences and paragraphs in your text as you type, and estimates reading time at 200 words per minute.
+Word Counter counts the words, characters, sentences and paragraphs in your text as you type, and it estimates the reading time at 200 words per minute. Your text stays in your browser.
 
 How to use:
 1. Type or paste your text into the box.
 2. Read the live counts above it.
 3. Edit your text until you reach your target length.
 
-Q: How are words counted?
-A: Words are groups of characters separated by spaces or line breaks.
+Limits:
+- The tool counts words as groups of characters separated by spaces or line breaks.
+- The tool rounds reading time up to whole minutes.
+- Long texts depend on your device.
 
-Q: How is reading time calculated?
-A: At 200 words per minute, rounded up to whole minutes.
+Q: How does the tool count words?
+A: It counts groups of characters that spaces or line breaks separate.
 
-Q: Is my text stored?
-A: No. It stays in your browser and is not saved or sent anywhere.
+Q: How does the tool calculate reading time?
+A: It divides the word count by 200 words per minute and rounds up to whole minutes.
+
+Q: Does the tool save my text?
+A: No. Your text stays in your browser, and the tool does not store it or send it anywhere.
+
+Q: Does the character count include spaces?
+A: Yes. The count covers every character in the box, including spaces and line breaks.
 
 ---
 
 ## Case Converter
 URL: https://www.tinywownow.com/case-converter
-Case Converter changes the capitalisation of your text to uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case or kebab-case with one click.
+Case Converter changes the capitalisation of your text to uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case or kebab-case with one click. It runs in your browser, so your text stays private.
 
 How to use:
 1. Type or paste your text into Input.
 2. Click the case style you want.
 3. Click Copy Result.
 
+Limits:
+- Title Case capitalises every word, including small words like of and the.
+- The tool changes capitalisation and word separators only.
+- The tool works on the text in the box, one block at a time.
+
 Q: What is the difference between camelCase and PascalCase?
 A: camelCase starts with a lowercase letter (myVariableName). PascalCase starts with a capital (MyVariableName).
 
 Q: What is snake_case?
-A: Words are lowercase and joined by underscores, for example my_variable_name.
+A: snake_case writes words in lowercase and joins them with underscores, for example my_variable_name.
 
 Q: Does Title Case follow style guides?
-A: It capitalises the first letter of every word. It does not skip small words like "of" or "the".
+A: It capitalises the first letter of every word. It does not skip small words such as of or the.
+
+Q: Which case suits a URL slug?
+A: kebab-case suits URL slugs, because it joins lowercase words with hyphens.
 
 ---
 
 ## Text Reverser
 URL: https://www.tinywownow.com/text-reverser
-Text Reverser flips your text by characters, by words or by lines. Type or paste text and the reversed version appears instantly.
+Text Reverser flips your text by characters, by words or by lines. Type or paste text, and the reversed version appears instantly. It runs in your browser, so your text stays private.
 
 How to use:
 1. Type or paste your text.
 2. Choose Reverse Characters, Reverse Words or Reverse Lines.
 3. Click Copy Result.
 
+Limits:
+- The tool reverses by characters, words or lines only.
+- Reversing characters can split multi-part emoji.
+- The tool works on one block of text at a time.
+
 Q: What is the difference between the three modes?
-A: Characters reverses every letter ("abc" becomes "cba"), words reverses the order of words, and lines reverses the order of lines.
+A: Characters reverses every letter ("abc" becomes "cba"). Words reverses the order of the words. Lines reverses the order of the lines.
 
 Q: Does it work with emoji?
-A: Basic emoji work, but some multi-part emoji may be split when reversing characters.
+A: Basic emoji work, but reversing characters can split some multi-part emoji.
 
-Q: Is my text saved?
-A: No. It stays in your browser.
+Q: Does the tool save my text?
+A: No. Your text stays in your browser.
+
+Q: Can I reverse a list?
+A: Yes. Paste the list, one item per line, and choose Reverse Lines.
