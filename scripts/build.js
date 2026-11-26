@@ -66,7 +66,7 @@ function footer() {
     '<a class="flink" href="/' + c.slug + '" style="color:var(--sage3);font-weight:600">All ' + lc(c.short) + ' tools</a></div></div>').join('');
   return '<footer class="footer"><div class="wrap"><div class="footer-g" style="grid-template-columns:2fr repeat(5,1fr)"><div>' +
     '<div style="display:flex;align-items:center;gap:9px">' + LOGO(32) + '<span class="logo-txt" style="font-size:1rem">TinyWow <em>Now</em></span></div>' +
-    '<p class="f-desc">Free online tools for images, PDFs, videos, files and text. They run in your browser, so your files stay private.</p>' +
+    '<p class="f-desc">TinyWow Now offers free online tools for images, PDFs, videos, files and text. They run in your browser, so your files stay private.</p>' +
     '<div class="flinks"><a class="flink" href="/about">About</a><a class="flink" href="/blog">Blog</a><a class="flink" href="/privacy">Privacy Policy</a><a class="flink" href="/terms">Terms of Use</a><a class="flink" href="/contact">Contact</a></div></div>' + cols + '</div>' +
     '<div class="foot-bot"><span class="foot-copy">&copy; ' + NOW.getUTCFullYear() + ' ' + NAME + ' &middot; Free online tools for everyone</span>' +
     '<div class="foot-badges"><span class="fbadge">Private</span><span class="fbadge">Fast</span><span class="fbadge">Free forever</span></div></div></div></footer>' +
@@ -133,7 +133,7 @@ const urls = []; // for sitemap: {path, priority}
     '<section class="hx"><div class="hx-bg"></div><div class="wrap hx-grid"><div class="hx-copy">' +
     '<div class="hx-eye"><span class="hx-dot"></span>Private &middot; runs in your browser</div>' +
     '<h1 class="hx-h1"><span class="hx-brand">TinyWow Now</span> Free online tools for <span class="hx-hl">PDF, images</span> and video</h1>' +
-    '<p class="hx-sub">Compress, convert, merge and edit your files in seconds. Every tool runs in your browser, so nothing is uploaded, and there is no sign-up and no watermark.</p>' +
+    '<p class="hx-sub">Compress, convert, merge and edit your files in seconds. Every TinyWow Now tool runs in your browser, so nothing is uploaded, and there is no sign-up and no watermark.</p>' +
     '<ul class="hx-trust">' +
     '<li><span class="hx-ck">' + CHECK + '</span><span><b>Files stay on your device.</b> Every tool runs right in your browser.</span></li>' +
     '<li><span class="hx-ck">' + CHECK + '</span><span><b>' + D.TOOLS.length + ' tools in one place.</b> PDF, image, video, file and text.</span></li>' +
@@ -175,7 +175,7 @@ D.TOOLS.forEach(t => {
     '<section class="seo-sec"><h2>Limits of ' + esc(t.n) + '</h2><ul class="tip-list limit-list">' + K.limits.map(s => '<li>' + esc(s) + '</li>').join('') + '</ul></section>' +
     '<section class="seo-sec"><h2>What to do next</h2><ul class="next-list">' + K.next.map(n => { const x = byId(n[0]); if (!x) throw new Error('Unknown next tool ' + n[0] + ' in ' + t.id); return '<li><a href="/' + x.slug + '">' + esc(x.n) + '</a><span>' + esc(n[1]) + '</span></li>'; }).join('') + '</ul></section>' +
     faqBlock(t.n + ': frequently asked questions', faq) +
-    '<section class="seo-sec"><h2>' + esc(t.n) + ' at a glance</h2><ul class="fact-list"><li><b>Input</b>' + esc(K.io[0]) + '</li><li><b>Output</b>' + esc(K.io[1]) + '</li><li><b>Price</b>Free, no sign-up, no watermark</li><li><b>Privacy</b>Runs in your browser; files are not uploaded</li><li><b>Last updated</b>' + TODAY_LONG + '</li></ul></section>' +
+    '<section class="seo-sec"><h2>' + esc(t.n) + ' at a glance</h2><ul class="fact-list"><li><b>Input</b>' + esc(K.io[0]) + '</li><li><b>Output</b>' + esc(K.io[1]) + '</li><li><b>Price</b>Free, no sign-up, no watermark</li><li><b>Privacy</b>TinyWow Now runs this tool in your browser; files are not uploaded</li><li><b>Made by</b>TinyWow Now</li><li><b>Last updated</b>' + TODAY_LONG + '</li></ul></section>' +
     '<section class="seo-sec"><h2>Related ' + esc(lc(c.short)) + ' tools</h2><div class="tools-g" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">' + related.map(r => toolCard(r, false)).join('') + '</div></section></div>';
   const ld = [{ '@context': 'https://schema.org', '@type': 'WebApplication', name: t.n, url: abs('/' + t.slug), description: K.answer, applicationCategory: (t.c === 'image' || t.c === 'video') ? 'MultimediaApplication' : 'UtilitiesApplication', operatingSystem: 'Any (web browser)', browserRequirements: 'Requires JavaScript', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' }, dateModified: TODAY, inLanguage: 'en', publisher: { '@id': ORG_ID } },
     crumbLd(crumbs.map(x => ({ name: x.name, href: x.href || '/' + t.slug }))), faqLd(faq)];
