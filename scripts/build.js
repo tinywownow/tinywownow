@@ -132,7 +132,7 @@ const urls = []; // for sitemap: {path, priority}
   const body =
     '<section class="hx"><div class="hx-bg"></div><div class="wrap hx-grid"><div class="hx-copy">' +
     '<div class="hx-eye"><span class="hx-dot"></span>Private &middot; runs in your browser</div>' +
-    '<h1 class="hx-h1">Free online tools for <span class="hx-hl">PDF, images</span> and video</h1>' +
+    '<h1 class="hx-h1"><span class="hx-brand">TinyWow Now</span> Free online tools for <span class="hx-hl">PDF, images</span> and video</h1>' +
     '<p class="hx-sub">Compress, convert, merge and edit your files in seconds. Every tool runs in your browser, so nothing is uploaded, and there is no sign-up and no watermark.</p>' +
     '<ul class="hx-trust">' +
     '<li><span class="hx-ck">' + CHECK + '</span><span><b>Files stay on your device.</b> Every tool runs right in your browser.</span></li>' +

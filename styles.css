@@ -552,3 +552,5 @@ a.aside-cta em{font-style:normal;font-weight:700;margin-top:6px}
 /* three-item blocks sit in three equal columns */
 .use-list,.limit-list{grid-template-columns:repeat(3,1fr)}
 @media(max-width:900px){.use-list,.limit-list{grid-template-columns:1fr}}
+
+.hx-brand{display:block;font-size:.5em;letter-spacing:-.5px;color:#5a7047;margin-bottom:6px}
