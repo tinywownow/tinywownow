@@ -41,7 +41,7 @@ Add it to `TOOLS` in `site-data.js`, add its copy to the right file in `scripts/
 ## Deploy
 Connected to Vercel through GitHub: every push to `main` deploys automatically (`vercel.json` enables clean URLs).
 
-## Working tools (53)
+## Working tools (54)
 - **PDF (16):** merge, split, rotate, watermark, sign, compress, OCR (searchable PDF), JPG to PDF, PDF to JPG/PNG/text/Word/Excel/PowerPoint, Word to PDF, Excel to PDF
 - **Image (12):** compress, resize, convert (JPG/PNG/WebP), crop, rotate/flip, grayscale, watermark, filters, upscale, image to text (OCR)
 - **Video (13):** compress, trim, convert, merge, extract audio, mute, video to GIF, GIF to video, rotate, flip, resize, speed, add subtitles

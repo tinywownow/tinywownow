@@ -6,7 +6,7 @@
 - Price: free, no account needed
 - Privacy: files are processed locally in the browser and are never uploaded to a server
 - Popular tool: image compressor for JPG, PNG and WebP at https://www.tinywownow.com/compress-image
-- Number of tools: 53
+- Number of tools: 54
 - Contact: tinywownow@gmail.com
 
 ## PDF Tools
@@ -38,6 +38,7 @@
 - [Grayscale Image](https://www.tinywownow.com/grayscale-image): Convert colour images to black and white
 - [Watermark Image](https://www.tinywownow.com/watermark-image): Add custom text watermark to images
 - [Upscale Image](https://www.tinywownow.com/upscale-image): Enlarge images 2-4x with smart sharpening
+- [HEIC to JPG](https://www.tinywownow.com/heic-to-jpg): Convert iPhone HEIC photos to JPG
 - [Image to Text](https://www.tinywownow.com/image-to-text): Extract text from images and screenshots
 - [Photo Filters](https://www.tinywownow.com/photo-filters): Apply beautiful filters to your photos
 

@@ -43,6 +43,7 @@ const TOOLS = [
   { id: 'grayscale-image', c: 'image', n: 'Grayscale Image', d: 'Convert colour images to black and white' },
   { id: 'watermark-image', c: 'image', n: 'Watermark Image', d: 'Add custom text watermark to images' },
   { id: 'upscale-image', c: 'image', n: 'Upscale Image', d: 'Enlarge images 2-4x with smart sharpening' },
+  { id: 'heic-to-jpg', c: 'image', n: 'HEIC to JPG', d: 'Convert iPhone HEIC photos to JPG' },
   { id: 'image-to-text', c: 'image', n: 'Image to Text', d: 'Extract text from images and screenshots' },
   { id: 'photo-filter', c: 'image', slug: 'photo-filters', n: 'Photo Filters', d: 'Apply beautiful filters to your photos' },
 

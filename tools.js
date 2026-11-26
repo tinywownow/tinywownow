@@ -11,7 +11,8 @@ const LIBS = {
   xlsx: CDN + 'xlsx/0.18.5/xlsx.full.min.js',
   mammoth: CDN + 'mammoth/1.6.0/mammoth.browser.min.js',
   tess: CDN + 'tesseract.js/5.1.0/tesseract.min.js',
-  pptx: 'https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js'
+  pptx: 'https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js',
+  heif: 'https://cdn.jsdelivr.net/npm/libheif-js@1.19.8/libheif-wasm/libheif-bundle.js'
 };
 const PDFJS_WORKER = CDN + 'pdf.js/3.11.174/pdf.worker.min.js';
 const loaded = {};
@@ -1133,6 +1134,50 @@ TOOLS['add-subtitles'] = {
     return [{ name: baseName(vid.name) + '-subtitled.mp4', blob }];
   }
 };
+
+/* ---------- HEIC (iPhone photos) ---------- */
+let heifLib = null;
+async function heicCanvas(file) {
+  await need('heif');
+  if (!heifLib) heifLib = window.libheif.HeifDecoder ? window.libheif : await window.libheif({});
+  let imgs;
+  try { imgs = new heifLib.HeifDecoder().decode(new Uint8Array(await file.arrayBuffer())); }
+  catch (e) { throw new Error(file.name + ' is not a HEIC photo this tool can read.'); }
+  if (!imgs || !imgs.length) throw new Error(file.name + ' is not a HEIC photo this tool can read.');
+  const im = imgs[0], w = im.get_width(), h = im.get_height();
+  if (w * h > 100e6) throw new Error(file.name + ' is too large to convert here (over 100 megapixels).');
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  const ctx = c.getContext('2d'), data = ctx.createImageData(w, h);
+  await new Promise((ok, no) => im.display(data, r => r ? ok() : no(new Error(file.name + ' could not be decoded.'))));
+  ctx.putImageData(data, 0, 0);
+  return c;
+}
+function heicTool(mime, ext, qualityUi) {
+  return {
+    accept: '.heic,.heif,image/heic,image/heif', exts: ['.heic', '.heif'], multiple: true,
+    title: 'Drop HEIC photos here', sub: 'HEIC and HEIF files from an iPhone or iPad. Add as many as you like.',
+    label: 'Convert to ' + ext.toUpperCase(), zipName: 'heic-to-' + ext,
+    opts: qualityUi ? sel('o_q', 'Quality', [['0.92', 'High (recommended)'], ['0.82', 'Balanced'], ['0.7', 'Smaller file']]) : '',
+    async run(files, o) {
+      const res = [];
+      for (let i = 0; i < files.length; i++) {
+        const f = files[i];
+        o.prog(i / files.length, 'Converting ' + f.name);
+        const src = await heicCanvas(f);
+        let c = src;
+        if (mime === 'image/jpeg') {
+          c = document.createElement('canvas'); c.width = src.width; c.height = src.height;
+          const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, c.width, c.height); x.drawImage(src, 0, 0);
+        }
+        const blob = await canvasBlob(c, mime, qualityUi ? parseFloat(o.v('o_q')) : undefined);
+        if (!blob) throw new Error(f.name + ' is too large for this browser to save. Try a smaller photo.');
+        res.push({ name: baseName(f.name) + '.' + ext, blob, info: src.width + ' × ' + src.height + ' px' });
+      }
+      return res;
+    }
+  };
+}
+TOOLS['heic-to-jpg'] = heicTool('image/jpeg', 'jpg', true);
 
 window.TWN = { has: id => !!TOOLS[id], render, ids: Object.keys(TOOLS) };
 })();

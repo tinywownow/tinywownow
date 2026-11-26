@@ -221,6 +221,28 @@ module.exports = {
     next: [['resize-image', 'Set an exact size instead of a scale.'], ['compress-image', 'Shrink the enlarged file.'], ['image-to-png', 'Keep a lossless copy.']],
     io: ['JPG, PNG, WebP, GIF, BMP', 'PNG, JPG, WebP']
   },
+  'heic-to-jpg': {
+    title: 'HEIC to JPG Converter, No Upload',
+    meta: 'Convert HEIC photos from your iPhone to JPG in your browser. Free, with no upload, no sign-up and no watermark. Convert many photos at once.',
+    answer: 'HEIC to JPG converts iPhone and iPad photos to JPG, the format that opens on every phone, computer and website. The tool runs in your browser, so your photos never leave your device. Add one photo or many, then download the JPG files.',
+    steps: ['Drop your HEIC photos in, or click to choose them. You can add many at once.', 'Pick a quality: High, Balanced or Smaller file.', 'Click Convert to JPG, then download each photo or click Download all.'],
+    use: ['A Windows PC, a website or a form will not open your iPhone photos.', 'You want to email or upload photos that every device can show.', 'A print shop or a school portal asks for JPG files.'],
+    tips: [
+      'Keep High quality for photos you plan to print or edit. Choose Smaller file for email.',
+      'The tool keeps the full pixel size of each photo. To meet a size limit, shrink the JPG afterwards with <a href="/compress-image">Compress Image</a>.',
+      'To stop saving HEIC in future, open Settings, then Camera, then Formats, and choose Most Compatible.',
+      'Add many photos at once, then click Download all to save every JPG in one ZIP file.'
+    ],
+    limits: ['The tool converts the main image in each file and ignores extra images stored inside it.', 'The JPG carries no metadata, such as location, and no colour profile.', 'The tool fills transparent areas with white.'],
+    faq: [
+      ['How do I open HEIC photos on Windows?', 'Convert the file to JPG with this tool, and it then opens in any app. Windows can also open HEIC after you install the HEIF Image Extensions from Microsoft, but many apps still reject the file.'],
+      ['Is the conversion free and private?', 'Yes. The tool is free, needs no sign-up and adds no watermark. It runs in your browser, so your photos are never uploaded.'],
+      ['Will the JPG lose quality?', 'JPG is a lossy format, so the file keeps slightly less detail than the original. At High quality the difference is hard to see. The JPG is often larger than the HEIC, because HEIC compresses better.'],
+      ['Can I convert many HEIC files at once?', 'Yes. Add as many photos as you like, then click Download all to get one ZIP file.']
+    ],
+    next: [['compress-image', 'Shrink the JPG to meet a size limit.'], ['jpg-to-pdf', 'Put your photos into one PDF.'], ['image-to-png', 'Keep a lossless copy instead.']],
+    io: ['HEIC, HEIF', 'JPG']
+  },
   'image-to-text': {
     title: 'Image to Text (OCR) Online, Free',
     meta: 'Extract text from images and screenshots with OCR in your browser. English, Urdu, Hindi, Arabic and more. Free, with no upload and no sign-up.',
